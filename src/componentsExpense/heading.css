@@ -1,0 +1,39 @@
+.contentTop{
+    display:flex;
+    align-items:center;
+    direction:ltr;
+    justify-content:space-between;
+    color:rgb(39, 43, 48);
+    margin-bottom:32px;
+}
+.contentTop h1{
+    font-weight:600;
+    font-size:32px;
+}
+.button{
+    border:1px solid rgb(79, 87, 94);
+    border-radius:4px;
+    cursor:pointer;
+    font-size:14px;
+    height:40px;
+    padding-left:16px;
+    padding-right:16px;
+    text-decoration:none;
+    display:inline-block;
+    line-height:40px;
+}
+.back {
+    color:rgb(106, 113, 120);
+    background-color:rgb(255, 255, 255);
+} 
+.save{
+    color:white;
+    background-color:rgb(16, 104, 235);
+    margin-left:24px;
+}
+.button:hover{
+    filter:brightness(0.9);
+    color:rgb(106, 113, 120);
+}
+
+
