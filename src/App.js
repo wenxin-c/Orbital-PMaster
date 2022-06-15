@@ -14,32 +14,33 @@ import {
 
 function App() {
 
-  const [tableCostTitle,setTableCostTitle]=useState(['Item','Cost','Deadline']);
+  const [tableCostTitle,setTableCostTitle]=useState(['Item Type','Item','Date','Unit Cost','Units','Total Cost']);
   const [tableCostContent, setTableCostContent]=useState([ 
-  {name:'steal',cost:'100', deadline:''},
-  {name:'concrete',cost:'500', deadline:""},
-  {name:'wood',cost:'90', deadline:""}])
+  {type:'metal',name:'steal',date:'',unitCost:'10/kg', units:'10kg', totalCost:'100', },
+  {type:'metal',name:'aluminium',date:'',unitCost:'20/kg', units:'10kg', totalCost:'200', }])
 
-  const [tableTimeTitle, setTableTimeTitle]=useState([ 'Task Name','Task Description','Duration','Prerequisite Task','Members', 'Remark'])
+  const [tableTimeTitle, setTableTimeTitle]=useState([ 'Task Name','Task Description','People involved','Prerequisite Task','Duration(with Date)', 'Remark'])
   const [tableTimeContent, setTableTimeContent]=useState([
-    {name:'Kick-out meeting',description:'discuss proposal with all project managers',duration:'5',prerequisite:'none', members:'', remark:''},
-    {name:'Building foundation',description:'important',duration:'500',prerequisite:'design of the foundation must be done', members:'', remark:''},
-    {name:'Electricity work',description:'including electricity wiring, installing ceiling fans',duration:'100',prerequisite:'structure of the building must be done' , members:'', remark:''}
+    {name:'Kick-out meeting',description:'discuss proposal with all project managers',people:'',prerequisite:'none', duration:'5 hours', remark:''},
+    {name:'Building foundation',description:'important', people:' ',prerequisite:'design of the foundation must be done', duration:'5 months', remark:''},
   ])
 
-  const [tableHRTitle, setTableHRTitle]=useState([ 'Name','Subgroup','Role']);
+  const [tableHRTitle, setTableHRTitle]=useState([ 'Name','IC Number','Phone Number','E-mail','Department','Role']);
   const [tableHRContent, setTableHRContent]=useState([
-    {name:'Amy',subgroup:'finance',role:'accountant'},
-    {name:'Lisa',subgroup:'management committee',role:'project manager'},
-    {name:'Ben',subgroup:'management committee',role:'cost manager'},
+    {name:'Amy',ic:'T1234567A',phone:'12345678',email:'123@gmail.com',department:'finance',role:'accountant'},
+    {name:'Lisa',ic:'T1234567B',phone:'87654321',email:'321@gmail.com',department:'management commitee',role:'project leader'},
   ])
 
-  function HandleIncrementCost(nameParam, dateParam, costParam){
+  function HandleIncrementCost(typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam){
     const newCost = [...tableCostContent,
     {
+      type:typeParam,
       name:nameParam,
-      cost:costParam,
-      deadline:dateParam,
+      date:dateParam,
+      unitCost:unitCostParam,
+      units:unitsParam,
+      totalCost:totalCostParam,
+      
     }];
     setTableCostContent(newCost)
   }
@@ -49,39 +50,41 @@ function App() {
     {
       name:nameParam,
       description:descriptionParam,
-      duration:durationParam,
+      people:memberParam,
       prerequisite:preParam,
-      members:memberParam,
+      duration:durationParam,
+
       remark:remarkParam,
     }]
     setTableTimeContent(newTask);
   }
 
-  function HandleIncrementPerson(nameParam, subgroupParam, roleParam){
+  function HandleIncrementPerson(nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam){
     const newPerson = [...tableHRContent,
     {
       name:nameParam,
-      subgroup:subgroupParam,
+      ic:icParam,
+      phone:phoneParam,
+      email:emailParam,
+      department:departmentParam,
       role:roleParam
     }]
     setTableHRContent(newPerson);
   }
 
-  function HandleRemoveCostItem(index){
-    const newCost = [...tableCostContent];
-    newCost.splice(index, 1);
+  function HandleRemoveCostItem(name){
+    console.log(name);
+    const newCost = tableCostContent.filter((item)=>item.name!==name);
     setTableCostContent(newCost);
   }
 
-  function HandleRemoveTaskItem(index){
-    const newTask = [...tableTimeContent];
-    newTask.splice(index, 1);
+  function HandleRemoveTaskItem(name){
+    const newTask = tableTimeContent.filter((item)=>item.name!==name);
     setTableTimeContent(newTask);
   }
 
-  function HandleRemovePersonItem(index){
-    const newPerson = [...tableHRContent];
-    newPerson.splice(index, 1);
+  function HandleRemovePersonItem(name){
+    const newPerson = tableHRContent.filter((item)=>item.name!==name);
     setTableHRContent(newPerson);
   }
 

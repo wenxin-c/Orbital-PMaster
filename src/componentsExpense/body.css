@@ -2,14 +2,14 @@ label{
     display:block;
     color:rgb(79, 87, 94);
     margin-bottom:8px;
+    margin-top:20px;
 }
 .contentBodyBottom{
+    margin-top:24px;
     display:flex;
     flex-direction:row;
     align-items:center;
-    direction:ltr;
-    margin-left:-12px;
-    margin-right:-12px;
+    justify-content: space-around;
 }
 .contentBodyBottom input{
     margin-bottom:24px;
@@ -33,31 +33,26 @@ textarea{
     height:86.5px;
     word-break:break-word;
     padding:16px;
-    margin-bottom:24px;
 }
 .contentBody{
     display:flex;
     flex-direction:row;
 }
 .addNew{
+    flex:1;
     background-color:white;
-    flex:0.5;
+    display:flex;
+    flex-direction:column;
     border-radius:4px;
     padding:24px;
 }
-.date{
+.addNew input{
+    width:80%;
+    border:1px solid rgb(206, 212, 218);
+    border-radius:4px;
     box-sizing:border-box;
-    padding-left:12px;
-    padding-right:12px; 
-    flex:1;
     color:rgb(39, 43, 48);
     font-size:14px;
-}
-.cost{
-    box-sizing:border-box;
-    padding-left:12px;
-    padding-right:12px; 
-    flex:1;
-    color:rgb(39, 43, 48);
-    font-size:14px;
+    font-weight:400;
+    height:35px;
 }

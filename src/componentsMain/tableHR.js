@@ -4,8 +4,8 @@ import './table.css'
 import DeleteButton from './deleteButton.js'
 
 class TableHR extends React.Component{
-  HandleClickDelete=(index)=>{
-    this.props.onDeletePerson(index);
+  HandleClickDelete=(name)=>{
+    this.props.onDeletePerson(name);
   }
     render(){
         return(
@@ -13,7 +13,7 @@ class TableHR extends React.Component{
             <table width='100%'>
                 <thead>
                 <tr>
-                    {this.props.tableTitle.map(title=>(<th style={{width:'32.7%'}} key={title}>{title}</th>))}
+                    {this.props.tableTitle.map(title=>(<th style={{width:'16.35%'}} key={title}>{title}</th>))}
                 </tr>
                 </thead>
                 <tbody>
@@ -22,9 +22,12 @@ class TableHR extends React.Component{
                         return (
                           <tr className='content' key={content.name}>
                             <td>{content.name}</td>
-                            <td>{content.subgroup}</td>
+                            <td>{content.ic}</td>
+                            <td>{content.phone}</td>
+                            <td>{content.email}</td>
+                            <td>{content.department}</td>
                             <td>{content.role}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(index)=>this.HandleClickDelete(index)}/></td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={()=>this.HandleClickDelete(content.name)}/></td>
                           </tr>
                         )
                       })

@@ -30,6 +30,12 @@
 .btn1{
     margin-left:20px;
 }
+.btnNew{
+    line-height:27px;
+}
+.buttonMargin{
+    margin-bottom:50px;
+}
 .anchor { 
     content: ''; 
     display: block; 

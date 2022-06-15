@@ -32,9 +32,10 @@ class HRManagement extends React.Component{
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
                 <TableHR tableTitle={this.props.tableHRTitle} tableContent={this.props.tableHRContent} onDeletePerson={this.props.onDeletePerson} buttonStatus={this.state.buttonStatus}/> 
-                <div>
-                    <button onClick={this.HandleClickControlDisplay} className='btn btn1'>Delete</button>
-                    <Link to='person' className='btn'>Add New</Link>
+                <div className='buttonMargin'>
+                    <Link to='person' className='btn btn1'>Add New</Link>
+                    <button onClick={this.HandleClickControlDisplay} className='btn '>Delete</button>
+                    
                 </div>
                  
                 

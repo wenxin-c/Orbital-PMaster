@@ -36,15 +36,14 @@ class TimeManagement extends React.Component{
                 <h1>{this.props.section.props.children}</h1>
                 <InputBox description={this.state.description} total={this.state.total} userInput={this.state.userInput} onInput={this.HandleInputValue} />
                 <TableTime tableTitle={this.props.tableTimeTitle} tableContent={this.props.tableTimeContent} onDeleteTask={this.props.onDeleteTask} buttonStatus={this.state.buttonStatus}/>
-                <div style={{width:'100%'}}>
+                <div style={{width:'100%'}} className="buttonMargin">
                     <div style={{width:'auto', display:'inline-block'}}>
                         <span>Amount of time remaining:</span>
                     </div>
-                    <button onClick={this.HandleClickControlDisplay} className='btn btn1'>Delete</button>
-                    <Link to='task' className='btn'>Add New</Link> 
                     
+                    <Link to='task' className='btn btn1'>Add New</Link>  
+                    <button onClick={this.HandleClickControlDisplay} className='btn '>Delete</button>
                 </div>  
-                
             </div>
         );
     }

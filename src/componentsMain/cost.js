@@ -36,13 +36,14 @@ class CostManagement extends React.Component{
                 <h1>{this.props.section.props.children}</h1>
                 <InputBox description={this.state.description} total={this.state.total} userInput={this.state.userInput} onInput={this.HandleInputValue} />
                 <TableCost tableTitle={this.props.tableCostTitle} tableContent={this.props.tableCostContent} onDeleteCost={this.props.onDeleteCost} buttonStatus={this.state.buttonStatus}/>
-                <div style={{width:'100%'}}>
+                <div style={{width:'100%'}} className='buttonMargin'>
                     <div style={{width:'auto', display:'inline-block'}}>
                         <span >Total cost:</span>
                         <span>Amount of money remaining:</span>
                     </div>
-                    <button onClick={this.HandleClickControlDisplay} className="btn btn1">Delete</button>
-                    <Link to='expense' className='btn'>Add New</Link>
+                    
+                    <Link to='expense' className='btn btnNew btn1'>Add New</Link>
+                    <button onClick={this.HandleClickControlDisplay} className="btn ">Delete</button>
                     
                 </div>  
                 

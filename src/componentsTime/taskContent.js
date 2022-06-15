@@ -38,7 +38,7 @@ class TaskContent extends React.Component{
     render(){
         let styles={
             backgroundColor:'#f3f6f8', 
-            width:'auto', 
+            width:'100%', 
             height:'auto',
             position:'absolute', 
             top:'50px',
@@ -54,7 +54,7 @@ class TaskContent extends React.Component{
 
         return(
             <div style={styles}>
-                <div className='contentWrapper'>
+                <div style={{marginBottom:'80px'}} className='contentWrapper'>
                     <Heading title={this.state.title} onClickSave={this.HandleClick}/>
                     <div className='contentBody'>
                         <form>
@@ -63,11 +63,11 @@ class TaskContent extends React.Component{
                                 <input className='info' onChange={this.HandleInputValue1}></input>
                                 <label>Task Description</label>
                                 <input className='info' onChange={this.HandleInputValue2}></input>
-                                <label>Duration</label>
+                                <label>People Involved</label>
                                 <textarea className='info' onChange={this.HandleInputValue3}></textarea>
                                 <label>Prerequisite Task</label>
                                 <textarea className='info' onChange={this.HandleInputValue4}></textarea>
-                                <label>Members</label>
+                                <label>Duration(with Date)</label>
                                 <input className='info' onChange={this.HandleInputValue5}></input>
                                 <label>Remarks</label>
                                 <textarea className='info' onChange={this.HandleInputValue6}></textarea>

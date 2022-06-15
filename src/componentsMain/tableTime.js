@@ -4,8 +4,8 @@ import './table.css'
 import DeleteButton from './deleteButton.js'
 
 class TableTime extends React.Component{
-  HandleClickDelete=(index)=>{
-    this.props.onDeleteTask(index);
+  HandleClickDelete=(name)=>{
+    this.props.onDeleteTask(name);
   }
     render(){
         return(
@@ -23,11 +23,11 @@ class TableTime extends React.Component{
                           <tr className='content' key={content.name}>
                             <td  >{content.name}</td>
                             <td  >{content.description}</td>
-                            <td  >{content.duration}</td>
+                            <td  >{content.people}</td>
                             <td  >{content.prerequisite}</td>
-                            <td  >{content.members}</td>
+                            <td  >{content.duration}</td>
                             <td  >{content.remark}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(index)=>this.HandleClickDelete(index)}/></td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={()=>this.HandleClickDelete(content.name)}/></td>
                           </tr>
                         )
                       })
