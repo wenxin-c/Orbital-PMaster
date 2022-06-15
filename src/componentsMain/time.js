@@ -13,6 +13,7 @@ class TimeManagement extends React.Component{
         total:'Total duration: ',
         userInput:0,
         buttonStatus:'none',
+        inputType:'text'
     }
 
     HandleInputValue=(event)=>{
@@ -34,10 +35,10 @@ class TimeManagement extends React.Component{
             <div className='costarea'>
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
-                <InputBox description={this.state.description} total={this.state.total} userInput={this.state.userInput} onInput={this.HandleInputValue} />
+                <InputBox description={this.state.description} total={this.state.total} userInput={this.state.userInput} onInput={this.HandleInputValue} inputType={this.state.inputType}/>
                 <TableTime tableTitle={this.props.tableTimeTitle} tableContent={this.props.tableTimeContent} onDeleteTask={this.props.onDeleteTask} buttonStatus={this.state.buttonStatus}/>
                 <div style={{width:'100%'}} className="buttonMargin">
-                    <div style={{width:'auto', display:'inline-block'}}>
+                    <div style={{width:'auto', display:'inline-block', marginLeft:'5px'}}>
                         <span>Amount of time remaining:</span>
                     </div>
                     

@@ -1,11 +1,12 @@
 import React, {useState}from 'react'
 import ReactDOM from 'react-dom'
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css"
 import MainPage from './pages/main.js'
 import NewExpense from './pages/newExpense.js'
 import NewTask from './pages/newTask.js'
 import NewPerson from './pages/newPerson.js'
-import ScrollToTop from './pages/wrapper.js';
+import ScrollToTop from './pages/wrapper.js'
+import Login from './pages/login.js'
 import {
   BrowserRouter as Router,
   Route,
@@ -94,7 +95,8 @@ function App() {
         <div className="App">
           <header className="App-header">
             <Routes>
-              <Route path='/' element={<MainPage 
+              <Route path='/' element={<Login />}/>
+              <Route path='main' element={<MainPage 
               tableCostTitle={tableCostTitle} tableCostContent={tableCostContent} 
               tableTimeTitle={tableTimeTitle} tableTimeContent={tableTimeContent}
               tableHRTitle={tableHRTitle} tableHRContent={tableHRContent}
@@ -102,9 +104,9 @@ function App() {
               onDeleteTask={HandleRemoveTaskItem}
               onDeletePerson={HandleRemovePersonItem}
               />}/>
-              <Route path='expense' element={<NewExpense onIncrementCost={HandleIncrementCost}/>}/>
-              <Route path='task' element={<NewTask onIncrementTask={HandleIncrementTask}/>}/>
-              <Route path='person' element={<NewPerson onIncrementPerson={HandleIncrementPerson}/>}/>
+              <Route path='main/expense' element={<NewExpense onIncrementCost={HandleIncrementCost}/>}/>
+              <Route path='main/task' element={<NewTask onIncrementTask={HandleIncrementTask}/>}/>
+              <Route path='main/person' element={<NewPerson onIncrementPerson={HandleIncrementPerson}/>}/>
             </Routes>
           </header>
         </div>

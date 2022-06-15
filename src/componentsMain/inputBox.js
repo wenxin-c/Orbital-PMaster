@@ -19,8 +19,8 @@ class InputBox extends React.Component{
     render(){
         return(
             <div style={{display:'flex',flexDirection:'column'}}>
-                <input onChange={this.props.onInput} className='inputbox' type="number" onkeydown="return event.keyCode !== 69" placeholder={this.props.description} disabled={this.state.disabled}></input>
-                <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                <input onChange={this.props.onInput} className='inputbox' type={this.props.inputType} onkeydown="return event.keyCode !== 69" placeholder={this.props.description} disabled={this.state.disabled}></input>
+                <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', marginLeft:'5px'}}>
                     <div>
                         <span className='initialTotal'>{this.props.total}</span>
                         <span className='initialTotal'>{this.props.userInput}</span>
