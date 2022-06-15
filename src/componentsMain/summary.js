@@ -8,7 +8,7 @@ class Summary extends React.Component{
     state={
         disabled:false,
         subtitle1:'What is the identified issue you wish to tackle?',
-        subtitle2:'How you wish to tackle this issue',
+        subtitle2:'How you wish to tackle this issue?',
         subtitle3:'Who are the stakeholders involved?',
         subtitle4:'What is your expected outcome from the project?',
     }

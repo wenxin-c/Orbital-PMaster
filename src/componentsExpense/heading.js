@@ -13,8 +13,8 @@ class Heading extends React.Component{
             <div className='contentTop'>
                     <div><h1>{this.props.title}</h1></div>
                     <div>
-                        <Link className='back button' to='/'>Go Back</Link>
-                        <Link className='save button' to='/' onClick={()=>this.HandleClick(this.props.title)}>Save</Link>
+                        <Link className='back button' to='/main'>Go Back</Link>
+                        <Link className='save button' to='/main' onClick={()=>this.HandleClick(this.props.title)}>Save</Link>
                     </div>
             </div>
         );
