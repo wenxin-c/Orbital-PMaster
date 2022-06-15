@@ -13,20 +13,22 @@
     font-size:28px;
 }
 .btn{
+    border:0px;
     background-color:rgb(16, 104, 235);
     border-radius:4px;
     cursor:pointer;
     font-size:14px;
     height:40px;
     width:85px;
-    margin-top:0;
-    margin-bottom:20px;
-    margin-left:calc(100% - 85px);
     color:white;
+    float:right;
 }
 .btn:hover{
     color:white;
     filter:brightness(0.9);
+}
+.btn1{
+    margin-left:20px;
 }
 .anchor { 
     content: ''; 

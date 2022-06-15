@@ -67,6 +67,24 @@ function App() {
     setTableHRContent(newPerson);
   }
 
+  function HandleRemoveCostItem(index){
+    const newCost = [...tableCostContent];
+    newCost.splice(index, 1);
+    setTableCostContent(newCost);
+  }
+
+  function HandleRemoveTaskItem(index){
+    const newTask = [...tableTimeContent];
+    newTask.splice(index, 1);
+    setTableTimeContent(newTask);
+  }
+
+  function HandleRemovePersonItem(index){
+    const newPerson = [...tableHRContent];
+    newPerson.splice(index, 1);
+    setTableHRContent(newPerson);
+  }
+
   return (
       <Router>
       <ScrollToTop>
@@ -77,6 +95,9 @@ function App() {
               tableCostTitle={tableCostTitle} tableCostContent={tableCostContent} 
               tableTimeTitle={tableTimeTitle} tableTimeContent={tableTimeContent}
               tableHRTitle={tableHRTitle} tableHRContent={tableHRContent}
+              onDeleteCost={HandleRemoveCostItem}
+              onDeleteTask={HandleRemoveTaskItem}
+              onDeletePerson={HandleRemovePersonItem}
               />}/>
               <Route path='expense' element={<NewExpense onIncrementCost={HandleIncrementCost}/>}/>
               <Route path='task' element={<NewTask onIncrementTask={HandleIncrementTask}/>}/>
