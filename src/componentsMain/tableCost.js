@@ -1,14 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './table.css'
-import DeleteButton from './deleteButton.js'
+import './../styles/tableMain.css'
+import DeleteButton from '../componentsCommon/deleteButton.js'
 
 class TableCost extends React.Component{
 
-
-  HandleClickDelete=(name)=>{
-    this.props.onDeleteCost(name);
-  }
     render(){
         return(
           <div className="table">
@@ -29,7 +25,7 @@ class TableCost extends React.Component{
                             <td>{content.unitCost}</td>
                             <td>{content.units}</td>
                             <td>{content.totalCost}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={()=>this.HandleClickDelete(content.name)}/></td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={()=>this.props.onDeleteCost(content.name)}/></td>
                           </tr>
                         )
                       })

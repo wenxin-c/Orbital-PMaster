@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './summary.css'
+import './../styles/summaryMain.css'
 
 
 class SummaryContent extends React.Component{

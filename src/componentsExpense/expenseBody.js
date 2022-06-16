@@ -1,18 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './../styles/expenseBody.css'
 import Heading from '../componentsCommon/headingContent.js'
-import ExpenseContent from '../componentsExpense/expenseContent.js'
+import ExpenseContent from './expenseContent.js'
 
-class PersonContent extends React.Component{
+class ExpenseBody extends React.Component{
     state={
-        title:'New Person',
-        info1:'Name',
-        info2:'IC Number',
-        info3:'Phone Number',
-        info4:'Email Address',
-        info5:'Department',
-        info6:'Role',
-        infoType:'text',
+        title:'New Expense Item',
+        info1:'Item Type',
+        info2:'Item',
+        info3:'Date',
+        info4:'Unit Cost',
+        info5:'Units',
+        info6:'Total Cost',
+        infoType:'date',
         content1:'',
         content2:'',
         content3:'',
@@ -34,7 +35,7 @@ class PersonContent extends React.Component{
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={()=>{this.props.onIncrementPerson(
+                    <Heading title={this.state.title} onClickSave={()=>{this.props.onIncrementCost(
                         this.state.content1, 
                         this.state.content2, 
                         this.state.content3, 
@@ -47,7 +48,7 @@ class PersonContent extends React.Component{
                     onValue3={(event)=>{this.setState({content3:event.target.value})}} 
                     onValue4={(event)=>{this.setState({content4:event.target.value})}} 
                     onValue5={(event)=>{this.setState({content5:event.target.value})}} 
-                    onValue6={(event)=>{this.setState({content6:event.target.value})}}
+                    onValue6={(event)=>{this.setState({content6:event.target.value})}} 
                     expenseState={this.state}/>
                 </div>
             </div>
@@ -55,4 +56,4 @@ class PersonContent extends React.Component{
     }
 }
 
-export default PersonContent;
+export default ExpenseBody;

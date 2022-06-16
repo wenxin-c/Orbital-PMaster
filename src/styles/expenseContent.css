@@ -55,4 +55,6 @@ textarea{
     font-size:14px;
     font-weight:400;
     height:35px;
+    word-break:break-word;
+    padding:16px;
 }

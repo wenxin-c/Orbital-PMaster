@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './summary.css'
+import './../styles/summaryMain.css'
 import SummaryContent from './summaryContent.js'
-import SaveEditButton from './save_edit.js'
+import SaveEditButton from '../componentsCommon/save_edit.js'
+import {ClickEdit, ClickSave} from './../functions/mouseAction.js'
 
 class Summary extends React.Component{
     state={
@@ -12,15 +13,7 @@ class Summary extends React.Component{
         subtitle3:'Who are the stakeholders involved?',
         subtitle4:'What is your expected outcome from the project?',
     }
-    HandleEditClick=()=>{
 
-        this.setState({disabled:false})
-    }
-    HandleSaveClick=()=>{
-
-        this.setState({disabled:true})
-        
-    }
     render(){
         
         return(
@@ -32,7 +25,7 @@ class Summary extends React.Component{
                 <SummaryContent disabled={this.state.disabled} subtitle={this.state.subtitle2}/>
                 <SummaryContent disabled={this.state.disabled} subtitle={this.state.subtitle3}/>
                 <SummaryContent disabled={this.state.disabled} subtitle={this.state.subtitle4}/>
-                <SaveEditButton onEdit={this.HandleEditClick} onSave={this.HandleSaveClick}/>
+                <SaveEditButton onSave={()=>{this.setState({disabled:ClickSave()})}} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
             </div>
         );
     }

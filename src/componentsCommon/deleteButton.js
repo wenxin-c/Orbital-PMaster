@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './deleteButton.css'
+import './../styles/deleteButton.css'
 
 class DeleteButton extends React.Component{
     render(){

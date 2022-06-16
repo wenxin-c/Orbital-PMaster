@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
-import './login.css'
+import './../styles/login.css'
 import { FaFacebook, FaTwitter, FaGoogle} from "react-icons/fa";
 import {
     Link,

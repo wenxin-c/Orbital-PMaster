@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './table.css'
-import DeleteButton from './deleteButton.js'
+import './../styles/tableMain.css'
+import DeleteButton from '../componentsCommon/deleteButton.js'
 
 class TableTime extends React.Component{
-  HandleClickDelete=(name)=>{
-    this.props.onDeleteTask(name);
-  }
+
     render(){
         return(
           <div className="table">
@@ -27,7 +25,7 @@ class TableTime extends React.Component{
                             <td  >{content.prerequisite}</td>
                             <td  >{content.duration}</td>
                             <td  >{content.remark}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={()=>this.HandleClickDelete(content.name)}/></td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={()=>this.props.onDeleteTask(content.name)}/></td>
                           </tr>
                         )
                       })
