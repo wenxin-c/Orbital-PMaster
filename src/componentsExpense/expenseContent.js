@@ -1,73 +1,38 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './expenseContent.css'
-import Heading from './heading.js'
-import BodyContent from './body.js'
+import './../styles/expenseContent.css'
 
 class ExpenseContent extends React.Component{
-    state={
-        title:'New Expense Item',
-        info1:'Item Type',
-        info2:'Item',
-        info3:'Date',
-        info4:'Unit Cost',
-        info5:'Units',
-        info6:'Total Cost',
-        infoType:'date',
-        content1:'',
-        content2:'',
-        content3:'',
-        content4:'',
-        content5:'',
-        content6:'',
-    }
-    
-    HandleInputValue1=(event)=>{
-        this.setState({content1:event.target.value}, ()=>{console.log(this.state.content1)})
-
-    }
-    HandleInputValue2=(event)=>{
-        this.setState({content2:event.target.value}, ()=>{console.log(this.state.content2)})
-        // console.log(this.state.content2)
-    }
-    HandleInputValue3=(event)=>{
-        this.setState({content3:event.target.value}, ()=>{console.log(this.state.content3)})
-        // console.log(this.state.content3)
-    }
-    HandleInputValue4=(event)=>{
-        this.setState({content4:event.target.value}, ()=>{console.log(this.state.content4)})
-        // console.log(this.state.content3)
-    }
-    HandleInputValue5=(event)=>{
-        this.setState({content5:event.target.value}, ()=>{console.log(this.state.content5)})
-        // console.log(this.state.content3)
-    }
-    HandleInputValue6=(event)=>{
-        this.setState({content6:event.target.value}, ()=>{console.log(this.state.content6)})
-        // console.log(this.state.content3)
-    }
-    
-    HandleClick=()=>{
-        this.props.onIncrementCost(this.state.content1, this.state.content2, this.state.content3, this.state.content4, this.state.content5, this.state.content6);
-        // console.log(this.state.content1, this.state.content3)
-        
-    }
-
     render(){
-        let styles={
-            backgroundColor:'#f3f6f8', 
-            width:'100%', 
-            height:'auto',
-            position:'absolute', 
-            top:'50px',
-            left:'0',
-            zIndex:'-1'
-           }
         return(
-            <div style={styles}>
-                <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={this.HandleClick}/>
-                    <BodyContent onValue1={this.HandleInputValue1} onValue2={this.HandleInputValue2} onValue3={this.HandleInputValue3} onValue4={this.HandleInputValue4} onValue5={this.HandleInputValue5} onValue6={this.HandleInputValue6} expenseState={this.state}/>
+            <div className='contentBody'>
+                <div className='addNew'>
+                    
+                        <div className='itemType'>
+                            <label>{this.props.expenseState.info1}</label>
+                            <textarea placeholder='Please input your response.' onChange={this.props.onValue1} defaultValue=""></textarea>
+                        </div>
+                        <div className='item'>
+                            <label>{this.props.expenseState.info2}</label>
+                            <textarea placeholder='Please input your response.' onChange={this.props.onValue2} defaultValue=""></textarea>
+                        </div>
+                        <div className='date'>
+                            <label>{this.props.expenseState.info3}</label>
+                            <input type={this.props.expenseState.infoType} onChange={this.props.onValue3} defaultValue=""></input>
+                        </div>
+                        <div className='unitCost'>
+                            <label>{this.props.expenseState.info4}</label>
+                            <input placeholder='Please input your response.' onChange={this.props.onValue4} defaultValue=""></input>
+                        </div>
+                        <div className='unit'>
+                            <label>{this.props.expenseState.info5}</label>
+                            <input placeholder='Please input your response.' onChange={this.props.onValue5} defaultValue=""></input>
+                        </div> 
+                        <div className='totalCost'>
+                            <label>{this.props.expenseState.info6}</label>
+                            <textarea placeholder='Please input your response.' onChange={this.props.onValue6} defaultValue=""></textarea>
+                        </div>
+                    
                 </div>
             </div>
         );

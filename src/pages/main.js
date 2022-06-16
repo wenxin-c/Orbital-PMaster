@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import "bootstrap/dist/css/bootstrap.min.css";
-import TopNavBar from '../componentsMain/topNavBar.js'
-import MainContent from '../componentsMain/mainContent.js'
+import "bootstrap/dist/css/bootstrap.min.css"
+import TopNavBar from '../componentsCommon/topNavBar.js'
+import MainContent from '../componentsMain/bodyMain.js'
 
 
 class MainPage extends React.Component{

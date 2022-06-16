@@ -1,38 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './taskContent.css'
-import Heading from '../componentsExpense/heading.js'
+import './../styles/taskContent.css'
+import Heading from '../componentsCommon/headingContent.js'
 
 class TaskContent extends React.Component{
     state={
-        title:'New Task'
-    }
-
-    HandleInputValue1=(event)=>{
-        this.setState({content1:event.target.value}, ()=>{console.log(this.state.content1)})
-    }
-    HandleInputValue2=(event)=>{
-        this.setState({content2:event.target.value}, ()=>{console.log(this.state.content2)})
-        // console.log(this.state.content2)
-    }
-    HandleInputValue3=(event)=>{
-        this.setState({content3:event.target.value}, ()=>{console.log(this.state.content3)})
-        // console.log(this.state.content3)
-    }
-    HandleInputValue4=(event)=>{
-        this.setState({content4:event.target.value}, ()=>{console.log(this.state.content4)})
-        // console.log(this.state.content3)
-    }
-    HandleInputValue5=(event)=>{
-        this.setState({content5:event.target.value}, ()=>{console.log(this.state.content5)})
-        // console.log(this.state.content3)
-    }
-    HandleInputValue6=(event)=>{
-        this.setState({content6:event.target.value}, ()=>{console.log(this.state.content6)})
-        // console.log(this.state.content3)
-    }
-    HandleClick=()=>{
-        this.props.onIncrementTask(this.state.content1, this.state.content2, this.state.content3, this.state.content4, this.state.content5, this.state.content6)
+        title:'New Task',
+        content1:'',
+        content2:'',
+        content3:'',
+        content4:'',
+        content5:'',
+        content6:'',
     }
 
     render(){
@@ -44,33 +23,33 @@ class TaskContent extends React.Component{
             top:'50px',
             left:'0',
             zIndex:'-1',
-            content1:'',
-            content2:'',
-            content3:'',
-            content4:'',
-            content5:'',
-            content6:'',
            }
 
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={this.HandleClick}/>
+                    <Heading title={this.state.title} onClickSave={()=>{this.props.onIncrementTask(
+                        this.state.content1, 
+                        this.state.content2, 
+                        this.state.content3, 
+                        this.state.content4, 
+                        this.state.content5, 
+                        this.state.content6)}}/>
                     <div className='contentBody'>
                         <form>
                             <fieldset>
                                 <label>Task Name</label>
-                                <input className='info' onChange={this.HandleInputValue1}></input>
+                                <input className='info' onChange={(event)=>{this.setState({content1:event.target.value})} }></input>
                                 <label>Task Description</label>
-                                <input className='info' onChange={this.HandleInputValue2}></input>
+                                <input className='info' onChange={(event)=>{this.setState({content2:event.target.value})}}></input>
                                 <label>People Involved</label>
-                                <textarea className='info' onChange={this.HandleInputValue3}></textarea>
+                                <textarea className='info' onChange={(event)=>{this.setState({content3:event.target.value})}}></textarea>
                                 <label>Prerequisite Task</label>
-                                <textarea className='info' onChange={this.HandleInputValue4}></textarea>
+                                <textarea className='info' onChange={(event)=>{this.setState({content4:event.target.value})}}></textarea>
                                 <label>Duration(with Date)</label>
-                                <input className='info' onChange={this.HandleInputValue5}></input>
+                                <input className='info' onChange={(event)=>{this.setState({content5:event.target.value})}}></input>
                                 <label>Remarks</label>
-                                <textarea className='info' onChange={this.HandleInputValue6}></textarea>
+                                <textarea className='info' onChange={(event)=>{this.setState({content6:event.target.value})}}></textarea>
                             </fieldset>
                         </form>
                     </div>
@@ -79,5 +58,5 @@ class TaskContent extends React.Component{
         );
     }
 }
-
+        
 export default TaskContent;

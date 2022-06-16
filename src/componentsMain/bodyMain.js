@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import SideNavBar from './sideNavBar.js'
-import Summary from './summary.js'
-import CostManagement from './cost.js'
-import TimeManagement from './time.js'
-import HRManagement from './hr.js'
+import SideNavBar from '../componentsCommon/sideNavBar.js'
+import Summary from './summaryMain.js'
+import CostManagement from './costMain.js'
+import TimeManagement from './timeMain.js'
+import HRManagement from './hrMain.js'
 
 
 class MainContent extends React.Component{

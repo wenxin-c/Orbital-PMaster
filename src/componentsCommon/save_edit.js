@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './input.css'
+import './../styles/input.css'
 
 class SaveEditButton extends React.Component{
     render(){

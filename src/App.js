@@ -12,6 +12,9 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import { TableCostIncrement, TableTaskIncrement, TablePersonIncrement } from './functions/tableIncrement.js'
+import { TableDelete } from './functions/tableDelete.js'
+
 
 function App() {
 
@@ -32,62 +35,6 @@ function App() {
     {name:'Lisa',ic:'T1234567B',phone:'87654321',email:'321@gmail.com',department:'management commitee',role:'project leader'},
   ])
 
-  function HandleIncrementCost(typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam){
-    const newCost = [...tableCostContent,
-    {
-      type:typeParam,
-      name:nameParam,
-      date:dateParam,
-      unitCost:unitCostParam,
-      units:unitsParam,
-      totalCost:totalCostParam,
-      
-    }];
-    setTableCostContent(newCost)
-  }
-  
-  function HandleIncrementTask(nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam){
-    const newTask = [...tableTimeContent,
-    {
-      name:nameParam,
-      description:descriptionParam,
-      people:memberParam,
-      prerequisite:preParam,
-      duration:durationParam,
-
-      remark:remarkParam,
-    }]
-    setTableTimeContent(newTask);
-  }
-
-  function HandleIncrementPerson(nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam){
-    const newPerson = [...tableHRContent,
-    {
-      name:nameParam,
-      ic:icParam,
-      phone:phoneParam,
-      email:emailParam,
-      department:departmentParam,
-      role:roleParam
-    }]
-    setTableHRContent(newPerson);
-  }
-
-  function HandleRemoveCostItem(name){
-    console.log(name);
-    const newCost = tableCostContent.filter((item)=>item.name!==name);
-    setTableCostContent(newCost);
-  }
-
-  function HandleRemoveTaskItem(name){
-    const newTask = tableTimeContent.filter((item)=>item.name!==name);
-    setTableTimeContent(newTask);
-  }
-
-  function HandleRemovePersonItem(name){
-    const newPerson = tableHRContent.filter((item)=>item.name!==name);
-    setTableHRContent(newPerson);
-  }
 
   return (
       <Router>
@@ -100,13 +47,19 @@ function App() {
               tableCostTitle={tableCostTitle} tableCostContent={tableCostContent} 
               tableTimeTitle={tableTimeTitle} tableTimeContent={tableTimeContent}
               tableHRTitle={tableHRTitle} tableHRContent={tableHRContent}
-              onDeleteCost={HandleRemoveCostItem}
-              onDeleteTask={HandleRemoveTaskItem}
-              onDeletePerson={HandleRemovePersonItem}
+              onDeleteCost={(name)=>setTableCostContent(TableDelete(tableCostContent, name))}
+              onDeleteTask={(name)=>setTableTimeContent(TableDelete(tableTimeContent, name))}
+              onDeletePerson={(name)=>setTableHRContent(TableDelete(tableHRContent, name))}
               />}/>
-              <Route path='main/expense' element={<NewExpense onIncrementCost={HandleIncrementCost}/>}/>
-              <Route path='main/task' element={<NewTask onIncrementTask={HandleIncrementTask}/>}/>
-              <Route path='main/person' element={<NewPerson onIncrementPerson={HandleIncrementPerson}/>}/>
+              <Route path='main/expense' element={<NewExpense 
+              onIncrementCost={(typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam)=>
+              {setTableCostContent(TableCostIncrement(tableCostContent, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam))}}/>}/>
+              <Route path='main/task' element={<NewTask 
+              onIncrementTask={(nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam)=>
+              {setTableTimeContent(TableTaskIncrement(tableTimeContent,nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam))}}/>}/>
+              <Route path='main/person' element={<NewPerson 
+              onIncrementPerson={(nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam)=>
+              {setTableHRContent(TablePersonIncrement(tableHRContent, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam))}}/>}/>
             </Routes>
           </header>
         </div>
