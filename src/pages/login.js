@@ -16,11 +16,11 @@ class Login extends React.Component{
                     <div>
                         <div class="row">
                             <label>Username</label>
-                            <input type='text' placeholder='Enter your username'/>
+                            <input type='text' placeholder='Enter your username' />
                         </div>  
                         <div class="row">
                             <label>Password</label>
-                            <input type='password' placeholder='Enter your password'/>
+                            <input type='password' placeholder='Enter your password' />
                         </div>  
                         <div id="button" class="row">
                             {/* <button>Log in</button> */}
