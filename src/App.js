@@ -43,7 +43,7 @@ function App() {
           <header className="App-header">
             <Routes>
               <Route path='/' element={<Login />}/>
-              <Route path='main' element={<MainPage 
+              <Route path='/main' element={<MainPage 
               tableCostTitle={tableCostTitle} tableCostContent={tableCostContent} 
               tableTimeTitle={tableTimeTitle} tableTimeContent={tableTimeContent}
               tableHRTitle={tableHRTitle} tableHRContent={tableHRContent}
@@ -51,13 +51,13 @@ function App() {
               onDeleteTask={(name)=>setTableTimeContent(TableDelete(tableTimeContent, name))}
               onDeletePerson={(name)=>setTableHRContent(TableDelete(tableHRContent, name))}
               />}/>
-              <Route path='main/expense' element={<NewExpense 
+              <Route path='/main/expense' element={<NewExpense 
               onIncrementCost={(typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam)=>
               {setTableCostContent(TableCostIncrement(tableCostContent, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam))}}/>}/>
-              <Route path='main/task' element={<NewTask 
+              <Route path='/main/task' element={<NewTask 
               onIncrementTask={(nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam)=>
               {setTableTimeContent(TableTaskIncrement(tableTimeContent,nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam))}}/>}/>
-              <Route path='main/person' element={<NewPerson 
+              <Route path='/main/person' element={<NewPerson 
               onIncrementPerson={(nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam)=>
               {setTableHRContent(TablePersonIncrement(tableHRContent, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam))}}/>}/>
             </Routes>

@@ -8,12 +8,19 @@ html{
   font-size: 100%;
 }
 
+.container{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+}
+
 #loginform{
   max-width: 500px;
   min-width: 300px;
   max-height: 700px;
   width: 30%;
-  height: 60%;
+  height: 100vh;
   margin: 100px auto;
   background-color: #FFFFFF;
   border-radius: 25px;
@@ -124,8 +131,8 @@ html{
 
 #alternativeLogin {
    text-align: center;
-   padding-top: 2rem;
-   margin-top: 1.5rem;
+   padding-top: 10px;
+   margin-top: 10px;
 }
 .logoFacebook, .logoTwitter, .logoGoogle{
     width:25px;
