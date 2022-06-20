@@ -28,7 +28,7 @@ class TaskContent extends React.Component{
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={()=>{this.props.onIncrementTask(
+                    <Heading title={this.state.title} onClickSave={(event)=>{this.props.onIncrementTask(event,
                         this.state.content1, 
                         this.state.content2, 
                         this.state.content3, 

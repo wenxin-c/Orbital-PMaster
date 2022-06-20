@@ -14,14 +14,15 @@ import {
 } from "react-router-dom";
 import { TableCostIncrement, TableTaskIncrement, TablePersonIncrement } from './functions/tableIncrement.js'
 import { TableDelete } from './functions/tableDelete.js'
+import Axios from 'axios';
 
 
 function App() {
 
-  const [tableCostTitle,setTableCostTitle]=useState(['Item Type','Item','Date','Unit Cost','Units','Total Cost']);
+  const [tableCostTitle,setTableCostTitle]=useState(['Item Type','Item','Date','Unit Cost/unit','Units','Total Cost']);
   const [tableCostContent, setTableCostContent]=useState([ 
-  {type:'metal',name:'steal',date:'',unitCost:'10/kg', units:'10kg', totalCost:'100', },
-  {type:'metal',name:'aluminium',date:'',unitCost:'20/kg', units:'10kg', totalCost:'200', }])
+  {type:'metal',name:'steal',date:'',unitCost:'10', units:'10', totalCost:'100', },
+  {type:'metal',name:'aluminium',date:'',unitCost:'20', units:'10', totalCost:'200', }])
 
   const [tableTimeTitle, setTableTimeTitle]=useState([ 'Task Name','Task Description','People involved','Prerequisite Task','Duration(with Date)', 'Remark'])
   const [tableTimeContent, setTableTimeContent]=useState([
@@ -35,6 +36,9 @@ function App() {
     {name:'Lisa',ic:'T1234567B',phone:'87654321',email:'321@gmail.com',department:'management commitee',role:'project leader'},
   ])
 
+  // const[usernameReg, setUsernameReg]=useState("");
+  // const[passwordReg, setPasswordReg]=useState("");
+
 
   return (
       <Router>
@@ -43,7 +47,7 @@ function App() {
           <header className="App-header">
             <Routes>
               <Route path='/' element={<Login />}/>
-              <Route path='main' element={<MainPage 
+              <Route path='/main' element={<MainPage 
               tableCostTitle={tableCostTitle} tableCostContent={tableCostContent} 
               tableTimeTitle={tableTimeTitle} tableTimeContent={tableTimeContent}
               tableHRTitle={tableHRTitle} tableHRContent={tableHRContent}
@@ -51,15 +55,15 @@ function App() {
               onDeleteTask={(name)=>setTableTimeContent(TableDelete(tableTimeContent, name))}
               onDeletePerson={(name)=>setTableHRContent(TableDelete(tableHRContent, name))}
               />}/>
-              <Route path='main/expense' element={<NewExpense 
-              onIncrementCost={(typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam)=>
-              {setTableCostContent(TableCostIncrement(tableCostContent, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam))}}/>}/>
-              <Route path='main/task' element={<NewTask 
-              onIncrementTask={(nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam)=>
-              {setTableTimeContent(TableTaskIncrement(tableTimeContent,nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam))}}/>}/>
-              <Route path='main/person' element={<NewPerson 
-              onIncrementPerson={(nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam)=>
-              {setTableHRContent(TablePersonIncrement(tableHRContent, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam))}}/>}/>
+              <Route path='/main/expense' element={<NewExpense 
+              onIncrementCost={(eventParam, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam)=>
+              {setTableCostContent(TableCostIncrement(tableCostContent, eventParam, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam))}}/>}/>
+              <Route path='/main/task' element={<NewTask 
+              onIncrementTask={(eventParam, nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam)=>
+              {setTableTimeContent(TableTaskIncrement(tableTimeContent,eventParam, nameParam,descriptionParam,durationParam,preParam,memberParam,remarkParam))}}/>}/>
+              <Route path='/main/person' element={<NewPerson 
+              onIncrementPerson={(eventParam, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam)=>
+              {setTableHRContent(TablePersonIncrement(tableHRContent, eventParam, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam))}}/>}/>
             </Routes>
           </header>
         </div>

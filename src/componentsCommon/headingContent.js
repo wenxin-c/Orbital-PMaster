@@ -11,9 +11,9 @@ class Heading extends React.Component{
                     <div><h1>{this.props.title}</h1></div>
                     <div>
                         <Link className='back button' to='/main'>Go Back</Link>
-                        <Link className='save button' to='/main' onClick={()=>{
+                        <Link className='save button' to='/main' onClick={(event)=>{
                             alert(this.props.title+' Created Successfully!');
-                            this.props.onClickSave();
+                            this.props.onClickSave(event);
                         }}>Save</Link>
                     </div>
             </div>

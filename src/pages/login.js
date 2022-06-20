@@ -4,37 +4,101 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './../styles/login.css'
 import { FaFacebook, FaTwitter, FaGoogle} from "react-icons/fa";
 import {
-    Link,
+     Link,
   } from "react-router-dom";
+import Axios from 'axios';
 
 class Login extends React.Component{
+    state={
+        usernameReg:"",
+        passwordReg:"",
+        emailReg:"",
+        username:"",
+        password:"",
+        loginStatus:"",
+        displayStatus:"none",
+    }
+
+    register =(event)=>{
+        event.preventDefault()
+        Axios.post("http://localhost:5004/register",{
+            username:this.state.usernameReg,
+            password:this.state.passwordReg,
+            email:this.state.emailReg,
+        })
+    }
+
+    login =(event)=>{
+        event.preventDefault()
+        Axios.post("http://localhost:5004/login",{
+            username:this.state.username,
+            password:this.state.password,
+        }).then((response)=>{
+            console.log(response);
+            console.log(response.data)
+            if(response.data.message){
+                this.setState({loginStatus:response.data.message})
+                this.setState({displayStatus:'none'})
+            }else{
+                this.setState({loginStatus:'Welcom back, '+response.data[0].username});
+                this.setState({displayStatus:'block'});
+            }
+        })
+    }
+
     render(){
+        
         return(
             <div className='container'>
-                <div id="loginform">
-                    <h2 id="headerTitle">Login</h2>
-                    <div>
+                 <div id="loginform">
+                    <h2 id="headerTitle">Registration</h2>
+                    <form >
                         <div class="row">
                             <label>Username</label>
-                            <input type='text' placeholder='Enter your username'/>
+                            <input onChange={(e)=>{this.setState({usernameReg:e.target.value})}} type="text" name="usernameReg" placeholder="Username" id="usernameReg" required/>
                         </div>  
                         <div class="row">
                             <label>Password</label>
-                            <input type='password' placeholder='Enter your password'/>
+                            <input onChange={(e)=>{this.setState({passwordReg:e.target.value})}} type="password" name="passwordReg" placeholder="Password" id="passwordReg" required/>
+                        </div>
+                        <div class="row">
+                            <label>Email</label>
+                            <input onChange={(e)=>{this.setState({emailReg:e.target.value})}} type="text" name="emailReg" placeholder="Email" id="emailReg" required/>
+                        </div>
+                        <div id="button" class="row">
+                            <input onClick={this.register} className='btn' type="submit" value="Submit"></input>
+                        </div>
+                    </form>
+                </div>
+                <div id="loginform">
+                    <h2 id="headerTitle">Login</h2>
+                    <form >
+                        <div class="row">
+                            <label>Username</label>
+                            <input onChange={(e)=>{this.setState({username:e.target.value})}} type="text" name="username" placeholder="Username" id="usernameLog" required/>
+                        </div>  
+                        <div class="row">
+                            <label>Password</label>
+                            <input onChange={(e)=>{this.setState({password:e.target.value})}} type="password" name="password" placeholder="Password" id="passwordLog" required/>
                         </div>  
                         <div id="button" class="row">
                             {/* <button>Log in</button> */}
-                            <Link to='main' className='btn'>Log in</Link>
+                            {/* <Link to='main' className='btn'>Log in</Link> */}
+                            <input onClick={this.login} className='btn' type="submit" value="Login"></input>
                         </div>
-                    </div>
-                    <div id="alternativeLogin">
+                    </form>
+                    {/* <div id="alternativeLogin">
                         <label>Or sign in with:</label>
                         <div id="iconGroup">
                             <a href="#" id="facebookIcon"><FaFacebook className='logoFacebook'/></a>
                             <a href="#" id="twitterIcon"><FaTwitter className='logoTwitter'/></a>
                             <a href="#" id="googleIcon"><FaGoogle className='logoGoogle'/></a>
                         </div>
-                    </div>
+                    </div> */}
+                </div>
+                <div className='login' >
+                    <h1>{this.state.loginStatus}</h1>
+                    <Link to='/main' className='navLink' style={{display:(this.state.displayStatus)}}>Click to proceed</Link>
                 </div>
             </div>
         );
