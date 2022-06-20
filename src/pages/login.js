@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './../styles/login.css'
 import { FaFacebook, FaTwitter, FaGoogle} from "react-icons/fa";
 import {
-     Link, Navigate,
+     Link,
   } from "react-router-dom";
 import Axios from 'axios';
 
@@ -16,6 +16,7 @@ class Login extends React.Component{
         username:"",
         password:"",
         loginStatus:"",
+        displayStatus:"none",
     }
 
     register =(event)=>{
@@ -37,11 +38,10 @@ class Login extends React.Component{
             console.log(response.data)
             if(response.data.message){
                 this.setState({loginStatus:response.data.message})
+                this.setState({displayStatus:'none'})
             }else{
-                this.setState({loginStatus:response.data[0].username});
-                // if(this.state.loginStatus){
-                //    <Navigate from='*' to='/main'/>
-                // }
+                this.setState({loginStatus:'Welcom back, '+response.data[0].username});
+                this.setState({displayStatus:'block'});
             }
         })
     }
@@ -96,7 +96,10 @@ class Login extends React.Component{
                         </div>
                     </div> */}
                 </div>
-                <h1>{this.state.loginStatus}</h1>
+                <div className='login' >
+                    <h1>{this.state.loginStatus}</h1>
+                    <Link to='/main' className='navLink' style={{display:(this.state.displayStatus)}}>Click to proceed</Link>
+                </div>
             </div>
         );
     }

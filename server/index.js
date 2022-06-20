@@ -9,9 +9,7 @@ const app = express(); // create express app
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "..", "build")));
-app.use((req, res, next) => {
-	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
- });
+
 
 const db = mysql.createConnection({
 	host     : 'localhost',
@@ -31,6 +29,67 @@ app.post("/register",(req,res)=>{
 	(err,result)=>{console.log(err);}
 	);
 })
+
+app.post("/addCost",(req,res)=>{
+	const itemType = req.body.itemType;
+	const item = req.body.item;
+	const date = req.body.date;
+	const unitCost = req.body.unitCost;
+	const units = req.body.units;
+	const totalCost = req.body.totalCost;
+
+	db.query("INSERT INTO wenxincost (itemtype, item, date, unitcost, units, totalcost) VALUES (?,?,?,?,?,?)",
+	[itemType, item, date, unitCost, units, totalCost],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
+app.post("/addTask",(req,res)=>{
+	const taskName = req.body.taskName;
+	const taskDescription = req.body.taskDescription;
+	const peopleInvolved = req.body.peopleInvolved;
+	const prerequisiteTask = req.body.prerequisiteTask;
+	const duration = req.body.duration;
+	const remark = req.body.remark;
+
+	db.query("INSERT INTO wenxintask (taskname, taskdescription, peopleinvolved, prerequisitetask, duration, remark) VALUES (?,?,?,?,?,?)",
+	[taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
+app.post("/addHR",(req,res)=>{
+	const name = req.body.name;
+	const ic = req.body.ic;
+	const phoneNumber = req.body.phoneNumber;
+	const email = req.body.email;
+	const department = req.body.department;
+	const role = req.body.role;
+
+	db.query("INSERT INTO wenxinhr (name, ic, phoneNumber, email, department, role) VALUES (?,?,?,?,?,?)",
+	[name, ic, phoneNumber, email, department, role],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
 
 app.post("/login", (req,res)=>{
 	const username = req.body.username;
@@ -62,48 +121,9 @@ app.post("/login", (req,res)=>{
 	);
 })
 
-// app.post('/login', function(request, response) {
-// 	// Capture the input fieldss
-// 	let username = request.body.username;
-// 	let password = request.body.password;
-// 	// Ensure the input fields exists and are not empty
-// 	if (username && password) {
-// 		// Execute SQL query that'll select the account from the database based on the specified username and password
-// 		db.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
-// 			// If there is an issue with the query, output the error
-// 			if (error) throw error;
-// 			// If the account exists
-// 			if (results.length > 0) {
-// 				// Authenticate the user
-// 				request.session.loggedin = true;
-// 				request.session.username = username;
-// 				// Redirect to home page
-// 				 response.redirect('/home');
-// 			} else {
-// 				response.send('Incorrect Username and/or Password!');
-// 			}			
-// 			response.end();
-// 		});
-// 	} else {
-// 		response.send('Please enter Username and Password!');
-// 		response.end();
-// 	}
-// });
-
-// app.get('/home', function(request, response) {
-// 	// If the user is loggedin
-// 	if (request.session.loggedin) {
-// 		// Output username
-// 		// response.send('Welcome back, ' + request.session.username + '!');
-// 		response.render('/main');		
-// 	} else {
-// 		// Not logged in
-// 		response.send('Please login to view this page!');
-// 	}
-// 	response.end();
-// });
-
-
+app.post('/main',(req, respond, next) => {
+	respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
+ });
 
 app.listen(5004, () => {
   console.log("server started on port 5004");
