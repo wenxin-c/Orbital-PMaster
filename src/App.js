@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 import { TableCostIncrement, TableTaskIncrement, TablePersonIncrement } from './functions/tableIncrement.js'
 import { TableDelete } from './functions/tableDelete.js'
+// import {HandleUsernameReg} from './functions/handleUserReg.js'
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
     {name:'Amy',ic:'T1234567A',phone:'12345678',email:'123@gmail.com',department:'finance',role:'accountant'},
     {name:'Lisa',ic:'T1234567B',phone:'87654321',email:'321@gmail.com',department:'management commitee',role:'project leader'},
   ])
+
+  // const[usernameReg, setUsernameReg]=useState("");
+  // const[passwordReg, setPasswordReg]=useState("");
 
 
   return (
