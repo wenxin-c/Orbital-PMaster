@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './../styles/taskContent.css'
 import Heading from '../componentsCommon/headingContent.js'
+import { TableTaskIncrement} from './../functions/tableIncrement.js'
 
 class TaskContent extends React.Component{
     state={
@@ -28,7 +29,7 @@ class TaskContent extends React.Component{
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={(event)=>{this.props.onIncrementTask(event,
+                    <Heading title={this.state.title} onClickSave={(event)=>{TableTaskIncrement(event,
                         this.state.content1, 
                         this.state.content2, 
                         this.state.content3, 

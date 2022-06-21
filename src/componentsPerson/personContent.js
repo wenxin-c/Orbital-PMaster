@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Heading from '../componentsCommon/headingContent.js'
 import ExpenseContent from '../componentsExpense/expenseContent.js'
+import {TablePersonIncrement} from './../functions/tableIncrement.js'
 
 class PersonContent extends React.Component{
     state={
@@ -34,7 +35,7 @@ class PersonContent extends React.Component{
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={(event)=>{this.props.onIncrementPerson(event,
+                    <Heading title={this.state.title} onClickSave={(event)=>{TablePersonIncrement(event,
                         this.state.content1, 
                         this.state.content2, 
                         this.state.content3, 

@@ -90,6 +90,102 @@ app.post("/addHR",(req,res)=>{
 	});
 })
 
+app.get("/getCost", (req,res)=>{
+	db.query("SELECT * FROM wenxincost",
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	})
+})
+
+app.get("/getTask", (req,res)=>{
+	db.query("SELECT * FROM wenxinTask",
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	})
+})
+
+app.get("/getHR", (req,res)=>{
+	db.query("SELECT * FROM wenxinHR",
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	})
+})
+
+app.post("/deleteCost", (req,res)=>{
+	const itemType = req.body.itemType;
+	const item = req.body.item;
+	const date = req.body.date;
+	const unitCost = req.body.unitCost;
+	const units = req.body.units;
+	const totalCost = req.body.totalCost;
+    console.log(itemType, item, date, unitCost, units, totalCost);
+	db.query("DELETE FROM wenxincost WHERE itemType=? and item=? and date=? and unitCost=? and units=? and totalCost=?",
+	[itemType, item, date, unitCost, units, totalCost],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
+app.post("/deleteTask", (req,res)=>{
+	const taskName = req.body.taskName;
+	const taskDescription = req.body.taskDescription;
+	const peopleInvolved = req.body.peopleInvolved;
+	const prerequisiteTask = req.body.prerequisiteTask;
+	const duration = req.body.duration;
+	const remark = req.body.remark;
+
+	db.query("DELETE FROM wenxintask WHERE taskName=? AND taskDescription=? AND peopleInvolved=? AND prerequisiteTask=? AND duration=? AND remark=? ",
+	[taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
+app.post("/deleteHR", (req,res)=>{
+	const name = req.body.name;
+	const ic = req.body.ic;
+	const phoneNumber = req.body.phoneNumber;
+	const email = req.body.email;
+	const department = req.body.department;
+	const role = req.body.role;
+
+	db.query("DELETE FROM wenxinhr WHERE name=? AND ic=? AND phoneNumber=? AND email=? AND department=? AND role=? ",
+	[name, ic, phoneNumber, email, department, role],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
 
 app.post("/login", (req,res)=>{
 	const username = req.body.username;

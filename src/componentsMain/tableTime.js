@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './../styles/tableMain.css'
 import DeleteButton from '../componentsCommon/deleteButton.js'
+import {TableTaskDelete} from './../functions/tableDelete.js'
 
 class TableTime extends React.Component{
 
@@ -19,13 +20,13 @@ class TableTime extends React.Component{
                         this.props.tableContent.map(content => {
                         return (
                           <tr className='content' key={content.name}>
-                            <td  >{content.name}</td>
-                            <td  >{content.description}</td>
-                            <td  >{content.people}</td>
-                            <td  >{content.prerequisite}</td>
-                            <td  >{content.duration}</td>
-                            <td  >{content.remark}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={()=>this.props.onDeleteTask(content.name)}/></td>
+                            <td  >{content.TaskName}</td>
+                            <td  >{content.TaskDescription}</td>
+                            <td  >{content.PeopleInvolved}</td>
+                            <td  >{content.PrerequisiteTask}</td>
+                            <td  >{content.Duration}</td>
+                            <td  >{content.Remark}</td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>TableTaskDelete(event, content.TaskName, content.TaskDescription, content.PeopleInvolved, content.PrerequisiteTask, content.Duration, content.Remark)}/></td>
                           </tr>
                         )
                       })

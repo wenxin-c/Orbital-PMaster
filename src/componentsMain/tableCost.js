@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './../styles/tableMain.css'
 import DeleteButton from '../componentsCommon/deleteButton.js'
+import {TableCostDelete} from './../functions/tableDelete.js'
 
 class TableCost extends React.Component{
 
@@ -19,13 +20,13 @@ class TableCost extends React.Component{
                       this.props.tableContent.map(content => {
                         return (
                           <tr className='content' key={content.name}>
-                            <td>{content.type}</td>
-                            <td>{content.name}</td>
+                            <td>{content.ItemType}</td>
+                            <td>{content.Item}</td>
                             <td>{content.date}</td>
-                            <td>{content.unitCost}</td>
-                            <td>{content.units}</td>
-                            <td>{content.totalCost}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={()=>this.props.onDeleteCost(content.name)}/></td>
+                            <td>{content.UnitCost}</td>
+                            <td>{content.Units}</td>
+                            <td>{content.TotalCost}</td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>TableCostDelete(event, content.ItemType, content.Item, content.date, content.UnitCost, content.Units, content.TotalCost)}/></td>
                           </tr>
                         )
                       })

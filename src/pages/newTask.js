@@ -9,7 +9,7 @@ class NewTask extends React.Component{
         return(
             <div>
                 <TopNavBar />
-                <TaskContent onIncrementTask={this.props.onIncrementTask}/>
+                <TaskContent />
             </div>
         );
     }
