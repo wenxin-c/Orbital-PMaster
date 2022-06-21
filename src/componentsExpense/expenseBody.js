@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import './../styles/expenseBody.css'
 import Heading from '../componentsCommon/headingContent.js'
 import ExpenseContent from './expenseContent.js'
+import {TableCostIncrement} from './../functions/tableIncrement.js'
 
 class ExpenseBody extends React.Component{
     state={
@@ -35,7 +36,7 @@ class ExpenseBody extends React.Component{
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={(event)=>{this.props.onIncrementCost(event,
+                    <Heading title={this.state.title} onClickSave={(event)=>{TableCostIncrement(event,
                         this.state.content1, 
                         this.state.content2, 
                         this.state.content3, 

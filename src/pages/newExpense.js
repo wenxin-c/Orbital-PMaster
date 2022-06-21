@@ -9,8 +9,7 @@ class NewExpense extends React.Component{
         return(
             <div>
                 <TopNavBar />
-                <ExpenseBody onIncrementCost={this.props.onIncrementCost}/>
-                
+                <ExpenseBody />
             </div>
             
         );

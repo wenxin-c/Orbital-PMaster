@@ -30,9 +30,9 @@ class MainContent extends React.Component{
                 <SideNavBar sections={this.state.sections}/>
                 <div style={{width:'calc(100% - 260px)', marginTop:'35px', marginLeft:'260px'}}>
                     <Summary section={this.state.sections[0]}/>
-                    <CostManagement section={this.state.sections[1]} tableCostTitle={this.props.tableCostTitle} tableCostContent={this.props.tableCostContent} onDeleteCost={this.props.onDeleteCost}/>
-                    <TimeManagement section={this.state.sections[2]} tableTimeTitle={this.props.tableTimeTitle} tableTimeContent={this.props.tableTimeContent} onDeleteTask={this.props.onDeleteTask}/>
-                    <HRManagement section={this.state.sections[3]} tableHRTitle={this.props.tableHRTitle} tableHRContent={this.props.tableHRContent} onDeletePerson={this.props.onDeletePerson}/>
+                    <CostManagement section={this.state.sections[1]} tableCostTitle={this.props.tableCostTitle} tableCostContent={this.props.tableCostContent} />
+                    <TimeManagement section={this.state.sections[2]} tableTimeTitle={this.props.tableTimeTitle} tableTimeContent={this.props.tableTimeContent} />
+                    <HRManagement section={this.state.sections[3]} tableHRTitle={this.props.tableHRTitle} tableHRContent={this.props.tableHRContent} />
                 </div>   
             </div>   
             </div>
