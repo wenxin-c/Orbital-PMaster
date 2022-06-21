@@ -108,15 +108,6 @@ app.post("/login", (req,res)=>{
 		}else{
 			res.send({message:"Wrong username or password, please try again!"})
 		}
-		// if (result.length > 0) {
-	
-		// 	// Redirect to home page
-		// 		res.redirect('/main');
-		// } else {
-		// 	res.send('Incorrect Username and/or Password!');
-		// }			
-		// res.end();
-
 	  }
 	);
 })

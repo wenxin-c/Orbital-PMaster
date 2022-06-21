@@ -53,7 +53,7 @@ export function TableCostIncrement(tableCostContent, eventParam, typeParam, name
       return newTask;
   }
 
-  export function TablePersonIncrement(eventParam, tableHRContent, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam){
+  export function TablePersonIncrement( tableHRContent, eventParam, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam){
     const newPerson = [...tableHRContent,
       {
         name:nameParam,
