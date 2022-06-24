@@ -93,6 +93,26 @@ app.post("/addHR",(req,res)=>{
 	});
 })
 
+app.post("/addSummary",(req,res)=>{
+	const issue = req.body.issue;
+	const solution = req.body.solution;
+	const stakeholders = req.body.stakeholers;
+	const outcome = req.body.outcome;
+	const id = req.body.id;
+	
+	db.query("INSERT INTO summary (id, issue, solution, stakeholders, outcome) VALUES (?,?,?,?,?) ON DUPLICATE KAY UPDATE issue=?, solution=?, stakeholders=?, outcome=?",
+	
+	[id, issue, solution, stakeholders, outcome, issue, solution, stakeholders, outcome],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
 app.post("/getCost", (req,res)=>{
 	const id = req.body.id;
 
@@ -135,6 +155,21 @@ app.post("/getHR", (req,res)=>{
 		}
 	})
 })
+
+app.post("/getSummary", (req,res)=>{
+	const id = req.body.id;
+	db.query("SELECT issue, solution, stakeholders, outcome FROM summary WHERE id=?",
+	[id],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	})
+})
+
 
 app.post("/deleteCost", (req,res)=>{
 	const itemType = req.body.itemType;

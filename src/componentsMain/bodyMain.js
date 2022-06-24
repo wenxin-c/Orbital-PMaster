@@ -29,7 +29,7 @@ class MainContent extends React.Component{
             <div className='contentwrapper'>
                 <SideNavBar sections={this.state.sections}/>
                 <div style={{width:'calc(100% - 260px)', marginTop:'35px', marginLeft:'260px'}}>
-                    <Summary section={this.state.sections[0]}/>
+                    <Summary id={this.props.id} section={this.state.sections[0]}/>
                     <CostManagement id={this.props.id} section={this.state.sections[1]} tableCostTitle={this.props.tableCostTitle} tableCostContent={this.props.tableCostContent} />
                     <TimeManagement id={this.props.id} section={this.state.sections[2]} tableTimeTitle={this.props.tableTimeTitle} tableTimeContent={this.props.tableTimeContent} />
                     <HRManagement id={this.props.id} section={this.state.sections[3]} tableHRTitle={this.props.tableHRTitle} tableHRContent={this.props.tableHRContent} />
