@@ -30,10 +30,11 @@ class Summary extends React.Component{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);
-            this.setState({content5:response.data[0].issue});
-            this.setState({content6:response.data[0].solution});
-            this.setState({content7:response.data[0].stakeholders});
-            this.setState({content8:response.data[0].outcome});
+            const arr = response.data;
+            this.setState({content5:arr[arr.length-1].issue});
+            this.setState({content6:arr[arr.length-1].solution});
+            this.setState({content7:arr[arr.length-1].stakeholders});
+            this.setState({content8:arr[arr.length-1].outcome});
         })
     }
     render(){

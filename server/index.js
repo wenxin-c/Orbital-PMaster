@@ -100,9 +100,9 @@ app.post("/addSummary",(req,res)=>{
 	const outcome = req.body.outcome;
 	const id = req.body.id;
 	
-	db.query("INSERT INTO summary (id, issue, solution, stakeholders, outcome) VALUES (?,?,?,?,?) ON DUPLICATE KAY UPDATE issue=?, solution=?, stakeholders=?, outcome=?",
+	db.query("INSERT INTO summary (issue, solution, stakeholders, outcome, id) VALUES (?,?,?,?,?) ",
 	
-	[id, issue, solution, stakeholders, outcome, issue, solution, stakeholders, outcome],
+	[issue, solution, stakeholders, outcome, id],
 	(err,result)=>{
 		if(err){
 			res.send({err:err});
