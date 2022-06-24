@@ -16,18 +16,23 @@ class HRManagement extends React.Component{
     }
 
     getData=()=>{
-        Axios.get('/getHR').then((response)=>{
+        Axios.post('/getHR',{
+            id:this.props.id,
+        }).then((response)=>{
+            // console.log(response);
             this.setState({table:response.data});
         })
     }
 
     render(){
+
         this.getData();
+        
         return(
             <div className='costarea'>
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
-                <TableHR tableTitle={this.props.tableHRTitle} tableContent={this.state.table} buttonStatus={this.state.buttonStatus}/> 
+                <TableHR id={this.props.id} tableTitle={this.props.tableHRTitle} tableContent={this.state.table} buttonStatus={this.state.buttonStatus}/> 
                 <div className='buttonMargin'>
                     <Link to='person' className='btn btn1'>Add New</Link>
                     <button onClick={()=>{this.setState({buttonStatus:HandleClickControlDisplay(this.state.buttonStatus)});}} className='btn '>Delete</button>

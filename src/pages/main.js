@@ -15,6 +15,7 @@ class MainPage extends React.Component{
                 tableCostTitle={this.props.tableCostTitle} tableCostContent={this.props.tableCostContent}
                 tableTimeTitle={this.props.tableTimeTitle} tableTimeContent={this.props.tableTimeContent}
                 tableHRTitle={this.props.tableHRTitle} tableHRContent={this.props.tableHRContent}
+                id={this.props.id}
                 />
             </div>
             

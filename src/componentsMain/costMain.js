@@ -21,18 +21,24 @@ class CostManagement extends React.Component{
     }
     
     getData=()=>{
-        Axios.get('/getCost').then((response)=>{
+        Axios.post('/getCost',{
+            id:this.props.id,
+        }).then((response)=>{
+            // console.log(response);
             this.setState({table:response.data});
         })
     }
+    
     render(){ 
+       
         this.getData();
+        
         return(
             <div className='costarea'>
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
                 <InputBox description={this.state.description} total={this.state.total} userInput={this.state.userInput} onInput={(event)=>{this.setState({userInput:HandleInput(event)});}} inputType={this.state.inputType}/>
-                <TableCost tableTitle={this.props.tableCostTitle} tableContent={this.state.table}  buttonStatus={this.state.buttonStatus}/>
+                <TableCost id={this.props.id} tableTitle={this.props.tableCostTitle} tableContent={this.state.table}  buttonStatus={this.state.buttonStatus}/>
                 <div style={{width:'100%'}} className='buttonMargin'>
                     <div style={{width:'auto', display:'inline-block', marginLeft:'5px'}}>
                         <span >Total cost:</span>

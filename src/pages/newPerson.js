@@ -9,7 +9,7 @@ class NewPerson extends React.Component{
         return(
             <div>
                 <TopNavBar />
-                <PersonContent />
+                <PersonContent id={this.props.id}/>
             </div>
         );
     }

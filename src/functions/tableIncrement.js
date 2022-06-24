@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam){
+export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam, id){
     // const newCost = [...tableCostContent,
     // {
     //   type:typeParam,
@@ -20,6 +20,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
       unitCost:unitCostParam,
       units:unitsParam,
       totalCost:totalCostParam,
+      id:id,
     }).then((response)=>{
       console.log(response);
     })
@@ -27,7 +28,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
     // return newCost;
   }
 
-  export function TableTaskIncrement( eventParam, nameParam,descriptionParam,memberParam,preParam,durationParam,remarkParam){
+  export function TableTaskIncrement( eventParam, nameParam,descriptionParam,memberParam,preParam,durationParam,remarkParam, id){
     // const newTask = [...tableTimeContent,
     //   {
     //     name:nameParam,
@@ -46,6 +47,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
       prerequisiteTask:preParam,
       duration:durationParam,
       remark:remarkParam,
+      id:id,
     }).then((response)=>{
       console.log(response);
     })
@@ -53,7 +55,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
       // return newTask;
   }
 
-  export function TablePersonIncrement( eventParam, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam){
+  export function TablePersonIncrement( eventParam, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam, id){
     // const newPerson = [...tableHRContent,
     //   {
     //     name:nameParam,
@@ -72,6 +74,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
       email:emailParam,
       department:departmentParam,
       role:roleParam,
+      id:id,
     }).then((response)=>{
       console.log(response);
     })

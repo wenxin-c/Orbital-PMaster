@@ -35,7 +35,8 @@ class TaskContent extends React.Component{
                         this.state.content3, 
                         this.state.content4, 
                         this.state.content5, 
-                        this.state.content6)}}/>
+                        this.state.content6,
+                        this.props.id)}}/>
                     <div className='contentBody'>
                         <form>
                             <fieldset>

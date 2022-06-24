@@ -33,6 +33,7 @@ class ExpenseBody extends React.Component{
             left:'0',
             zIndex:'-1'
            }
+
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
@@ -42,7 +43,8 @@ class ExpenseBody extends React.Component{
                         this.state.content3, 
                         this.state.content4, 
                         this.state.content5, 
-                        this.state.content6)}}/>
+                        this.state.content6,
+                        this.props.id)}}/>
                     <ExpenseContent 
                     onValue1={(event)=>{this.setState({content1:event.target.value})}} 
                     onValue2={(event)=>{this.setState({content2:event.target.value})}} 
@@ -50,7 +52,8 @@ class ExpenseBody extends React.Component{
                     onValue4={(event)=>{this.setState({content4:event.target.value})}} 
                     onValue5={(event)=>{this.setState({content5:event.target.value})}} 
                     onValue6={(event)=>{this.setState({content6:event.target.value})}} 
-                    expenseState={this.state}/>
+                    expenseState={this.state}
+                    />
                 </div>
             </div>
         );
