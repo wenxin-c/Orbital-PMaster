@@ -20,13 +20,13 @@ class TableCost extends React.Component{
                       this.props.tableContent.map(content => {
                         return (
                           <tr className='content' key={content.name}>
-                            <td>{content.ItemType}</td>
-                            <td>{content.Item}</td>
+                            <td>{content.itemtype}</td>
+                            <td>{content.item}</td>
                             <td>{content.date}</td>
-                            <td>{content.UnitCost}</td>
-                            <td>{content.Units}</td>
-                            <td>{content.TotalCost}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>TableCostDelete(event, content.ItemType, content.Item, content.date, content.UnitCost, content.Units, content.TotalCost)}/></td>
+                            <td>{content.unitcost}</td>
+                            <td>{content.units}</td>
+                            <td>{content.totalcost}</td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>TableCostDelete(event, content.ItemType, content.Item, content.date, content.UnitCost, content.Units, content.TotalCost, this.props.id)}/></td>
                           </tr>
                         )
                       })

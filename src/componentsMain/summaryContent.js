@@ -8,8 +8,9 @@ class SummaryContent extends React.Component{
         return(
             <div className='question'>
                 <label style={{marginTop:'5px', marginLeft:'5px'}} >{this.props.subtitle}</label>
-                <textarea style={{marginBottom:'0px'}} rows='3' placeholder='Please tell us about your project' maxlength='500' id='summarytext'
+                <textarea onChange={(event)=>{this.props.onSummaryInput(event)}} style={{marginBottom:'0px'}} rows='3' placeholder='Please tell us about your project' maxlength='500' id='summarytext'
                 disabled={this.props.disabled}></textarea>
+                <label style={{marginTop:'5px', marginLeft:'5px'}} >{this.props.value}</label>
             </div>
         );
     }

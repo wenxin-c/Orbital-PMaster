@@ -9,7 +9,7 @@ class NewTask extends React.Component{
         return(
             <div>
                 <TopNavBar />
-                <TaskContent />
+                <TaskContent id={this.props.id}/>
             </div>
         );
     }

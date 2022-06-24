@@ -21,19 +21,24 @@ class TimeManagement extends React.Component{
     }
 
     getData=()=>{
-        Axios.get('/getTask').then((response)=>{
+        Axios.post('/getTask',{
+            id:this.props.id,
+        }).then((response)=>{
+            // console.log(response);
             this.setState({table:response.data});
         })
     }
 
     render(){
+
         this.getData();
+        
         return(
             <div className='costarea'>
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
                 <InputBox description={this.state.description} total={this.state.total} userInput={this.state.userInput} onInput={(event)=>{this.setState({userInput:HandleInput(event)});}} inputType={this.state.inputType}/>
-                <TableTime tableTitle={this.props.tableTimeTitle} tableContent={this.state.table}  buttonStatus={this.state.buttonStatus}/>
+                <TableTime id={this.props.id} tableTitle={this.props.tableTimeTitle} tableContent={this.state.table}  buttonStatus={this.state.buttonStatus}/>
                 <div style={{width:'100%'}} className="buttonMargin">
                     <div style={{width:'auto', display:'inline-block', marginLeft:'5px'}}>
                         <span>Amount of time remaining:</span>

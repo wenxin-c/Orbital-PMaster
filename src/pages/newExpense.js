@@ -9,7 +9,7 @@ class NewExpense extends React.Component{
         return(
             <div>
                 <TopNavBar />
-                <ExpenseBody />
+                <ExpenseBody id={this.props.id}/>
             </div>
             
         );

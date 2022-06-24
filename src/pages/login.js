@@ -9,45 +9,46 @@ import {
 import Axios from 'axios';
 
 class Login extends React.Component{
-    state={
-        usernameReg:"",
-        passwordReg:"",
-        emailReg:"",
-        username:"",
-        password:"",
-        loginStatus:"",
-        displayStatus:"none",
-    }
+    // state={
+    //     usernameReg:"",
+    //     passwordReg:"",
+    //     emailReg:"",
+    //     username:"",
+    //     password:"",
+    //     loginStatus:"",
+    //     displayStatus:"none",
+    //     id:"",
+    // }
 
-    register =(event)=>{
-        event.preventDefault()
-        Axios.post("http://localhost:5004/register",{
-            username:this.state.usernameReg,
-            password:this.state.passwordReg,
-            email:this.state.emailReg,
-        })
-    }
+    // register =(event)=>{
+    //     event.preventDefault()
+    //     Axios.post("http://localhost:5004/register",{
+    //         username:this.state.usernameReg,
+    //         password:this.state.passwordReg,
+    //         email:this.state.emailReg,
+    //     })
+    // }
 
-    login =(event)=>{
-        event.preventDefault()
-        Axios.post("http://localhost:5004/login",{
-            username:this.state.username,
-            password:this.state.password,
-        }).then((response)=>{
-            console.log(response);
-            console.log(response.data)
-            if(response.data.message){
-                this.setState({loginStatus:response.data.message})
-                this.setState({displayStatus:'none'})
-            }else{
-                this.setState({loginStatus:'Welcom back, '+response.data[0].username});
-                this.setState({displayStatus:'block'});
-            }
-        })
-    }
+    // login =(event)=>{
+    //     event.preventDefault()
+    //     Axios.post("http://localhost:5004/login",{
+    //         username:this.state.username,
+    //         password:this.state.password,
+    //     }).then((response)=>{
+    //         console.log(response);
+    //         console.log(response.data)
+    //         if(response.data.message){
+    //             this.setState({loginStatus:response.data.message})
+    //             this.setState({displayStatus:'none'})
+    //         }else{
+    //             this.setState({loginStatus:'Welcom back, '+response.data[0].username});
+    //             this.setState({id:response.data[0].id});
+    //             this.setState({displayStatus:'block'});
+    //         }
+    //     })
+    // }
 
     render(){
-        
         return(
             <div className='container'>
                  <div id="loginform">
@@ -55,18 +56,18 @@ class Login extends React.Component{
                     <form >
                         <div class="row">
                             <label>Username</label>
-                            <input onChange={(e)=>{this.setState({usernameReg:e.target.value})}} type="text" name="usernameReg" placeholder="Username" id="usernameReg" required/>
+                            <input onChange={(event)=>{this.props.changeUsernameReg(event)}} type="text" name="usernameReg" placeholder="Username" id="usernameReg" required/>
                         </div>  
                         <div class="row">
                             <label>Password</label>
-                            <input onChange={(e)=>{this.setState({passwordReg:e.target.value})}} type="password" name="passwordReg" placeholder="Password" id="passwordReg" required/>
+                            <input onChange={(event)=>{this.props.changePasswordReg(event)}} type="password" name="passwordReg" placeholder="Password" id="passwordReg" required/>
                         </div>
                         <div class="row">
                             <label>Email</label>
-                            <input onChange={(e)=>{this.setState({emailReg:e.target.value})}} type="text" name="emailReg" placeholder="Email" id="emailReg" required/>
+                            <input onChange={(event)=>{this.props.changeEmailReg(event)}} type="text" name="emailReg" placeholder="Email" id="emailReg" required/>
                         </div>
                         <div id="button" class="row">
-                            <input onClick={this.register} className='btn' type="submit" value="Submit"></input>
+                            <input onClick={(event)=>this.props.register(event)} className='btn' type="submit" value="Submit"></input>
                         </div>
                     </form>
                 </div>
@@ -75,16 +76,16 @@ class Login extends React.Component{
                     <form >
                         <div class="row">
                             <label>Username</label>
-                            <input onChange={(e)=>{this.setState({username:e.target.value})}} type="text" name="username" placeholder="Username" id="usernameLog" required/>
+                            <input onChange={(event)=>{this.props.changeUsername(event)}} type="text" name="username" placeholder="Username" id="usernameLog" required/>
                         </div>  
                         <div class="row">
                             <label>Password</label>
-                            <input onChange={(e)=>{this.setState({password:e.target.value})}} type="password" name="password" placeholder="Password" id="passwordLog" required/>
+                            <input onChange={(event)=>{this.props.changePassword(event)}} type="password" name="password" placeholder="Password" id="passwordLog" required/>
                         </div>  
                         <div id="button" class="row">
                             {/* <button>Log in</button> */}
                             {/* <Link to='main' className='btn'>Log in</Link> */}
-                            <input onClick={this.login} className='btn' type="submit" value="Login"></input>
+                            <input onClick={(event)=>this.props.login(event)} className='btn' type="submit" value="Login"></input>
                         </div>
                     </form>
                     {/* <div id="alternativeLogin">
@@ -97,8 +98,8 @@ class Login extends React.Component{
                     </div> */}
                 </div>
                 <div className='login' >
-                    <h1>{this.state.loginStatus}</h1>
-                    <Link to='/main' className='navLink' style={{display:(this.state.displayStatus)}}>Click to proceed</Link>
+                    <h1>{this.props.loginStatus}</h1>
+                    <Link to='/main' className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>
                 </div>
             </div>
         );

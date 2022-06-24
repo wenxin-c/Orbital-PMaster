@@ -20,13 +20,13 @@ class TableHR extends React.Component{
                         this.props.tableContent.map(content => {
                         return (
                           <tr className='content' key={content.name}>
-                            <td>{content.Name}</td>
+                            <td>{content.name}</td>
                             <td>{content.ic}</td>
-                            <td>{content.PhoneNumber}</td>
-                            <td>{content.Email}</td>
-                            <td>{content.Department}</td>
-                            <td>{content.Role}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>TableHRDelete(event, content.Name, content.ic, content.PhoneNumber, content.Email, content.Department, content.Role)}/></td>
+                            <td>{content.phonenumber}</td>
+                            <td>{content.email}</td>
+                            <td>{content.department}</td>
+                            <td>{content.role}</td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>TableHRDelete(event, content.Name, content.ic, content.PhoneNumber, content.Email, content.Department, content.Role, this.props.id)}/></td>
                           </tr>
                         )
                       })
