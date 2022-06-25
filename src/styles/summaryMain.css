@@ -36,6 +36,14 @@ textarea{
     border: 1px solid #d0caca;
     border-radius: 4px;
 }
-
+.figures{
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right:5px;
+    padding: 5px;
+    border: 1px solid #d0caca;
+    border-radius: 4px;
+    background-color:#faf2d7
+}
 
 
