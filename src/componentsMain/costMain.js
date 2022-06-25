@@ -66,8 +66,10 @@ class CostManagement extends React.Component{
                 <TableCost id={this.props.id} tableTitle={this.props.tableCostTitle} tableContent={this.state.table}  buttonStatus={this.state.buttonStatus}/>
                 <div style={{width:'100%'}} className='buttonMargin'>
                     <div style={{width:'auto', display:'inline-block', marginLeft:'5px'}}>
-                        <span className="records">Total cost: {this.state.totalCost}</span>
-                        <span className="records">Amount of money remaining: {this.state.arr - this.state.totalCost}</span>
+                        <span className="figures">Total cost: {this.state.totalCost}</span>
+                    
+                        <span className="figures">Amount of money remaining: {this.state.arr - this.state.totalCost}</span>
+                        
                     </div>
                     
                     <Link to='expense' className='btn btnNew btn1'>Add New</Link>

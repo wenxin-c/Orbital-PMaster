@@ -37,8 +37,8 @@ class InputBoxDuration extends React.Component{
                 <input onChange={(event)=>{this.setState({userInput:HandleInput(event)});}} className='inputbox' type={this.state.inputType} onKeyDown="return event.keyCode !== 69" placeholder={this.state.description} disabled={this.state.disabled}></input>
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', marginLeft:'5px'}}>
                     <div>
-                        <span className='initialTotal records'>{this.state.total}</span>
-                        <span className='initialTotal records'>{this.state.arr}</span>
+                        <span className='initialTotal figures'>{this.state.total}</span>
+                        <span className='initialTotal figures'>{this.state.arr}</span>
                     </div>
                     <SaveEditButton onSave={(event)=>{this.setState({disabled:true}); ClickSaveDuration(event, this.state.userInput, this.props.id);}} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
                 </div>
