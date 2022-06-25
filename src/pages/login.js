@@ -67,7 +67,7 @@ class Login extends React.Component{
                             <input onChange={(event)=>{this.props.changeEmailReg(event)}} type="text" name="emailReg" placeholder="Email" id="emailReg" required/>
                         </div>
                         <div id="button" class="row">
-                            <input onClick={(event)=>this.props.register(event)} className='btn' type="submit" value="Submit"></input>
+                            <input onClick={(event)=>{this.props.register(event); alert("You have registered your account successfully, you can proceed to login!");}} className='btn' type="submit" value="Submit"></input>
                         </div>
                     </form>
                 </div>

@@ -113,6 +113,40 @@ app.post("/addSummary",(req,res)=>{
 	});
 })
 
+app.post("/addBudget", (req,res)=>{
+	const budget = req.body.budget;
+	const id = req.body.id;
+	
+	db.query("INSERT INTO budgetplan (budget, id) VALUES (?,?) ",
+	
+	[budget, id],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
+app.post("/addDuration", (req,res)=>{
+	const duration = req.body.duration;
+	const id = req.body.id;
+	
+	db.query("INSERT INTO durationplan (duration, id) VALUES (?,?) ",
+	
+	[duration, id],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	});
+})
+
 app.post("/getCost", (req,res)=>{
 	const id = req.body.id;
 
@@ -170,6 +204,47 @@ app.post("/getSummary", (req,res)=>{
 	})
 })
 
+app.post("/getBudget", (req,res)=>{
+	const id = req.body.id;
+	db.query("SELECT budget FROM budgetplan WHERE id=?",
+	[id],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	})
+})
+
+app.post("/getTotalCost", (req,res)=>{
+	const id = req.body.id;
+	db.query(" SELECT SUM(totalcost) AS totalCost FROM wenxincost WHERE id=?",
+	[id],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	})
+})
+
+app.post("/getDuration", (req,res)=>{
+	const id = req.body.id;
+	db.query("SELECT duration FROM durationplan WHERE id=?",
+	[id],
+	(err,result)=>{
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	})
+})
 
 app.post("/deleteCost", (req,res)=>{
 	const itemType = req.body.itemType;
@@ -236,8 +311,8 @@ app.post("/deleteHR", (req,res)=>{
 
 
 app.post("/login", (req,res)=>{
-	const username = req.body.username.username;
-	const password = req.body.password.password;
+	const username = req.body.username;
+	const password = req.body.password;
 	// const email = req.body.email;
 	db.query("SELECT * FROM accounts WHERE username=? AND password=?",
 	[username, password], 

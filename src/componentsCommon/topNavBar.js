@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {FaUser, FaBars} from "react-icons/fa";
 
-const TopNavBar = () => {
+function TopNavBar  (username)  {
+  console.log(username);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{position:'fixed', top:'0',left:'0', width:'100%', borderBottom:'0.5px solid #d0c9c9'}}>
       
@@ -16,7 +17,7 @@ const TopNavBar = () => {
       </a>
       <div style={{position:'absolute', right:'80px',top:'15px'}}>
         <FaUser/>
-        <span style={{marginLeft:'10px', display:'inline'}}>Username</span>
+        <span style={{marginLeft:'10px', display:'inline'}}>{username.username}</span>
       </div>
     </nav>
   );

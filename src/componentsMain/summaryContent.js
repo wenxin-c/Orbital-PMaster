@@ -10,7 +10,10 @@ class SummaryContent extends React.Component{
                 <label style={{marginTop:'5px', marginLeft:'5px'}} >{this.props.subtitle}</label>
                 <textarea onChange={(event)=>{this.props.onSummaryInput(event)}} style={{marginBottom:'0px'}} rows='3' placeholder='Please tell us about your project' maxlength='500' id='summarytext'
                 disabled={this.props.disabled}></textarea>
-                <label style={{marginTop:'5px', marginLeft:'5px'}} >{this.props.value}</label>
+                <label className="records" >
+                Your answer : 
+                <br/>
+                {this.props.value}</label>
             </div>
         );
     }

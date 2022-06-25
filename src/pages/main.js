@@ -8,9 +8,10 @@ import MainContent from '../componentsMain/bodyMain.js'
 class MainPage extends React.Component{
     
     render(){
+        
         return(
             <div>
-                <TopNavBar />
+                <TopNavBar username={this.props.username}/>
                 <MainContent 
                 tableCostTitle={this.props.tableCostTitle} tableCostContent={this.props.tableCostContent}
                 tableTimeTitle={this.props.tableTimeTitle} tableTimeContent={this.props.tableTimeContent}

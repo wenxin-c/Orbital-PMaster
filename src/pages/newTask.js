@@ -8,7 +8,7 @@ class NewTask extends React.Component{
     render(){
         return(
             <div>
-                <TopNavBar />
+                <TopNavBar username={this.props.username}/>
                 <TaskContent id={this.props.id}/>
             </div>
         );
