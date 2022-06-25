@@ -33,23 +33,23 @@ function App() {
   const [id, setID]=useState("");
  
   const changeUsernameReg =(event)=>{
-    setUsernameReg({usernameReg:event.target.value})
+    setUsernameReg(event.target.value)
   }
 
   const changePasswordReg=(event)=>{
-    setPasswordReg({passwordReg:event.target.value})
+    setPasswordReg(event.target.value)
   }
 
   const changeEmailReg=(event)=>{
-    setEmailReg({emailReg:event.target.value})
+    setEmailReg(event.target.value)
   }
 
   const changeUsername=(event)=>{
-    setUsername({username:event.target.value})
+    setUsername(event.target.value)
   }
 
   const changePassword=(event)=>{
-    setPassword({password:event.target.value})
+    setPassword(event.target.value)
   }
   
   const register =(event)=>{
@@ -107,10 +107,11 @@ function App() {
               tableTimeTitle={tableTimeTitle} 
               tableHRTitle={tableHRTitle} 
               id={id}
+              username={username}
               />}/>
-              <Route path='/main/expense' element={<NewExpense id={id}/>}/>
-              <Route path='/main/task' element={<NewTask id={id}/>}/>
-              <Route path='/main/person' element={<NewPerson id={id}/>}/>
+              <Route path='/main/expense' element={<NewExpense  username={username} id={id}/>}/>
+              <Route path='/main/task' element={<NewTask username={username} id={id}/>}/>
+              <Route path='/main/person' element={<NewPerson username={username} id={id}/>}/>
             </Routes>
           </header>
         </div>

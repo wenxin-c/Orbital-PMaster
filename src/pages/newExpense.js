@@ -8,7 +8,7 @@ class NewExpense extends React.Component{
     render(){
         return(
             <div>
-                <TopNavBar />
+                <TopNavBar username={this.props.username}/>
                 <ExpenseBody id={this.props.id}/>
             </div>
             
