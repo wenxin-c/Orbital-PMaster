@@ -18,7 +18,7 @@ class TimeManagement extends React.Component{
     }
 
     getData=()=>{
-        Axios.post('/getTask',{
+        Axios.post('http://localhost:5005/getTask',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);

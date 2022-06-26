@@ -39,7 +39,7 @@ class CostManagement extends React.Component{
     }
 
     getTotalCost=()=>{
-        Axios.post('/getTotalCost',{
+        Axios.post('http://localhost:5005/getTotalCost',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);

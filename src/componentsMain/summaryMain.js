@@ -26,7 +26,7 @@ class Summary extends React.Component{
     }
 
     getData=()=>{
-        Axios.post('/getSummary',{
+        Axios.post('http://localhost:5005/getSummary',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);

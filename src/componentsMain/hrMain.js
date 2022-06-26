@@ -16,7 +16,7 @@ class HRManagement extends React.Component{
     }
 
     getData=()=>{
-        Axios.post('/getHR',{
+        Axios.post('http://localhost:5005/getHR',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);
