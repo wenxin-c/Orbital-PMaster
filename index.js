@@ -3,7 +3,7 @@ const express = require("express");
 const session = require('express-session');
 const path = require("path");
 const cors = require("cors");
-const PORT = 5005;
+const PORT = process.env.PORT || 5005;
 
 const app = express(); // create express app
 
@@ -18,7 +18,7 @@ const db = mysql.createConnection({
 	database : 'nodelogin'
 });
 
-app.post("/register",(req,res)=>{
+app.post("http://localhost:5005/register",(req,res)=>{
 
 	const username = req.body.username;
 	const password = req.body.password;
@@ -310,7 +310,7 @@ app.post("/deleteHR", (req,res)=>{
 })
 
 
-app.post("/login", (req,res)=>{
+app.post("http://localhost:5005/login", (req,res)=>{
 	const username = req.body.username;
 	const password = req.body.password;
 	// const email = req.body.email;
