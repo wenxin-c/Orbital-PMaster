@@ -13,7 +13,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
     // }];
 
     eventParam.preventDefault()
-    Axios.post("http://localhost:5004/addCost",{
+    Axios.post("http://localhost:5005/addCost",{
       itemType:typeParam,
       item:nameParam,
       data:dateParam,
@@ -40,7 +40,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
     //   }];
 
       eventParam.preventDefault()
-      Axios.post("http://localhost:5004/addTask",{
+      Axios.post("http://localhost:5005/addTask",{
       taskName:nameParam,
       taskDescription:descriptionParam,
       peopleInvolved:memberParam,
@@ -67,7 +67,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
     //   }]
 
       eventParam.preventDefault()
-      Axios.post("http://localhost:5004/addHR",{
+      Axios.post("http://localhost:5005/addHR",{
       name:nameParam,
       ic:icParam,
       phoneNumber:phoneParam,

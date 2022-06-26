@@ -2,7 +2,7 @@ import Axios from 'axios';
 
 export function TableCostDelete(eventParam, itemType, item, date, unitCost, units, totalCost, id){
     eventParam.preventDefault()
-    Axios.post("http://localhost:5004/deleteCost",{
+    Axios.post("http://localhost:5005/deleteCost",{
         itemType:itemType,
         item:item,
         date:date,
@@ -17,7 +17,7 @@ export function TableCostDelete(eventParam, itemType, item, date, unitCost, unit
 
 export function TableTaskDelete(eventParam, taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark, id){
     eventParam.preventDefault()
-    Axios.post("http://localhost:5004/deleteTask",{
+    Axios.post("http://localhost:5005/deleteTask",{
         taskName : taskName,
         taskDescription : taskDescription,
         peopleInvolved : peopleInvolved,
@@ -32,7 +32,7 @@ export function TableTaskDelete(eventParam, taskName, taskDescription, peopleInv
 
 export function TableHRDelete(eventParam, name, ic, phoneNumber, email, department, role, id){
     eventParam.preventDefault()
-    Axios.post("http://localhost:5004/deleteHR",{
+    Axios.post("http://localhost:5005/deleteHR",{
          name :name,
          ic :ic,
          phoneNumber :phoneNumber,

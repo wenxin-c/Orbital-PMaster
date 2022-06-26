@@ -54,7 +54,7 @@ function App() {
   
   const register =(event)=>{
     event.preventDefault()
-    Axios.post("http://localhost:5004/register",{
+    Axios.post("http://localhost:5005/register",{
         username:usernameReg,
         password:passwordReg,
         email:emailReg,
@@ -63,7 +63,7 @@ function App() {
 
   const login =(event)=>{
     event.preventDefault()
-    Axios.post("http://localhost:5004/login",{
+    Axios.post("http://localhost:5005/login",{
         username:username,
         password:password,
     }).then((response)=>{
