@@ -3,6 +3,7 @@ const express = require("express");
 const session = require('express-session');
 const path = require("path");
 const cors = require("cors");
+const PORT = process.env.PORT || 5005;
 
 const app = express(); // create express app
 
@@ -337,6 +338,6 @@ app.post('/main',(req, respond, next) => {
 	respond.sendFile(path.join(__dirname, "/public", "index.html"));
  });
 
-app.listen(5005, () => {
-  console.log("server started on port 5005");
+app.listen(PORT, () => {
+  console.log('server started on port ${PORT}');
 });
