@@ -3,7 +3,7 @@ const express = require("express");
 const session = require('express-session');
 const path = require("path");
 const cors = require("cors");
-const PORT = process.env.PORT || 5005;
+const PORT = 5005;
 
 const app = express(); // create express app
 
