@@ -4,49 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './../styles/login.css'
 import { FaFacebook, FaTwitter, FaGoogle} from "react-icons/fa";
 import {
-     Link,
+     Link, Router
   } from "react-router-dom";
 import Axios from 'axios';
 
 class Login extends React.Component{
-    // state={
-    //     usernameReg:"",
-    //     passwordReg:"",
-    //     emailReg:"",
-    //     username:"",
-    //     password:"",
-    //     loginStatus:"",
-    //     displayStatus:"none",
-    //     id:"",
-    // }
-
-    // register =(event)=>{
-    //     event.preventDefault()
-    //     Axios.post("http://localhost:5004/register",{
-    //         username:this.state.usernameReg,
-    //         password:this.state.passwordReg,
-    //         email:this.state.emailReg,
-    //     })
-    // }
-
-    // login =(event)=>{
-    //     event.preventDefault()
-    //     Axios.post("http://localhost:5004/login",{
-    //         username:this.state.username,
-    //         password:this.state.password,
-    //     }).then((response)=>{
-    //         console.log(response);
-    //         console.log(response.data)
-    //         if(response.data.message){
-    //             this.setState({loginStatus:response.data.message})
-    //             this.setState({displayStatus:'none'})
-    //         }else{
-    //             this.setState({loginStatus:'Welcom back, '+response.data[0].username});
-    //             this.setState({id:response.data[0].id});
-    //             this.setState({displayStatus:'block'});
-    //         }
-    //     })
-    // }
 
     render(){
         return(
@@ -88,18 +50,13 @@ class Login extends React.Component{
                             <input onClick={(event)=>this.props.login(event)} className='btn' type="submit" value="Login"></input>
                         </div>
                     </form>
-                    {/* <div id="alternativeLogin">
-                        <label>Or sign in with:</label>
-                        <div id="iconGroup">
-                            <a href="#" id="facebookIcon"><FaFacebook className='logoFacebook'/></a>
-                            <a href="#" id="twitterIcon"><FaTwitter className='logoTwitter'/></a>
-                            <a href="#" id="googleIcon"><FaGoogle className='logoGoogle'/></a>
-                        </div>
-                    </div> */}
                 </div>
                 <div className='login' >
                     <h1>{this.props.loginStatus}</h1>
-                    <Link to='/main' className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>
+                    
+                        <Link to='/main' className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>
+                    
+                    
                 </div>
             </div>
         );
