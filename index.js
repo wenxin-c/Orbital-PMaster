@@ -18,7 +18,7 @@ const db = mysql.createConnection({
 	database : 'nodelogin'
 });
 
-app.post("http://localhost:5005/register",(req,res)=>{
+app.post("/register",(req,res)=>{
 
 	const username = req.body.username;
 	const password = req.body.password;
@@ -310,7 +310,7 @@ app.post("/deleteHR", (req,res)=>{
 })
 
 
-app.post("http://localhost:5005/login", (req,res)=>{
+app.post("/login", (req,res)=>{
 	const username = req.body.username;
 	const password = req.body.password;
 	// const email = req.body.email;
