@@ -335,7 +335,7 @@ app.post("/login", (req,res)=>{
 })
 
 app.post('/main',(req, respond, next) => {
-	respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
+	respond.sendFile(path.join(__dirname, "/public", "index.html"));
  });
 
 app.listen(5005, () => {
