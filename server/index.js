@@ -8,8 +8,7 @@ const app = express(); // create express app
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "..", "build")));
-
+app.use(express.static(path.join(__dirname, "/public")));
 
 const db = mysql.createConnection({
 	host     : 'localhost',
@@ -335,7 +334,7 @@ app.post("/login", (req,res)=>{
 })
 
 app.post('/main',(req, respond, next) => {
-	respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
+	respond.sendFile(path.join(__dirname, "/public", "index.html"));
  });
 
 app.listen(5005, () => {
