@@ -14,14 +14,13 @@ if(process.env.NODE_ENV === "production"){
 }
 
 
-const db = mysql.createConnection({
-	host     : 'us-cdbr-east-05.cleardb.net',
-	user     : 'b134aed62185b8',
-	password : '9d4361a8',
-	database : 'heroku_c86d14d58236acb'
-});
 
-db.connect();
+const db = mysql.createConnection({
+	host     : 'localhost',
+	user     : 'root',
+	password : '000825',
+	database : 'nodelogin'
+});
 
 app.post("/register",(req,res)=>{
 
