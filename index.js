@@ -1,21 +1,24 @@
 const mysql = require('mysql');
 const express = require("express");
-const session = require('express-session');
 const path = require("path");
 const cors = require("cors");
-const PORT = 5005;
+const PORT = process.env.PORT || 5005;
 
 const app = express(); // create express app
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "/public")));
+
+if(process.env.NODE_ENV === "production"){
+	app.use(express.static(path.join(__dirname, "/public")));
+}
+
 
 const db = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '000825',
-	database : 'nodelogin'
+	host     : 'us-cdbr-east-05.cleardb.net',
+	user     : 'b134aed62185b8',
+	password : '9d4361a8',
+	database : 'heroku_c86d14d58236acb'
 });
 
 app.post("/register",(req,res)=>{
@@ -339,5 +342,5 @@ app.post('/main',(req, respond, next) => {
  });
 
 app.listen(PORT, () => {
-  console.log('server started on port ${PORT}');
+  console.log(`server started on port ${PORT}`);
 });
