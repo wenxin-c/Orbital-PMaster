@@ -21,6 +21,8 @@ const db = mysql.createConnection({
 	database : 'heroku_c86d14d58236acb'
 });
 
+db.connect();
+
 app.post("/register",(req,res)=>{
 
 	const username = req.body.username;
