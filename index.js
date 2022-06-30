@@ -22,6 +22,13 @@ const db = mysql.createPool({
     database:'heroku_f8d453ebec76bec'
 });
 
+// const db = mysql.createConnection({
+// 	host     : 'localhost',
+// 	user     : 'root',
+// 	password : '000825',
+// 	database : 'nodelogin'
+// });
+
 app.post("/register",(req,res)=>{
 
 	const username = req.body.username;
@@ -313,11 +320,24 @@ app.post("/deleteHR", (req,res)=>{
 	});
 })
 
+// app.post("/login", async(req,res)=>{
+//     try {
+//         const {username, password} = req.body;
+//         const newLogin = await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
+//         [username, password]
+//         );
 
-app.get("/login", (req,res)=>{
+//         res.json(newLogin.rows);
+
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// });
+
+app.post("/login", (req,res)=>{
 	const username = req.body.username;
 	const password = req.body.password;
-	// const email = req.body.email;
+
 	db.query("SELECT * FROM accounts WHERE username=? and password=?",
 	[username, password], 
 	
@@ -325,26 +345,18 @@ app.get("/login", (req,res)=>{
 		if(err){
 			res.send({err:err});
 		}
-		// if(result){
-		// 	console.log(result);
-		// 	res.send(result);
-		// }
 		if(result.length>0){
-			// console.log(result);
 			res.send(result)
 		}else{
 			res.send({message:"Wrong username or password, please try again!"})
 		}
-		// if(result){
-		// 	res.send(result);
-		// }
 	  }
 	);
 })
 
 app.post('/main',(req, respond, next) => {
-	respond.sendFile(path.join(__dirname, "/public", "index.html"));
-	// respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
+	// respond.sendFile(path.join(__dirname, "/public", "index.html"));
+	respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
  });
 
 app.listen(PORT, () => {
