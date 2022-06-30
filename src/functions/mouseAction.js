@@ -1,5 +1,6 @@
-import Axios from "axios";
+// import Axios from "axios";
 
+const Axios = require('axios').default;
 export function MouseUp(){
     return null;
 }
@@ -12,7 +13,7 @@ export function ClickEdit(){
 
 export function ClickSave(event, content1, content2, content3, content4, id){
     event.preventDefault()
-    Axios.post("http://localhost:5005/addSummary",{
+    Axios.post("/addSummary",{
       issue:content1,
       solution:content2,
       stakeholers:content3,
@@ -27,7 +28,7 @@ export function ClickSave(event, content1, content2, content3, content4, id){
 
 export function ClickSaveBudget(event, budget, id){
   event.preventDefault()
-    Axios.post("http://localhost:5005/addBudget",{
+    Axios.post("/addBudget",{
       budget:budget,
       id:id,
     }).then((response)=>{
@@ -39,7 +40,7 @@ export function ClickSaveBudget(event, budget, id){
 
 export function ClickSaveDuration(event, duration, id){
   event.preventDefault()
-    Axios.post("http://localhost:5005/addDuration",{
+    Axios.post("/addDuration",{
       duration:duration,
       id:id,
     }).then((response)=>{

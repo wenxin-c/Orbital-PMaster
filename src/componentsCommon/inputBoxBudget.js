@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import './../styles/inputBox.css'
 import SaveEditButton from './save_edit'
 import {ClickEdit, ClickSaveBudget} from '../functions/mouseAction.js'
-import Axios from 'axios'
 import {HandleInput} from './../functions/handleInput.js'
 
 class InputBoxBudget extends React.Component{

@@ -12,8 +12,8 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import Axios from 'axios';
-
+// import Axios from 'axios';
+const Axios = require('axios').default;
 
 function App() {
 
@@ -54,19 +54,46 @@ function App() {
   
   const register =(event)=>{
     event.preventDefault()
-    Axios.post("http://localhost:5005/register",{
+    Axios.post("/register",{
         username:usernameReg,
         password:passwordReg,
         email:emailReg,
     })
   }
 
+  // const login = async (event)=>{
+  //   event.preventDefault();
+  //   try{
+  //   const body = {username, password};
+  //   const response = await fetch("/login",{
+  //     method:"POST",
+  //     headers:{"Content-Type": "application/json"},
+  //     body:JSON.stringify(body)
+  //   });
+  //   console.log(response);
+  //   }catch(err){
+  //     console.log("Here is an error!!")
+  //     console.error(err.message);
+  //   }
+  // }
+
   const login =(event)=>{
     event.preventDefault()
-    Axios.post("http://localhost:5005/login",{
+    Axios.post(
+    //   "/login",{
+    //     method:"post",
+    //     username:username,
+    //     password:password,
+    // }
+    {
+      method:"post",
+      url:"/login",
+      data :{
         username:username,
         password:password,
-    }).then((response)=>{
+      }
+    }
+    ).then((response)=>{
         console.log(response);
         console.log(response.data)
         if(response.data.message){
@@ -79,6 +106,7 @@ function App() {
         }
     })
   }
+
   
   return (
       <Router >

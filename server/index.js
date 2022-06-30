@@ -1,21 +1,33 @@
 const mysql = require('mysql');
 const express = require("express");
-const session = require('express-session');
 const path = require("path");
 const cors = require("cors");
+const PORT =  process.env.PORT || 5005;
 
 const app = express(); // create express app
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "/public")));
 
-const db = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '000825',
-	database : 'nodelogin'
+// app.use(express.static(path.join(__dirname, "/public")));
+// app.use(express.static(path.join(__dirname, "..", "build")));
+if(process.env.NODE_ENV === "production"){
+	app.use(express.static(path.join(__dirname, "/public")));
+}
+
+const db = mysql.createPool({
+    host:'us-cdbr-east-05.cleardb.net',
+    user:'bd2b48a64c73c1',
+    password:'94bb7a5d',
+    database:'heroku_f8d453ebec76bec'
 });
+
+// const db = mysql.createConnection({
+// 	host     : 'localhost',
+// 	user     : 'root',
+// 	password : '000825',
+// 	database : 'nodelogin'
+// });
 
 app.post("/register",(req,res)=>{
 
@@ -38,7 +50,7 @@ app.post("/addCost",(req,res)=>{
 	const totalCost = req.body.totalCost;
 	const id = req.body.id
 
-	db.query("INSERT INTO wenxincost (itemtype, item, date, unitcost, units, totalcost, id) VALUES (?,?,?,?,?,?,?)",
+	db.query("INSERT INTO cost (itemtype, item, date, unitcost, units, totalcost, id) VALUES (?,?,?,?,?,?,?)",
 	[itemType, item, date, unitCost, units, totalCost, id],
 	(err,result)=>{
 		if(err){
@@ -59,7 +71,7 @@ app.post("/addTask",(req,res)=>{
 	const remark = req.body.remark;
 	const id = req.body.id;
 
-	db.query("INSERT INTO wenxintask (taskname, taskdescription, peopleinvolved, prerequisitetask, duration, remark, id) VALUES (?,?,?,?,?,?,?)",
+	db.query("INSERT INTO task (taskname, taskdescription, peopleinvolved, prerequisitetask, duration, remark, id) VALUES (?,?,?,?,?,?,?)",
 	[taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark, id],
 	(err,result)=>{
 		if(err){
@@ -80,7 +92,7 @@ app.post("/addHR",(req,res)=>{
 	const role = req.body.role;
 	const id = req.body.id;
 
-	db.query("INSERT INTO wenxinhr (name, ic, phoneNumber, email, department, role, id) VALUES (?,?,?,?,?,?,?)",
+	db.query("INSERT INTO hr (name, ic, phoneNumber, email, department, role, id) VALUES (?,?,?,?,?,?,?)",
 	[name, ic, phoneNumber, email, department, role, id],
 	(err,result)=>{
 		if(err){
@@ -149,7 +161,7 @@ app.post("/addDuration", (req,res)=>{
 app.post("/getCost", (req,res)=>{
 	const id = req.body.id;
 
-	db.query("SELECT itemtype, item, date, unitcost, units, totalcost FROM wenxincost WHERE id=?",
+	db.query("SELECT itemtype, item, date, unitcost, units, totalcost FROM cost WHERE id=?",
 	[id],
 	(err,result)=>{
 		if(err){
@@ -163,7 +175,7 @@ app.post("/getCost", (req,res)=>{
 
 app.post("/getTask", (req,res)=>{
 	const id = req.body.id;
-	db.query("SELECT taskname, taskdescription, peopleinvolved, prerequisitetask, duration, remark FROM wenxinTask WHERE id=?",
+	db.query("SELECT taskname, taskdescription, peopleinvolved, prerequisitetask, duration, remark FROM task WHERE id=?",
 	[id],
 	(err,result)=>{
 		if(err){
@@ -177,7 +189,7 @@ app.post("/getTask", (req,res)=>{
 
 app.post("/getHR", (req,res)=>{
 	const id = req.body.id;
-	db.query("SELECT name, ic, phonenumber, email, department, role FROM wenxinHR WHERE id=?",
+	db.query("SELECT name, ic, phonenumber, email, department, role FROM hr WHERE id=?",
 	[id],
 	(err,result)=>{
 		if(err){
@@ -219,7 +231,7 @@ app.post("/getBudget", (req,res)=>{
 
 app.post("/getTotalCost", (req,res)=>{
 	const id = req.body.id;
-	db.query(" SELECT SUM(totalcost) AS totalCost FROM wenxincost WHERE id=?",
+	db.query(" SELECT SUM(totalcost) AS totalCost FROM cost WHERE id=?",
 	[id],
 	(err,result)=>{
 		if(err){
@@ -254,7 +266,7 @@ app.post("/deleteCost", (req,res)=>{
 	const totalCost = req.body.totalCost;
 	const id = req.body.id;
    
-	db.query("DELETE FROM wenxincost WHERE itemType=? and item=? and date=? and unitCost=? and units=? and totalCost=? and id=?",
+	db.query("DELETE FROM cost WHERE itemType=? and item=? and date=? and unitCost=? and units=? and totalCost=? and id=?",
 	[itemType, item, date, unitCost, units, totalCost, id],
 	(err,result)=>{
 		if(err){
@@ -275,7 +287,7 @@ app.post("/deleteTask", (req,res)=>{
 	const remark = req.body.remark;
 	const id = req.body.id;
 
-	db.query("DELETE FROM wenxintask WHERE taskName=? AND taskDescription=? AND peopleInvolved=? AND prerequisiteTask=? AND duration=? AND remark=? AND id=?",
+	db.query("DELETE FROM task WHERE taskName=? AND taskDescription=? AND peopleInvolved=? AND prerequisiteTask=? AND duration=? AND remark=? AND id=?",
 	[taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark, id],
 	(err,result)=>{
 		if(err){
@@ -296,7 +308,7 @@ app.post("/deleteHR", (req,res)=>{
 	const role = req.body.role;
 	const id = req.body.id;
 
-	db.query("DELETE FROM wenxinhr WHERE name=? AND ic=? AND phoneNumber=? AND email=? AND department=? AND role=? AND id=?",
+	db.query("DELETE FROM hr WHERE name=? AND ic=? AND phoneNumber=? AND email=? AND department=? AND role=? AND id=?",
 	[name, ic, phoneNumber, email, department, role, id],
 	(err,result)=>{
 		if(err){
@@ -308,12 +320,25 @@ app.post("/deleteHR", (req,res)=>{
 	});
 })
 
+// app.post("/login", async(req,res)=>{
+//     try {
+//         const {username, password} = req.body;
+//         const newLogin = await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
+//         [username, password]
+//         );
+
+//         res.json(newLogin.rows);
+
+//     } catch (error) {
+//         console.error(error.message);
+//     }
+// });
 
 app.post("/login", (req,res)=>{
 	const username = req.body.username;
 	const password = req.body.password;
-	// const email = req.body.email;
-	db.query("SELECT * FROM accounts WHERE username=? AND password=?",
+
+	db.query("SELECT * FROM accounts WHERE username=? and password=?",
 	[username, password], 
 	
 	(err,result)=>{
@@ -321,22 +346,19 @@ app.post("/login", (req,res)=>{
 			res.send({err:err});
 		}
 		if(result.length>0){
-			
 			res.send(result)
 		}else{
 			res.send({message:"Wrong username or password, please try again!"})
 		}
-		// if(result){
-		// 	res.send(result);
-		// }
 	  }
 	);
 })
 
 app.post('/main',(req, respond, next) => {
-	respond.sendFile(path.join(__dirname, "/public", "index.html"));
+	// respond.sendFile(path.join(__dirname, "/public", "index.html"));
+	respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
  });
 
-app.listen(5005, () => {
-  console.log("server started on port 5005");
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });

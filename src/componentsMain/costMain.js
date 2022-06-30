@@ -7,7 +7,8 @@ import {HandleClickControlDisplay} from './../functions/handleStyle.js'
 import {
     Link,
   } from "react-router-dom";
-import Axios from 'axios'
+// import Axios from 'axios'
+const Axios = require('axios').default;
 
 class CostManagement extends React.Component{
     state={
@@ -22,7 +23,9 @@ class CostManagement extends React.Component{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);
+            if(response.data.length>0){
             this.setState({table:response.data});
+            }
         })
     }
     getBudget=()=>{
@@ -39,7 +42,7 @@ class CostManagement extends React.Component{
     }
 
     getTotalCost=()=>{
-        Axios.post('http://localhost:5005/getTotalCost',{
+        Axios.post('/getTotalCost',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);

@@ -17,7 +17,7 @@ class InputBoxDuration extends React.Component{
     }
   
     getData=()=>{
-        Axios.post('http://localhost:5005/getDuration',{
+        Axios.post('/getDuration',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);

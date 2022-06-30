@@ -1,4 +1,5 @@
-import Axios from "axios";
+// import Axios from "axios";
+const Axios = require('axios').default;
 
 export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam, id){
     // const newCost = [...tableCostContent,
@@ -13,7 +14,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
     // }];
 
     eventParam.preventDefault()
-    Axios.post("http://localhost:5005/addCost",{
+    Axios.post("/addCost",{
       itemType:typeParam,
       item:nameParam,
       data:dateParam,
@@ -40,7 +41,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
     //   }];
 
       eventParam.preventDefault()
-      Axios.post("http://localhost:5005/addTask",{
+      Axios.post("/addTask",{
       taskName:nameParam,
       taskDescription:descriptionParam,
       peopleInvolved:memberParam,
@@ -67,7 +68,7 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
     //   }]
 
       eventParam.preventDefault()
-      Axios.post("http://localhost:5005/addHR",{
+      Axios.post("/addHR",{
       name:nameParam,
       ic:icParam,
       phoneNumber:phoneParam,

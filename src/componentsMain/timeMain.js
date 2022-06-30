@@ -8,7 +8,8 @@ import {HandleClickControlDisplay} from './../functions/handleStyle.js'
 import {
     Link,
   } from "react-router-dom";
-import Axios from 'axios' ;
+// import Axios from 'axios' ;
+const Axios = require('axios').default;
 
 class TimeManagement extends React.Component{
     state={
@@ -18,11 +19,13 @@ class TimeManagement extends React.Component{
     }
 
     getData=()=>{
-        Axios.post('http://localhost:5005/getTask',{
+        Axios.post('/getTask',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);
+            if(response.data.length>0){
             this.setState({table:response.data});
+            }
         })
     }
 

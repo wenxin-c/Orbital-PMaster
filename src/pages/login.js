@@ -6,7 +6,7 @@ import { FaFacebook, FaTwitter, FaGoogle} from "react-icons/fa";
 import {
      Link, Router
   } from "react-router-dom";
-import Axios from 'axios';
+
 
 class Login extends React.Component{
 

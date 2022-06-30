@@ -1,8 +1,9 @@
-import Axios from 'axios';
+// import Axios from 'axios';
+const Axios = require('axios').default;
 
 export function TableCostDelete(eventParam, itemType, item, date, unitCost, units, totalCost, id){
     eventParam.preventDefault()
-    Axios.post("http://localhost:5005/deleteCost",{
+    Axios.post("/deleteCost",{
         itemType:itemType,
         item:item,
         date:date,
@@ -17,7 +18,7 @@ export function TableCostDelete(eventParam, itemType, item, date, unitCost, unit
 
 export function TableTaskDelete(eventParam, taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark, id){
     eventParam.preventDefault()
-    Axios.post("http://localhost:5005/deleteTask",{
+    Axios.post("/deleteTask",{
         taskName : taskName,
         taskDescription : taskDescription,
         peopleInvolved : peopleInvolved,
@@ -32,7 +33,7 @@ export function TableTaskDelete(eventParam, taskName, taskDescription, peopleInv
 
 export function TableHRDelete(eventParam, name, ic, phoneNumber, email, department, role, id){
     eventParam.preventDefault()
-    Axios.post("http://localhost:5005/deleteHR",{
+    Axios.post("/deleteHR",{
          name :name,
          ic :ic,
          phoneNumber :phoneNumber,

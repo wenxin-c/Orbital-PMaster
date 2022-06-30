@@ -5,7 +5,8 @@ import SummaryContent from './summaryContent.js'
 import SaveEditButton from '../componentsCommon/save_edit.js'
 import {ClickEdit, ClickSave} from './../functions/mouseAction.js'
 import {HandleSummaryInput} from './../functions/summary.js'
-import Axios from 'axios'
+// import Axios from 'axios'
+const Axios = require('axios').default;
 
 class Summary extends React.Component{
     state={
@@ -26,15 +27,17 @@ class Summary extends React.Component{
     }
 
     getData=()=>{
-        Axios.post('http://localhost:5005/getSummary',{
+        Axios.post('/getSummary',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);
             const arr = response.data;
+            if(arr.length>0){
             this.setState({content5:arr[arr.length-1].issue});
             this.setState({content6:arr[arr.length-1].solution});
             this.setState({content7:arr[arr.length-1].stakeholders});
             this.setState({content8:arr[arr.length-1].outcome});
+            }
         })
     }
     render(){
