@@ -320,7 +320,7 @@ app.post("/deleteHR", (req,res)=>{
 	});
 })
 
-app.get("/login/:username/:password", async(req,res)=>{
+app.get("/api/login/:username/:password", async(req,res)=>{
     try {
         const {username, password} = req.params;
         await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
