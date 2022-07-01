@@ -330,14 +330,14 @@ app.get("/login/:username/:password", async(req,res)=>{
 				console.log(err)
 				res.send({err:err});
 			}
-			// if(result.length>0){
-			// 	res.send(result)
-			// }else{
-			// 	res.send({message:"Wrong username or password, please try again!"})
-			// }
-			if(result){
-				console.log(result);
+			if(result.length>0){
+				res.send(result)
+			}else{
+				res.send({message:"Wrong username or password, please try again!"})
 			}
+			// if(result){
+			// 	console.log(result);
+			// }
 		}
         );
 		// console.log(username);
