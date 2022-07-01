@@ -367,10 +367,10 @@ app.get("api/login/:username/:password", async(req,res)=>{
 // 	);
 // })
 
-// app.post('/main',(req, respond, next) => {
-// 	respond.sendFile(path.join(__dirname, "/public", "index.html"));
-// 	// respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
-//  });
+app.post('/main',(req, respond, next) => {
+	respond.sendFile(path.join(__dirname, "/public", "index.html"));
+	// respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
+ });
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
