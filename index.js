@@ -15,19 +15,19 @@ app.use(express.static(path.join(__dirname, "/public")));
 // 	app.use(express.static(path.join(__dirname, "/public")));
 // }
 
-// const db = mysql.createPool({
-//     host:'us-cdbr-east-05.cleardb.net',
-//     user:'bd2b48a64c73c1',
-//     password:'94bb7a5d',
-//     database:'heroku_f8d453ebec76bec'
-// });
-
-const db = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '000825',
-	database : 'nodelogin'
+const db = mysql.createPool({
+    host:'us-cdbr-east-05.cleardb.net',
+    user:'bd2b48a64c73c1',
+    password:'94bb7a5d',
+    database:'heroku_f8d453ebec76bec'
 });
+
+// const db = mysql.createConnection({
+// 	host     : 'localhost',
+// 	user     : 'root',
+// 	password : '000825',
+// 	database : 'nodelogin'
+// });
 
 app.post("/register",(req,res)=>{
 
@@ -320,9 +320,10 @@ app.post("/deleteHR", (req,res)=>{
 	});
 })
 
-app.get("api/login/:username/:password", async(req,res)=>{
+app.get("/api/login/:username/:password", async(req,res)=>{
     try {
-        const {username, password} = req.params;
+        const username = req.params.username;
+		const password = req.params.password;
         await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
         [username, password],
 		(err,result)=>{
