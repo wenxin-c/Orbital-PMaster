@@ -9,25 +9,25 @@ const app = express(); // create express app
 app.use(express.json());
 app.use(cors());
 
-// app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "/public")));
 // app.use(express.static(path.join(__dirname, "..", "build")));
-if(process.env.NODE_ENV === "production"){
-	app.use(express.static(path.join(__dirname, "/public")));
-}
+// if(process.env.NODE_ENV === "production"){
+// 	app.use(express.static(path.join(__dirname, "/public")));
+// }
 
-const db = mysql.createPool({
-    host:'us-cdbr-east-05.cleardb.net',
-    user:'bd2b48a64c73c1',
-    password:'94bb7a5d',
-    database:'heroku_f8d453ebec76bec'
-});
-
-// const db = mysql.createConnection({
-// 	host     : 'localhost',
-// 	user     : 'root',
-// 	password : '000825',
-// 	database : 'nodelogin'
+// const db = mysql.createPool({
+//     host:'us-cdbr-east-05.cleardb.net',
+//     user:'bd2b48a64c73c1',
+//     password:'94bb7a5d',
+//     database:'heroku_f8d453ebec76bec'
 // });
+
+const db = mysql.createConnection({
+	host     : 'localhost',
+	user     : 'root',
+	password : '000825',
+	database : 'nodelogin'
+});
 
 app.post("/register",(req,res)=>{
 
