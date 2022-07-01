@@ -2,7 +2,7 @@ const mysql = require('mysql');
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const PORT =  process.env.PORT || 5005;
+const PORT =  process.env.PORT || 5003;
 
 const app = express(); // create express app
 
@@ -320,43 +320,52 @@ app.post("/deleteHR", (req,res)=>{
 	});
 })
 
-// app.post("/login", async(req,res)=>{
-//     try {
-//         const {username, password} = req.body;
-//         const newLogin = await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
-//         [username, password]
-//         );
+app.get("/login/:username/:password", async(req,res)=>{
+    try {
+        const {username, password} = req.params;
+        await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
+        [username, password],
+		(err,result)=>{
+			if(err){
+				res.send({err:err});
+			}
+			if(result.length>0){
+				res.send(result)
+			}else{
+				res.send({message:"Wrong username or password, please try again!"})
+			}
+		}
+        );
+		// console.log(username);
+		// console.log(password);
+    } catch (error) {
+        console.error(error.message);
+    }
+});
 
-//         res.json(newLogin.rows);
+// app.post("/login", (req,res)=>{
+// 	const username = req.body.username;
+// 	const password = req.body.password;
 
-//     } catch (error) {
-//         console.error(error.message);
-//     }
-// });
-
-app.post("/login", (req,res)=>{
-	const username = req.body.username;
-	const password = req.body.password;
-
-	db.query("SELECT * FROM accounts WHERE username=? and password=?",
-	[username, password], 
+// 	db.query("SELECT * FROM accounts WHERE username=? and password=?",
+// 	[username, password], 
 	
-	(err,result)=>{
-		if(err){
-			res.send({err:err});
-		}
-		if(result.length>0){
-			res.send(result)
-		}else{
-			res.send({message:"Wrong username or password, please try again!"})
-		}
-	  }
-	);
-})
+// 	(err,result)=>{
+// 		if(err){
+// 			res.send({err:err});
+// 		}
+// 		if(result.length>0){
+// 			res.send(result)
+// 		}else{
+// 			res.send({message:"Wrong username or password, please try again!"})
+// 		}
+// 	  }
+// 	);
+// })
 
 app.post('/main',(req, respond, next) => {
-	// respond.sendFile(path.join(__dirname, "/public", "index.html"));
-	respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
+	respond.sendFile(path.join(__dirname, "/public", "index.html"));
+	// respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
  });
 
 app.listen(PORT, () => {
