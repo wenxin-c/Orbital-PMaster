@@ -26,11 +26,12 @@ class Summary extends React.Component{
         content8:""
     }
 
-    getData=()=>{
+    getData=(event)=>{
+        event.preventDefault();
         Axios.post('/getSummary',{
             id:this.props.id,
         }).then((response)=>{
-            // console.log(response);
+            console.log(response);
             const arr = response.data;
             if(arr.length>0){
             this.setState({content5:arr[arr.length-1].issue});
@@ -40,9 +41,8 @@ class Summary extends React.Component{
             }
         })
     }
-    render(){
 
-        this.getData();
+    render(){
 
         return(
             <div class='summaryarea'>
@@ -53,6 +53,7 @@ class Summary extends React.Component{
                 <SummaryContent value={this.state.content6} onSummaryInput={(event)=>{this.setState({content2:HandleSummaryInput(event)})}} disabled={this.state.disabled} subtitle={this.state.subtitle2}/>
                 <SummaryContent value={this.state.content7} onSummaryInput={(event)=>{this.setState({content3:HandleSummaryInput(event)})}} disabled={this.state.disabled} subtitle={this.state.subtitle3}/>
                 <SummaryContent value={this.state.content8} onSummaryInput={(event)=>{this.setState({content4:HandleSummaryInput(event)})}} disabled={this.state.disabled} subtitle={this.state.subtitle4}/>
+                <button className='btn' style={{width:'160px'}} onClick={(event)=>{this.getData(event)}}>View previous answer</button>
                 <SaveEditButton onSave={(event)=>{this.setState({disabled:true});ClickSave(
                     event,
                     this.state.content1,

@@ -18,7 +18,8 @@ class TimeManagement extends React.Component{
         table:[],
     }
 
-    getData=()=>{
+    getData=(event)=>{
+        event.preventDefault();
         Axios.post('/getTask',{
             id:this.props.id,
         }).then((response)=>{
@@ -31,14 +32,13 @@ class TimeManagement extends React.Component{
 
     render(){
 
-        this.getData();
         
         return(
             <div className='costarea'>
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
-                <InputBoxDuration id={this.props.id} />
-                <TableTime id={this.props.id} tableTitle={this.props.tableTimeTitle} tableContent={this.state.table} buttonStatus={this.state.buttonStatus}/>
+                <InputBoxDuration  id={this.props.id} />
+                <TableTime getData={(event)=>{this.getData(event)}} id={this.props.id} tableTitle={this.props.tableTimeTitle} tableContent={this.state.table} buttonStatus={this.state.buttonStatus}/>
                 <div style={{width:'100%'}} className="buttonMargin">
                     <div style={{width:'auto', display:'inline-block', marginLeft:'5px'}}>
                         {/* <span>Amount of time remaining:</span> */}

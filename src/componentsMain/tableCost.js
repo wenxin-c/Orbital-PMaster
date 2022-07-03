@@ -11,7 +11,7 @@ class TableCost extends React.Component{
           <div className="table">
             <table width='100%'>
                 <thead>
-                <tr>
+                <tr onClick={(event)=>{this.props.getData(event)}}>
                     {this.props.tableTitle.map(title=>(<th style={{width:'16.35%'}} key={title}>{title}</th>))}
                 </tr>
                 </thead>

@@ -16,7 +16,8 @@ class HRManagement extends React.Component{
         table:[],
     }
 
-    getData=()=>{
+    getData=(event)=>{
+        event.preventDefault();
         Axios.post('/getHR',{
             id:this.props.id,
         }).then((response)=>{
@@ -28,14 +29,12 @@ class HRManagement extends React.Component{
     }
 
     render(){
-
-        this.getData();
         
         return(
             <div className='costarea'>
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
-                <TableHR id={this.props.id} tableTitle={this.props.tableHRTitle} tableContent={this.state.table} buttonStatus={this.state.buttonStatus}/> 
+                <TableHR getData={(event)=>{this.getData(event)}} id={this.props.id} tableTitle={this.props.tableHRTitle} tableContent={this.state.table} buttonStatus={this.state.buttonStatus}/> 
                 <div className='buttonMargin'>
                     <Link to='person' className='btn btn1'>Add New</Link>
                     <button onClick={()=>{this.setState({buttonStatus:HandleClickControlDisplay(this.state.buttonStatus)});}} className='btn '>Delete</button>

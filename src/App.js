@@ -95,14 +95,14 @@ function App() {
   const login =(event)=>{
     event.preventDefault()
     Axios.post("/login",{
-        method:"post",
+        // method:"post",
         username:username,
         password:password,
-        headers: { 'content-type': 'application/x-www-form-urlencoded' }
+        // headers: { 'content-type': 'application/x-www-form-urlencoded' }
     }).then((response)=>{
         console.log(response);
         console.log(response.data)
-        if(response.data.message){9
+        if(response.data.message){
             setLoginStatus(response.data.message)
             setDisplayStatus('none')
         }else{

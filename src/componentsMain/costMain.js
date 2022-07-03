@@ -18,7 +18,8 @@ class CostManagement extends React.Component{
         arr:"",
     }
     
-    getData=()=>{
+    getData=(event)=>{
+        event.preventDefault();
         Axios.post('/getCost',{
             id:this.props.id,
         }).then((response)=>{
@@ -28,7 +29,8 @@ class CostManagement extends React.Component{
             }
         })
     }
-    getBudget=()=>{
+    getBudget=(event)=>{
+        event.preventDefault();
         Axios.post('/getBudget',{
             id:this.props.id,
         }).then((response)=>{
@@ -41,7 +43,8 @@ class CostManagement extends React.Component{
         })
     }
 
-    getTotalCost=()=>{
+    getTotalCost=(event)=>{
+        event.preventDefault();
         Axios.post('/getTotalCost',{
             id:this.props.id,
         }).then((response)=>{
@@ -55,21 +58,18 @@ class CostManagement extends React.Component{
         })
     }
     
+    
     render(){ 
-       
-        this.getBudget();
-        this.getData();
-        this.getTotalCost();
         
         return(
             <div className='costarea'>
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
-                <InputBoxBudget id={this.props.id} arr={this.state.arr}/>
-                <TableCost id={this.props.id} tableTitle={this.props.tableCostTitle} tableContent={this.state.table}  buttonStatus={this.state.buttonStatus}/>
+                <InputBoxBudget id={this.props.id} arr={this.state.arr} clickGetBudget={(event)=>{this.getBudget(event)}}/>
+                <TableCost getData={(event)=>this.getData(event)} id={this.props.id} tableTitle={this.props.tableCostTitle} tableContent={this.state.table}  buttonStatus={this.state.buttonStatus}/>
                 <div style={{width:'100%'}} className='buttonMargin'>
                     <div style={{width:'auto', display:'inline-block', marginLeft:'5px'}}>
-                        <span className="figures">Total cost: {this.state.totalCost}</span>
+                        <span className="figures" onClick={(event)=>{this.getTotalCost(event)}}>Total cost: {this.state.totalCost}</span>
                     
                         <span className="figures">Amount of money remaining: {this.state.arr - this.state.totalCost}</span>
                         

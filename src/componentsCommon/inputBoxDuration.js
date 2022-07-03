@@ -16,7 +16,8 @@ class InputBoxDuration extends React.Component{
         inputType:'text',
     }
   
-    getData=()=>{
+    getData=(event)=>{
+        event.preventDefault();
         Axios.post('/getDuration',{
             id:this.props.id,
         }).then((response)=>{
@@ -29,15 +30,15 @@ class InputBoxDuration extends React.Component{
             
         })
     }
- 
+    
     render(){
-        this.getData(this.props.id);
+       
         return(
             <div style={{display:'flex',flexDirection:'column'}}>
                 <input onChange={(event)=>{this.setState({userInput:HandleInput(event)});}} className='inputbox' type={this.state.inputType} onKeyDown="return event.keyCode !== 69" placeholder={this.state.description} disabled={this.state.disabled}></input>
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', marginLeft:'5px'}}>
                     <div>
-                        <span className='initialTotal figures'>{this.state.total}</span>
+                        <span className='initialTotal figures' onClick={(event=>{this.getData(event)})}>{this.state.total}</span>
                         <span className='initialTotal figures'>{this.state.arr}</span>
                     </div>
                     <SaveEditButton onSave={(event)=>{this.setState({disabled:true}); ClickSaveDuration(event, this.state.userInput, this.props.id);}} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
