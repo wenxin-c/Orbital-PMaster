@@ -13,19 +13,19 @@ app.use(express.json());
 // app.use(express.static(path.join(__dirname, "/public")));
 // app.use(express.static(path.join(__dirname, "..", "build")));
 
-const db = mysql.createPool({
-    host:'us-cdbr-east-05.cleardb.net',
-    user:'bd2b48a64c73c1',
-    password:'94bb7a5d',
-    database:'heroku_f8d453ebec76bec'
-});
-
-// const db = mysql.createConnection({
-// 	host     : 'localhost',
-// 	user     : 'root',
-// 	password : '000825',
-// 	database : 'nodelogin'
+// const db = mysql.createPool({
+//     host:'us-cdbr-east-05.cleardb.net',
+//     user:'bd2b48a64c73c1',
+//     password:'94bb7a5d',
+//     database:'heroku_f8d453ebec76bec'
 // });
+
+const db = mysql.createConnection({
+	host     : 'localhost',
+	user     : 'root',
+	password : '000825',
+	database : 'nodelogin'
+});
 
 app.post("/register",(req,res)=>{
 
@@ -370,12 +370,16 @@ app.post("/login", (req,res)=>{
 // 	respond.sendFile(path.join(__dirname, "/public", "index.html"));
 // 	// respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
 //  });
-if(process.env.NODE_ENV === "production"){
-	app.use(express.static(path.join(__dirname, "/public")));
-};
-// else{
-// 	app.use(express.static(path.join(__dirname, "..", "build")));
-// }
+// if(process.env.NODE_ENV === "production"){
+// 	app.use(express.static(path.join(__dirname, "/public")));
+// };
+
+app.use(express.static(path.join(__dirname, "/public")));
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname + '/public/index.html'))
+  })
+
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
