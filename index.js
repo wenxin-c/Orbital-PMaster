@@ -9,10 +9,6 @@ const app = express(); // create express app
 app.use(cors());
 app.use(express.json());
 
-
-// app.use(express.static(path.join(__dirname, "/public")));
-// app.use(express.static(path.join(__dirname, "..", "build")));
-
 const db = mysql.createPool({
     host:'us-cdbr-east-06.cleardb.net',
     user:'b553047e00f67a',
@@ -374,10 +370,12 @@ app.post("/login", (req,res)=>{
 // 	app.use(express.static(path.join(__dirname, "/public")));
 // };
 
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "../react-app/build")))
+// app.use(express.static(path.join(__dirname, "/public")));
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname + '/public/index.html'))
+	res.sendFile(path.join(__dirname + '../react-app/build/index.html'))
+	// res.sendFile(path.join(__dirname + '/public/index.html'))
   })
 
 
