@@ -14,10 +14,10 @@ app.use(express.json());
 // app.use(express.static(path.join(__dirname, "..", "build")));
 
 const db = mysql.createPool({
-    host:'us-cdbr-east-05.cleardb.net',
-    user:'bd2b48a64c73c1',
-    password:'94bb7a5d',
-    database:'heroku_f8d453ebec76bec'
+    host:'us-cdbr-east-06.cleardb.net',
+    user:'b553047e00f67a',
+    password:'78819b0e',
+    database:'heroku_69aa81b153a740d'
 });
 
 // const db = mysql.createConnection({
