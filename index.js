@@ -11,11 +11,6 @@ app.use(cors());
 
 // app.use(express.static(path.join(__dirname, "/public")));
 // app.use(express.static(path.join(__dirname, "..", "build")));
-if(process.env.NODE_ENV === "production"){
-	app.use(express.static(path.join(__dirname, "/public")));
-}else{
-	app.use(express.static(path.join(__dirname, "..", "build")));
-}
 
 const db = mysql.createPool({
     host:'us-cdbr-east-05.cleardb.net',
@@ -374,6 +369,12 @@ app.post("/login", (req,res)=>{
 // 	respond.sendFile(path.join(__dirname, "/public", "index.html"));
 // 	// respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
 //  });
+if(process.env.NODE_ENV === "production"){
+	app.use(express.static(path.join(__dirname, "/public")));
+};
+// else{
+// 	app.use(express.static(path.join(__dirname, "..", "build")));
+// }
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
