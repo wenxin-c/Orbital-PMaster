@@ -370,12 +370,12 @@ app.post("/login", (req,res)=>{
 // 	app.use(express.static(path.join(__dirname, "/public")));
 // };
 
-app.use(express.static(path.join(__dirname, "../react-app/build")))
-// app.use(express.static(path.join(__dirname, "/public")));
+// app.use(express.static(path.join(__dirname, "../react-app/build")))
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname + '../react-app/build/index.html'))
-	// res.sendFile(path.join(__dirname + '/public/index.html'))
+	// res.sendFile(path.join(__dirname + '../react-app/build/index.html'))
+	res.sendFile(path.join(__dirname + '/public/index.html'))
   })
 
 
