@@ -64,13 +64,28 @@ function App() {
   // const login = async (event)=>{
   //   event.preventDefault();
   //   try{
-  //   const body = {username, password};
-  //   const response = await fetch("/login",{
-  //     method:"POST",
-  //     headers:{"Content-Type": "application/json"},
-  //     body:JSON.stringify(body)
-  //   });
-  //   console.log(response);
+  //   await fetch(`/api/login/${username}/${password}`,{
+  //     method:"GET",
+  //     headers: { 
+  //       "Content-Type": "application/json",
+  //       'Accept': 'application/json'
+  //      },
+  //     redirect: "follow"
+  //   }).then(response=>
+  //     response.json()
+  //   ).then(data=>{
+  //     console.log(data);
+  //     if(data.message){
+  //         setLoginStatus(data.message)
+  //         setDisplayStatus('none')
+  //     }else{
+  //         setLoginStatus('Welcom back, '+data[0].username);
+  //         setID(data[0].id);
+  //         setDisplayStatus('block');
+  //     }
+  //   }
+  //   );
+    
   //   }catch(err){
   //     console.log("Here is an error!!")
   //     console.error(err.message);
@@ -79,24 +94,15 @@ function App() {
 
   const login =(event)=>{
     event.preventDefault()
-    Axios.post(
-    //   "/login",{
-    //     method:"post",
-    //     username:username,
-    //     password:password,
-    // }
-    {
-      method:"post",
-      url:"/login",
-      data :{
+    Axios.post("/login",{
+        method:"post",
         username:username,
         password:password,
-      }
-    }
-    ).then((response)=>{
+        headers: { 'content-type': 'application/x-www-form-urlencoded' }
+    }).then((response)=>{
         console.log(response);
         console.log(response.data)
-        if(response.data.message){
+        if(response.data.message){9
             setLoginStatus(response.data.message)
             setDisplayStatus('none')
         }else{

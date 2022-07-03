@@ -2,7 +2,7 @@ const mysql = require('mysql');
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const PORT =  process.env.PORT || 5005;
+const PORT =  process.env.PORT || 5003;
 
 const app = express(); // create express app
 
@@ -13,6 +13,8 @@ app.use(cors());
 // app.use(express.static(path.join(__dirname, "..", "build")));
 if(process.env.NODE_ENV === "production"){
 	app.use(express.static(path.join(__dirname, "/public")));
+}else{
+	app.use(express.static(path.join(__dirname, "..", "build")));
 }
 
 const db = mysql.createPool({
@@ -320,15 +322,29 @@ app.post("/deleteHR", (req,res)=>{
 	});
 })
 
-// app.post("/login", async(req,res)=>{
+// app.get("/api/login/:username/:password", async(req,res)=>{
 //     try {
-//         const {username, password} = req.body;
-//         const newLogin = await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
-//         [username, password]
+//         const username = req.params.username;
+// 		const password = req.params.password;
+//         await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
+//         [username, password],
+// 		(err,result)=>{
+// 			if(err){
+// 				console.log(err)
+// 				res.send({err:err});
+// 			}
+// 			if(result.length>0){
+// 				res.send(result)
+// 			}else{
+// 				res.send({message:"Wrong username or password, please try again!"})
+// 			}
+// 			// if(result){
+// 			// 	console.log(result);
+// 			// }
+// 		}
 //         );
-
-//         res.json(newLogin.rows);
-
+// 		// console.log(username);
+// 		// console.log(password);
 //     } catch (error) {
 //         console.error(error.message);
 //     }
@@ -354,10 +370,10 @@ app.post("/login", (req,res)=>{
 	);
 })
 
-app.post('/main',(req, respond, next) => {
-	// respond.sendFile(path.join(__dirname, "/public", "index.html"));
-	respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
- });
+// app.post('/main',(req, respond, next) => {
+// 	respond.sendFile(path.join(__dirname, "/public", "index.html"));
+// 	// respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
+//  });
 
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
