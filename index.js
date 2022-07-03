@@ -6,8 +6,9 @@ const PORT =  process.env.PORT || 5003;
 
 const app = express(); // create express app
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
+
 
 // app.use(express.static(path.join(__dirname, "/public")));
 // app.use(express.static(path.join(__dirname, "..", "build")));
