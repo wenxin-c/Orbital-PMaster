@@ -11,13 +11,13 @@ class TableTime extends React.Component{
           <div className="table">
             <table width='100%'>
                 <thead>
-                <tr onClick={(event)=>{this.props.getData(event)}}>
+                <tr>
                     {this.props.tableTitle.map(title=>(<th style={{width:'16.35%'}} key={title}>{title}</th>))}
                 </tr>
                 </thead>
                 <tbody>
                     {
-                        this.props.tableContent.map(content => {
+                        this.props.tableTimeContent.map(content => {
                         return (
                           <tr className='content' key={content.name}>
                             <td  >{content.taskname}</td>
@@ -26,7 +26,7 @@ class TableTime extends React.Component{
                             <td  >{content.prerequisitetask}</td>
                             <td  >{content.duration}</td>
                             <td  >{content.remark}</td>
-                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>TableTaskDelete(event, content.TaskName, content.TaskDescription, content.PeopleInvolved, content.PrerequisiteTask, content.Duration, content.Remark, this.props.id)}/></td>
+                            <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>this.props.setTableTimeContent(TableTaskDelete(this.props.tableTimeContent, event, content.taskname, content.taskdescription, content.peopleinvolved, content.prerequisitetask, content.duration, content.remark, this.props.id))}/></td>
                           </tr>
                         )
                       })

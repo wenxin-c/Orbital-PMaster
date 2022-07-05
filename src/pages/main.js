@@ -13,10 +13,22 @@ class MainPage extends React.Component{
             <div>
                 <TopNavBar username={this.props.username}/>
                 <MainContent 
-                tableCostTitle={this.props.tableCostTitle} tableCostContent={this.props.tableCostContent}
-                tableTimeTitle={this.props.tableTimeTitle} tableTimeContent={this.props.tableTimeContent}
-                tableHRTitle={this.props.tableHRTitle} tableHRContent={this.props.tableHRContent}
+                tableCostTitle={this.props.tableCostTitle} 
+                tableCostContent={this.props.tableCostContent}
+                setTableCostContent={this.props.setTableCostContent}
+                tableTimeTitle={this.props.tableTimeTitle} 
+                tableTimeContent={this.props.tableTimeContent}
+                setTableTimeContent={this.props.setTableTimeContent}
+                tableHRTitle={this.props.tableHRTitle} 
+                tableHRContent={this.props.tableHRContent}
+                setTableHRContent={this.props.setTableHRContent}
                 id={this.props.id}
+                totalCost={this.props.totalCost}
+                setTotalCost={this.props.setTotalCost}
+                budget={this.props.budget}
+                setBudget={this.props.setBudget}
+                totalDuration={this.props.totalDuration}
+                setTotalDuration={this.props.setTotalDuration}
                 />
             </div>
             

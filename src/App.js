@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, {useState, useEffect}from 'react'
 import ReactDOM from 'react-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import MainPage from './pages/main.js'
@@ -12,16 +12,18 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-// import Axios from 'axios';
-const Axios = require('axios').default;
+import Axios from 'axios';
 
 function App() {
 
   const [tableCostTitle,setTableCostTitle]=useState(['Item Type','Item','Date','Unit Cost/unit','Units','Total Cost']);
+  const [tableCostContent, setTableCostContent] = useState([]);
 
   const [tableTimeTitle, setTableTimeTitle]=useState([ 'Task Name','Task Description','People involved','Prerequisite Task','Duration(with Date)', 'Remark']);
+  const [tableTimeContent, setTableTimeContent] = useState([]);
 
   const [tableHRTitle, setTableHRTitle]=useState([ 'Name','IC Number','Phone Number','E-mail','Department','Role']);
+  const [tableHRContent, setTableHRContent] = useState([]);
 
   const [usernameReg, setUsernameReg]=useState("");
   const [passwordReg, setPasswordReg]=useState("");
@@ -31,6 +33,10 @@ function App() {
   const [loginStatus, setLoginStatus]=useState("");
   const [displayStatus, setDisplayStatus]=useState("none");
   const [id, setID]=useState("");
+
+  const [totalCost, setTotalCost] = useState("");
+  const [budget, setBudget] = useState("");
+  const [totalDuration, setTotalDuration] = useState("");
  
   const changeUsernameReg =(event)=>{
     setUsernameReg(event.target.value)
@@ -61,37 +67,6 @@ function App() {
     })
   }
 
-  // const login = async (event)=>{
-  //   event.preventDefault();
-  //   try{
-  //   await fetch(`/api/login/${username}/${password}`,{
-  //     method:"GET",
-  //     headers: { 
-  //       "Content-Type": "application/json",
-  //       'Accept': 'application/json'
-  //      },
-  //     redirect: "follow"
-  //   }).then(response=>
-  //     response.json()
-  //   ).then(data=>{
-  //     console.log(data);
-  //     if(data.message){
-  //         setLoginStatus(data.message)
-  //         setDisplayStatus('none')
-  //     }else{
-  //         setLoginStatus('Welcom back, '+data[0].username);
-  //         setID(data[0].id);
-  //         setDisplayStatus('block');
-  //     }
-  //   }
-  //   );
-    
-  //   }catch(err){
-  //     console.log("Here is an error!!")
-  //     console.error(err.message);
-  //   }
-  // }
-
   const login =(event)=>{
     event.preventDefault()
     Axios.post("/login",{
@@ -112,7 +87,6 @@ function App() {
         }
     })
   }
-
   
   return (
       <Router >
@@ -142,10 +116,40 @@ function App() {
               tableHRTitle={tableHRTitle} 
               id={id}
               username={username}
+              tableCostContent={tableCostContent}
+              setTableCostContent={setTableCostContent}
+              tableTimeContent={tableTimeContent}
+              setTableTimeContent={setTableTimeContent}
+              tableHRContent={tableHRContent}
+              setTableHRContent={setTableHRContent}
+              totalCost={totalCost}
+              setTotalCost={setTotalCost}
+              budget={budget}
+              setBudget={setBudget}
+              totalDuration={totalDuration}
+              setTotalDuration={setTotalDuration}
               />}/>
-              <Route path='/main/expense' element={<NewExpense  username={username} id={id}/>}/>
-              <Route path='/main/task' element={<NewTask username={username} id={id}/>}/>
-              <Route path='/main/person' element={<NewPerson username={username} id={id}/>}/>
+              <Route path='/main/expense' element={<NewExpense  
+              username={username} 
+              id={id} 
+              tableCostContent={tableCostContent} 
+              setTableCostContent={setTableCostContent}
+              totalCost={totalCost}
+              setTotalCost={setTotalCost}
+              
+              />}/>
+              <Route path='/main/task' element={<NewTask 
+              username={username} 
+              id={id}
+              tableTimeContent={tableTimeContent}
+              setTableTimeContent={setTableTimeContent}
+              />}/>
+              <Route path='/main/person' element={<NewPerson 
+              username={username} 
+              id={id}
+              tableHRContent={tableHRContent}
+              setTableHRContent={setTableHRContent}
+              />}/>
             </Routes>
           </header>
         </div>

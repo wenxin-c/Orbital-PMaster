@@ -12,7 +12,7 @@ export function ClickEdit(){
 }
 
 export function ClickSave(event, content1, content2, content3, content4, id){
-    event.preventDefault()
+    event.preventDefault();
     Axios.post("/addSummary",{
       issue:content1,
       solution:content2,

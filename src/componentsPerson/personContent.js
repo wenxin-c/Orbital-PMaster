@@ -35,14 +35,14 @@ class PersonContent extends React.Component{
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={(event)=>{TablePersonIncrement(event,
+                    <Heading title={this.state.title} onClickSave={(event)=>this.props.setTableHRContent(TablePersonIncrement(this.props.tableHRContent,event,
                         this.state.content1, 
                         this.state.content2, 
                         this.state.content3, 
                         this.state.content4, 
                         this.state.content5, 
                         this.state.content6,
-                        this.props.id)}}/>
+                        this.props.id))}/>
                     <ExpenseContent 
                     onValue1={(event)=>{this.setState({content1:event.target.value})}} 
                     onValue2={(event)=>{this.setState({content2:event.target.value})}} 

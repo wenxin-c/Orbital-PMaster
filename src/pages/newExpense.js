@@ -9,7 +9,7 @@ class NewExpense extends React.Component{
         return(
             <div>
                 <TopNavBar username={this.props.username}/>
-                <ExpenseBody id={this.props.id}/>
+                <ExpenseBody totalCost={this.props.totalCost} setTotalCost={this.props.setTotalCost} tableCostContent={this.props.tableCostContent} setTableCostContent={this.props.setTableCostContent} id={this.props.id}/>
             </div>
             
         );

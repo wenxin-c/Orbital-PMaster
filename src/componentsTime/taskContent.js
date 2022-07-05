@@ -29,14 +29,16 @@ class TaskContent extends React.Component{
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={(event)=>{TableTaskIncrement(event,
+                    <Heading title={this.state.title} onClickSave={(event)=>this.props.setTableTimeContent(TableTaskIncrement(
+                        this.props.tableTimeContent, 
+                        event,
                         this.state.content1, 
                         this.state.content2, 
                         this.state.content3, 
                         this.state.content4, 
                         this.state.content5, 
                         this.state.content6,
-                        this.props.id)}}/>
+                        this.props.id))}/>
                     <div className='contentBody'>
                         <form>
                             <fieldset>

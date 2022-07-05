@@ -9,7 +9,7 @@ class NewPerson extends React.Component{
         return(
             <div>
                 <TopNavBar username={this.props.username}/>
-                <PersonContent id={this.props.id}/>
+                <PersonContent tableHRContent={this.props.tableHRContent} setTableHRContent={this.props.setTableHRContent} id={this.props.id}/>
             </div>
         );
     }

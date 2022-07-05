@@ -30,9 +30,30 @@ class MainContent extends React.Component{
                 <SideNavBar sections={this.state.sections}/>
                 <div style={{width:'calc(100% - 260px)', marginTop:'35px', marginLeft:'260px'}}>
                     <Summary id={this.props.id} section={this.state.sections[0]}/>
-                    <CostManagement id={this.props.id} section={this.state.sections[1]} tableCostTitle={this.props.tableCostTitle} tableCostContent={this.props.tableCostContent} />
-                    <TimeManagement id={this.props.id} section={this.state.sections[2]} tableTimeTitle={this.props.tableTimeTitle} tableTimeContent={this.props.tableTimeContent} />
-                    <HRManagement id={this.props.id} section={this.state.sections[3]} tableHRTitle={this.props.tableHRTitle} tableHRContent={this.props.tableHRContent} />
+                    <CostManagement 
+                    id={this.props.id} 
+                    section={this.state.sections[1]} 
+                    tableCostContent={this.props.tableCostContent} 
+                    setTableCostContent={this.props.setTableCostContent} 
+                    tableCostTitle={this.props.tableCostTitle}
+                    totalCost={this.props.totalCost}
+                    setTotalCost={this.props.setTotalCost}
+                    budget={this.props.budget}
+                    setBudget={this.props.setBudget}  />
+                    <TimeManagement 
+                    id={this.props.id} 
+                    section={this.state.sections[2]} 
+                    tableTimeTitle={this.props.tableTimeTitle} 
+                    tableTimeContent={this.props.tableTimeContent}
+                    setTableTimeContent={this.props.setTableTimeContent}
+                    totalDuration={this.props.totalDuration}
+                    setTotalDuration={this.props.setTotalDuration} />
+                    <HRManagement 
+                    id={this.props.id} 
+                    section={this.state.sections[3]} 
+                    tableHRTitle={this.props.tableHRTitle} 
+                    tableHRContent={this.props.tableHRContent}
+                    setTableHRContent={this.props.setTableHRContent} />
                 </div>   
             </div>   
             </div>

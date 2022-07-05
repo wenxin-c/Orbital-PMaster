@@ -13,51 +13,58 @@ const Axios = require('axios').default;
 class CostManagement extends React.Component{
     state={
         buttonStatus:'none',
-        table:[],
-        totalCost:"",
-        arr:"",
+        // table:[],
+        // totalCost:"",
+        // arr:"",
     }
     
     getData=(event)=>{
-        event.preventDefault();
+        // event.preventDefault();
         Axios.post('/getCost',{
             id:this.props.id,
         }).then((response)=>{
-            // console.log(response);
+            console.log(response);
             if(response.data.length>0){
-            this.setState({table:response.data});
+            // this.setState({table:response.data});
+            this.props.setTableCostContent(response.data)
             }
         })
     }
+    
     getBudget=(event)=>{
-        event.preventDefault();
+        // event.preventDefault();
         Axios.post('/getBudget',{
             id:this.props.id,
         }).then((response)=>{
             //  console.log(response);
              if(response.data.length>0){
-                this.setState({arr:response.data[response.data.length-1].budget});
+                this.props.setBudget(response.data[response.data.length-1].budget);
             }else{
-                this.setState({arr:""});
+                this.props.setBudget("");
             }
         })
     }
 
     getTotalCost=(event)=>{
-        event.preventDefault();
+        // event.preventDefault();
         Axios.post('/getTotalCost',{
             id:this.props.id,
         }).then((response)=>{
             // console.log(response);
             if(response.data.length>0){
-                this.setState({totalCost:response.data[response.data.length-1].totalCost});
+                this.props.setTotalCost(response.data[response.data.length-1].totalCost);
             }else{
-                this.setState({totalCost:""});
+                this.props.setTotalCost("");
             }
             
         })
     }
     
+    componentDidMount(){
+        this.getData();
+        this.getBudget();
+        this.getTotalCost();
+    }
     
     render(){ 
         
@@ -65,13 +72,20 @@ class CostManagement extends React.Component{
             <div className='costarea'>
                 <div className='anchor' id={this.props.section.props.id}></div>
                 <h1>{this.props.section.props.children}</h1>
-                <InputBoxBudget id={this.props.id} arr={this.state.arr} clickGetBudget={(event)=>{this.getBudget(event)}}/>
-                <TableCost getData={(event)=>this.getData(event)} id={this.props.id} tableTitle={this.props.tableCostTitle} tableContent={this.state.table}  buttonStatus={this.state.buttonStatus}/>
+                <InputBoxBudget id={this.props.id} budget={this.props.budget} setBudget={this.props.setBudget} />
+                <TableCost 
+                id={this.props.id} 
+                tableTitle={this.props.tableCostTitle} 
+                tableCostContent={this.props.tableCostContent}  
+                setTableCostContent={this.props.setTableCostContent} 
+                totalCost={this.props.totalCost}
+                setTotalCost={this.props.setTotalCost}
+                buttonStatus={this.state.buttonStatus}/>
                 <div style={{width:'100%'}} className='buttonMargin'>
                     <div style={{width:'auto', display:'inline-block', marginLeft:'5px'}}>
-                        <span className="figures" onClick={(event)=>{this.getTotalCost(event)}}>Total cost: {this.state.totalCost}</span>
+                        <span className="figures" >Total cost: {this.props.totalCost}</span>
                     
-                        <span className="figures">Amount of money remaining: {this.state.arr - this.state.totalCost}</span>
+                        <span className="figures">Amount of money remaining: {this.props.budget - this.props.totalCost}</span>
                         
                     </div>
                     

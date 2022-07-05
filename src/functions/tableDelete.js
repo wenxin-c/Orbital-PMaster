@@ -1,7 +1,9 @@
 // import Axios from 'axios';
 const Axios = require('axios').default;
 
-export function TableCostDelete(eventParam, itemType, item, date, unitCost, units, totalCost, id){
+export function TableCostDelete(originalArray, eventParam, itemType, item, date, unitCost, units, totalCost, id){
+    const newArray = originalArray.filter((item)=>(item.itemtype!==itemType && item.item!== item && item.totalcost !== totalCost && item.id!==id));
+    
     eventParam.preventDefault()
     Axios.post("/deleteCost",{
         itemType:itemType,
@@ -14,10 +16,15 @@ export function TableCostDelete(eventParam, itemType, item, date, unitCost, unit
     }).then((response)=>{
       console.log(response);
     })
+
+    return newArray;
 }
 
-export function TableTaskDelete(eventParam, taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark, id){
-    eventParam.preventDefault()
+export function TableTaskDelete(originalArray, eventParam, taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark, id){
+    
+  const newArray = originalArray.filter((item)=>(item.tasknamew!==taskName && item.taskdescription!== taskDescription && item.id!==id));
+  
+  eventParam.preventDefault()
     Axios.post("/deleteTask",{
         taskName : taskName,
         taskDescription : taskDescription,
@@ -29,9 +36,14 @@ export function TableTaskDelete(eventParam, taskName, taskDescription, peopleInv
     }).then((response)=>{
       console.log(response);
     })
+
+    return newArray;
 }
 
-export function TableHRDelete(eventParam, name, ic, phoneNumber, email, department, role, id){
+export function TableHRDelete(originalArray, eventParam, name, ic, phoneNumber, email, department, role, id){
+
+  const newArray = originalArray.filter((item)=>(item.name!==name && item.ic!==ic && item.id!==id));
+
     eventParam.preventDefault()
     Axios.post("/deleteHR",{
          name :name,
@@ -44,4 +56,6 @@ export function TableHRDelete(eventParam, name, ic, phoneNumber, email, departme
     }).then((response)=>{
       console.log(response);
     })
+
+    return newArray;
 }

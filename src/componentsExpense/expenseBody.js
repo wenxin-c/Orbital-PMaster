@@ -4,6 +4,7 @@ import './../styles/expenseBody.css'
 import Heading from '../componentsCommon/headingContent.js'
 import ExpenseContent from './expenseContent.js'
 import {TableCostIncrement} from './../functions/tableIncrement.js'
+import Axios from 'axios'
 
 class ExpenseBody extends React.Component{
     state={
@@ -23,6 +24,7 @@ class ExpenseBody extends React.Component{
         content6:'',
     }
 
+
     render(){
         let styles={
             backgroundColor:'#f3f6f8', 
@@ -34,17 +36,35 @@ class ExpenseBody extends React.Component{
             zIndex:'-1'
            }
 
+           const getTotalCost=(event)=>{
+            // event.preventDefault();
+            Axios.post('/getTotalCost',{
+                id:this.props.id,
+            }).then((response)=>{
+                // console.log(response);
+                if(response.data.length>0){
+                    this.props.setTotalCost(response.data[response.data.length-1].totalCost);
+                }else{
+                    this.props.setTotalCost("");
+                }
+                
+            })
+        }
+        
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px'}} className='contentWrapper'>
-                    <Heading title={this.state.title} onClickSave={(event)=>{TableCostIncrement(event,
+                    <Heading title={this.state.title} onClickSave={(event)=>{this.props.setTableCostContent(TableCostIncrement(
+                        this.props.tableCostContent, 
+                        event,
                         this.state.content1, 
                         this.state.content2, 
                         this.state.content3, 
                         this.state.content4, 
                         this.state.content5, 
                         this.state.content6,
-                        this.props.id)}}/>
+                        this.props.id));
+                        getTotalCost(event)}}/>
                     <ExpenseContent 
                     onValue1={(event)=>{this.setState({content1:event.target.value})}} 
                     onValue2={(event)=>{this.setState({content2:event.target.value})}} 

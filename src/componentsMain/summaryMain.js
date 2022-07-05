@@ -27,7 +27,7 @@ class Summary extends React.Component{
     }
 
     getData=(event)=>{
-        event.preventDefault();
+        // event.preventDefault();
         Axios.post('/getSummary',{
             id:this.props.id,
         }).then((response)=>{
@@ -42,6 +42,10 @@ class Summary extends React.Component{
         })
     }
 
+    componentDidMount(){
+        this.getData();
+    }
+
     render(){
 
         return(
@@ -53,14 +57,18 @@ class Summary extends React.Component{
                 <SummaryContent value={this.state.content6} onSummaryInput={(event)=>{this.setState({content2:HandleSummaryInput(event)})}} disabled={this.state.disabled} subtitle={this.state.subtitle2}/>
                 <SummaryContent value={this.state.content7} onSummaryInput={(event)=>{this.setState({content3:HandleSummaryInput(event)})}} disabled={this.state.disabled} subtitle={this.state.subtitle3}/>
                 <SummaryContent value={this.state.content8} onSummaryInput={(event)=>{this.setState({content4:HandleSummaryInput(event)})}} disabled={this.state.disabled} subtitle={this.state.subtitle4}/>
-                <button className='btn' style={{width:'160px'}} onClick={(event)=>{this.getData(event)}}>View previous answer</button>
+                {/* <button className='btn' style={{width:'160px'}} onClick={(event)=>{this.getData(event)}}>View previous answer</button> */}
                 <SaveEditButton onSave={(event)=>{this.setState({disabled:true});ClickSave(
                     event,
                     this.state.content1,
                     this.state.content2,
                     this.state.content3,
                     this.state.content4,
-                    this.props.id )}} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
+                    this.props.id );
+                    this.setState({content5:this.state.content1});
+                    this.setState({content6:this.state.content2});
+                    this.setState({content7:this.state.content3});
+                    this.setState({content8:this.state.content4})}} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
             </div>
         );
     }

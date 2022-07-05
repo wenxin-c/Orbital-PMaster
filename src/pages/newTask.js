@@ -9,7 +9,7 @@ class NewTask extends React.Component{
         return(
             <div>
                 <TopNavBar username={this.props.username}/>
-                <TaskContent id={this.props.id}/>
+                <TaskContent tableTimeContent={this.props.tableTimeContent} setTableTimeContent={this.props.setTableTimeContent} id={this.props.id}/>
             </div>
         );
     }

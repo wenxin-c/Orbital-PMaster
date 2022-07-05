@@ -1,17 +1,17 @@
 // import Axios from "axios";
 const Axios = require('axios').default;
 
-export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam, id){
-    // const newCost = [...tableCostContent,
-    // {
-    //   type:typeParam,
-    //   name:nameParam,
-    //   date:dateParam,
-    //   unitCost:unitCostParam,
-    //   units:unitsParam,
-    //   totalCost:totalCostParam,
+export function TableCostIncrement( tableCostContent, eventParam, typeParam, nameParam, dateParam, unitCostParam, unitsParam, totalCostParam, id){
+    const newCost = [...tableCostContent,
+    {
+      type:typeParam,
+      name:nameParam,
+      date:dateParam,
+      unitCost:unitCostParam,
+      units:unitsParam,
+      totalCost:totalCostParam,
       
-    // }];
+    }];
 
     eventParam.preventDefault()
     Axios.post("/addCost",{
@@ -26,19 +26,19 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
       console.log(response);
     })
 
-    // return newCost;
+    return newCost;
   }
 
-  export function TableTaskIncrement( eventParam, nameParam,descriptionParam,memberParam,preParam,durationParam,remarkParam, id){
-    // const newTask = [...tableTimeContent,
-    //   {
-    //     name:nameParam,
-    //     description:descriptionParam,
-    //     people:memberParam,
-    //     prerequisite:preParam,
-    //     duration:durationParam,
-    //     remark:remarkParam,
-    //   }];
+  export function TableTaskIncrement(tableTimeContent, eventParam, nameParam,descriptionParam,memberParam,preParam,durationParam,remarkParam, id){
+    const newTask = [...tableTimeContent,
+      {
+        name:nameParam,
+        description:descriptionParam,
+        people:memberParam,
+        prerequisite:preParam,
+        duration:durationParam,
+        remark:remarkParam,
+      }];
 
       eventParam.preventDefault()
       Axios.post("/addTask",{
@@ -53,19 +53,19 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
       console.log(response);
     })
 
-      // return newTask;
+      return newTask;
   }
 
-  export function TablePersonIncrement( eventParam, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam, id){
-    // const newPerson = [...tableHRContent,
-    //   {
-    //     name:nameParam,
-    //     ic:icParam,
-    //     phone:phoneParam,
-    //     email:emailParam,
-    //     department:departmentParam,
-    //     role:roleParam
-    //   }]
+  export function TablePersonIncrement(tableHRContent,  eventParam, nameParam, icParam, phoneParam, emailParam, departmentParam, roleParam, id){
+    const newPerson = [...tableHRContent,
+      {
+        name:nameParam,
+        ic:icParam,
+        phone:phoneParam,
+        email:emailParam,
+        department:departmentParam,
+        role:roleParam
+      }]
 
       eventParam.preventDefault()
       Axios.post("/addHR",{
@@ -80,6 +80,6 @@ export function TableCostIncrement( eventParam, typeParam, nameParam, dateParam,
       console.log(response);
     })
 
-    // return newPerson;
+    return newPerson;
   }
 

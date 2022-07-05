@@ -20,13 +20,13 @@ class InputBoxBudget extends React.Component{
 
         return(
             <div style={{display:'flex',flexDirection:'column'}}>
-                <input onChange={(event)=>{this.setState({userInput:HandleInput(event)});}} className='inputbox' type={this.state.inputType} onKeyDown="return event.keyCode !== 69" placeholder={this.state.description} disabled={this.state.disabled}></input>
+                <input onChange={(event)=>{this.setState({userInput:HandleInput(event)});}} className='inputbox' type={this.state.inputType} placeholder={this.state.description} disabled={this.state.disabled}></input>
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', marginLeft:'5px'}}>
                     <div>
-                        <span className='initialTotal figures' onClick={(event)=>{this.props.clickGetBudget(event)}}>{this.state.total}</span>
-                        <span className='initialTotal figures' >{this.props.arr}</span>
+                        <span className='initialTotal figures' >{this.state.total}</span>
+                        <span className='initialTotal figures' >{this.props.budget}</span>
                     </div>
-                    <SaveEditButton onSave={(event)=>{this.setState({disabled:true}); ClickSaveBudget(event, this.state.userInput, this.props.id);}} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
+                    <SaveEditButton onSave={(event)=>{this.setState({disabled:true}); ClickSaveBudget(event, this.state.userInput, this.props.id); this.props.setBudget(this.state.userInput)}} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
                 </div>
                 
             </div>
