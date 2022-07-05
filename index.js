@@ -2,7 +2,7 @@ const mysql = require('mysql');
 const express = require("express");
 const path = require("path");
 const cors = require("cors");
-const PORT =  process.env.PORT || 5003;
+const PORT =  process.env.PORT || 5004;
 
 const app = express(); // create express app
 
@@ -246,7 +246,9 @@ app.post("/getDuration", (req,res)=>{
 			res.send({err:err});
 		}
 		if(result){
+			// console.log(result);
 			res.send(result);
+
 		}
 	})
 })
@@ -259,15 +261,17 @@ app.post("/deleteCost", (req,res)=>{
 	const units = req.body.units;
 	const totalCost = req.body.totalCost;
 	const id = req.body.id;
-   
-	db.query("DELETE FROM cost WHERE itemType=? and item=? and date=? and unitCost=? and units=? and totalCost=? and id=?",
-	[itemType, item, date, unitCost, units, totalCost, id],
+ 
+	db.query("DELETE FROM cost WHERE itemType=? and item=? and unitCost=? and units=? and totalCost=? and id=?",
+	[itemType, item, unitCost, units, totalCost, id],
 	(err,result)=>{
 		if(err){
 			res.send({err:err});
 		}
 		if(result){
+			console.log(result);
 			res.send(result);
+
 		}
 	});
 })
