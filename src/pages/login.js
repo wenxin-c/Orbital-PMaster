@@ -13,8 +13,8 @@ class Login extends React.Component{
     render(){
         return(
             <div className='container'>
-                 <div id="loginform">
-                    <h2 id="headerTitle">Registration</h2>
+                 <div id="registerform">
+                    <h2 id="headerTitle">Not having an account? Sign up here!</h2>
                     <form >
                         <div class="row">
                             <label>Username</label>
@@ -49,15 +49,16 @@ class Login extends React.Component{
                             {/* <Link to='main' className='btn'>Log in</Link> */}
                             <input onClick={(event)=>this.props.login(event)} className='btn' type="submit" value="Login"></input>
                         </div>
+                        <div className='login row' >
+                            <h1>{this.props.loginStatus}</h1>     
+                            <Link to='/main' className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>   
+                        </div>
                     </form>
                 </div>
-                <div className='login' >
-                    <h1>{this.props.loginStatus}</h1>
-                    
-                        <Link to='/main' className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>
-                    
-                    
-                </div>
+                {/* <div className='login' >
+                    <h1>{this.props.loginStatus}</h1>     
+                        <Link to='/main' className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>   
+                </div> */}
             </div>
         );
     }
