@@ -360,7 +360,7 @@ app.post("/login", (req,res)=>{
 		if(result.length>0){
 			res.send(result)
 		}else{
-			res.send({message:"Wrong username or password, please try again!"})
+			res.send({message:"Wrong credentials, please try again!"})
 		}
 	  }
 	);
