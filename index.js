@@ -318,6 +318,21 @@ app.post("/deleteHR", (req,res)=>{
 	});
 })
 
+app.post("/getDetail", (req,res)=>{
+	const userInput = req.body.userInput;
+	
+	db.query("SELECT * FROM costdetail WHERE itemtype=? OR itemname=?",
+	[userInput, userInput],
+	(err,result)=>{
+		
+		if(err){
+			res.send({err:err});
+		}
+		if(result){
+			res.send(result);
+		}
+	})
+})
 // app.get("/api/login/:username/:password", async(req,res)=>{
 //     try {
 //         const username = req.params.username;
