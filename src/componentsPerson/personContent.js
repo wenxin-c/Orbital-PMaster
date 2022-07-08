@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Heading from '../componentsCommon/headingContent.js'
-import ExpenseContent from '../componentsExpense/expenseContent.js'
+import InfoContent from '../componentsPerson/infoContent.js'
 import {TablePersonIncrement} from './../functions/tableIncrement.js'
+import './../styles/personContent.css'
 
 class PersonContent extends React.Component{
     state={
@@ -34,7 +35,7 @@ class PersonContent extends React.Component{
            }
         return(
             <div style={styles}>
-                <div style={{marginBottom:'80px'}} className='contentWrapper'>
+                <div style={{marginBottom:'80px', marginTop:'20px'}} className='contentHRWrapper'>
                     <Heading title={this.state.title} onClickSave={(event)=>this.props.setTableHRContent(TablePersonIncrement(this.props.tableHRContent,event,
                         this.state.content1, 
                         this.state.content2, 
@@ -43,7 +44,7 @@ class PersonContent extends React.Component{
                         this.state.content5, 
                         this.state.content6,
                         this.props.id))}/>
-                    <ExpenseContent 
+                    <InfoContent 
                     onValue1={(event)=>{this.setState({content1:event.target.value})}} 
                     onValue2={(event)=>{this.setState({content2:event.target.value})}} 
                     onValue3={(event)=>{this.setState({content3:event.target.value})}} 

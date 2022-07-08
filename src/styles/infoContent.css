@@ -4,35 +4,7 @@ label{
     margin-bottom:8px;
     margin-top:20px;
 }
-.contentBodyBottom{
-    margin-top:24px;
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content: space-around;
-}
-.contentBodyBottom input{
-    margin-bottom:24px;
-    padding-left:16px;
-    padding-right:16px;
-    border:1px solid rgb(206, 212, 218);
-    border-radius:4px;
-    box-sizing:border-box;
-    height:40px;
-    color:rgb(39, 43, 48);
-    width:100%;
-}
-.costData{
-    width:200px;
-    margin-left:30px;
-    background-color: #dff4f4;
-    padding: 10px;
-    height: 250px;
-}
-.costData h1{
-    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size:20px;
-}
+
 textarea{
     width:100%;
     border-color:rgb(206, 212, 218);
@@ -45,6 +17,7 @@ textarea{
     word-break:break-word;
     padding:16px;
 }
+
 .contentBody{
     display:flex;
     flex-direction:row;

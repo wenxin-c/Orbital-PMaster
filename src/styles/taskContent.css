@@ -23,13 +23,23 @@ label{
     color:rgb(79, 87, 94);
     font-size:14px;
 }
-.info{
+.contentBody .info{
     margin-bottom:24px;
     padding-left:16px;
     padding-right:16px;
     color:rgb(39, 43, 48);
     border-radius:4px;
-    font-size:4px;
     border:1px solid #adb5bd;
     height:40px;
+    font-size:14px;
+    font-weight:400;
+    word-break:break-word;
+}
+
+.contentBody input{
+    height:40px;
+}
+
+.contentBody textarea{
+    height:86.5px;
 }

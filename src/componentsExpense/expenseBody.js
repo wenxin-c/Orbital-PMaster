@@ -53,7 +53,7 @@ class ExpenseBody extends React.Component{
         
         return(
             <div style={styles}>
-                <div style={{marginBottom:'80px'}} className='contentWrapper'>
+                <div style={{marginBottom:'80px', marginTop:'20px', marginLeft:'75px', marginRight:'75px', width:'calc(100vw - 150px)'}} className='contentWrapper'>
                     <Heading title={this.state.title} onClickSave={(event)=>{this.props.setTableCostContent(TableCostIncrement(
                         this.props.tableCostContent, 
                         event,
@@ -71,7 +71,10 @@ class ExpenseBody extends React.Component{
                     onValue3={(event)=>{this.setState({content3:event.target.value})}} 
                     onValue4={(event)=>{this.setState({content4:event.target.value})}} 
                     onValue5={(event)=>{this.setState({content5:event.target.value})}} 
-                    onValue6={(event)=>{this.setState({content6:event.target.value})}} 
+                    onValue6={(event)=>{this.setState({content6:event.target.value})}}
+                    // unitCost={this.state.unitCost}
+                    // units={this.state.content4}
+
                     expenseState={this.state}
                     />
                 </div>

@@ -28,7 +28,7 @@ class TaskContent extends React.Component{
 
         return(
             <div style={styles}>
-                <div style={{marginBottom:'80px'}} className='contentWrapper'>
+                <div style={{marginBottom:'80px', marginTop:'20px', marginLeft:'75px', marginRight:'75px', width:'calc(100vw - 150px)'}} className='contentWrapper'>
                     <Heading title={this.state.title} onClickSave={(event)=>this.props.setTableTimeContent(TableTaskIncrement(
                         this.props.tableTimeContent, 
                         event,
@@ -43,17 +43,17 @@ class TaskContent extends React.Component{
                         <form>
                             <fieldset>
                                 <label>Task Name</label>
-                                <input className='info' onChange={(event)=>{this.setState({content1:event.target.value})} }></input>
+                                <input className='info' placeholder='Please enter task name.' onChange={(event)=>{this.setState({content1:event.target.value})} }></input>
                                 <label>Task Description</label>
-                                <input className='info' onChange={(event)=>{this.setState({content2:event.target.value})}}></input>
+                                <textarea className='info' placeholder='Please enter task description.' onChange={(event)=>{this.setState({content2:event.target.value})}}></textarea>
                                 <label>People Involved</label>
-                                <textarea className='info' onChange={(event)=>{this.setState({content3:event.target.value})}}></textarea>
+                                <input className='info' placeholder='Please enter people involved in the task.' onChange={(event)=>{this.setState({content3:event.target.value})}}></input>
                                 <label>Prerequisite Task</label>
-                                <textarea className='info' onChange={(event)=>{this.setState({content4:event.target.value})}}></textarea>
+                                <input className='info' placeholder='Please enter the prerequisite task (if any).' onChange={(event)=>{this.setState({content4:event.target.value})}}></input>
                                 <label>Duration(with Date)</label>
-                                <input className='info' onChange={(event)=>{this.setState({content5:event.target.value})}}></input>
+                                <input className='info' placeholder='Please enter the duration of the task.' onChange={(event)=>{this.setState({content5:event.target.value})}}></input>
                                 <label>Remarks</label>
-                                <textarea className='info' onChange={(event)=>{this.setState({content6:event.target.value})}}></textarea>
+                                <textarea className='info' placeholder='Please enter remarks (if any).' onChange={(event)=>{this.setState({content6:event.target.value})}}></textarea>
                             </fieldset>
                         </form>
                     </div>

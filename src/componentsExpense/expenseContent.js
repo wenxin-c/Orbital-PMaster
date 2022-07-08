@@ -1,16 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './../styles/expenseContent.css'
+import Popup from './../componentsCommon/popup.js'
 
 class ExpenseContent extends React.Component{
+    state={
+        buttonPopup:'none',
+    }
+
     render(){
+    
         return(
             <div className='contentBody'>
                 <div className='addNew'>
                     
                         <div className='itemType'>
                             <label>{this.props.expenseState.info1}</label>
-                            <textarea placeholder='Please input your response.' onChange={this.props.onValue1} defaultValue=""></textarea>
+                            <input placeholder='Please input your response.' onChange={this.props.onValue1} defaultValue=""></input>
                         </div>
                         <div className='item'>
                             <label>{this.props.expenseState.info2}</label>
@@ -34,6 +40,17 @@ class ExpenseContent extends React.Component{
                         </div>
                     
                 </div>
+                <div className='costData'>
+                    <h1>
+                        Not sure about the unit cost? 
+                        <br/>
+                        <br/>
+                        Click the button to find more information. 
+                    </h1>
+                    <button className='btn' onClick={()=>{this.setState({buttonPopup:'block'})}}>Button</button>
+                </div>
+                <Popup trigger={this.state.buttonPopup} 
+                closePopup={()=>{this.setState({buttonPopup:'none'})}}/>
             </div>
         );
     }
