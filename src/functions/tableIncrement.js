@@ -17,7 +17,7 @@ export function TableCostIncrement( tableCostContent, eventParam, typeParam, nam
     Axios.post("/addCost",{
       itemType:typeParam,
       item:nameParam,
-      data:dateParam,
+      date:dateParam,
       unitCost:unitCostParam,
       units:unitsParam,
       totalCost:totalCostParam,
