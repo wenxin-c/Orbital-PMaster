@@ -9,19 +9,19 @@ const app = express(); // create express app
 app.use(cors());
 app.use(express.json());
 
-// const db = mysql.createPool({
-// 	host:'us-cdbr-east-06.cleardb.net',
-//     user:'b94bbcf7e05710',
-//     password:'5dd2521b',
-//     database:'heroku_00e579b1950659a'
-// });
-
-const db = mysql.createConnection({
-	host     : 'localhost',
-	user     : 'root',
-	password : '000825',
-	database : 'nodelogin'
+const db = mysql.createPool({
+	host:'us-cdbr-east-06.cleardb.net',
+    user:'b94bbcf7e05710',
+    password:'5dd2521b',
+    database:'heroku_00e579b1950659a'
 });
+
+// const db = mysql.createConnection({
+// 	host     : 'localhost',
+// 	user     : 'root',
+// 	password : '000825',
+// 	database : 'nodelogin'
+// });
 
 app.post("/register",(req,res)=>{
 
@@ -389,12 +389,12 @@ app.post("/login", (req,res)=>{
 // 	app.use(express.static(path.join(__dirname, "/public")));
 // };
 
-app.use(express.static(path.join(__dirname, "../react-app/build")))
-// app.use(express.static(path.join(__dirname, "/public")));
+// app.use(express.static(path.join(__dirname, "../react-app/build")))
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname + '../react-app/build/index.html'))
-	// res.sendFile(path.join(__dirname + '/public/index.html'))
+	// res.sendFile(path.join(__dirname + '../react-app/build/index.html'))
+	res.sendFile(path.join(__dirname + '/public/index.html'))
   })
 
 
