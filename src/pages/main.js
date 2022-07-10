@@ -7,11 +7,18 @@ import MainContent from '../componentsMain/bodyMain.js'
 
 class MainPage extends React.Component{
     
+    
     render(){
-        
+
         return(
             <div>
-                <TopNavBar username={this.props.username}/>
+                <TopNavBar username={this.props.username}
+                setID={this.props.setID}
+                setUsername={this.props.setUsername}
+                setPassword={this.props.setPassword}
+                setDisplayStatus={this.props.setDisplayStatus}
+                setLoginStatus={this.props.setLoginStatus}
+                />
                 <MainContent 
                 tableCostTitle={this.props.tableCostTitle} 
                 tableCostContent={this.props.tableCostContent}

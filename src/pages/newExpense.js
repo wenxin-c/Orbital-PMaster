@@ -8,7 +8,13 @@ class NewExpense extends React.Component{
     render(){
         return(
             <div>
-                <TopNavBar username={this.props.username}/>
+                <TopNavBar username={this.props.username}
+                setID={this.props.setID}
+                setUsername={this.props.setUsername}
+                setPassword={this.props.setPassword}
+                setDisplayStatus={this.props.setDisplayStatus}
+                setLoginStatus={this.props.setLoginStatus}
+                />
                 <ExpenseBody totalCost={this.props.totalCost} setTotalCost={this.props.setTotalCost} tableCostContent={this.props.tableCostContent} setTableCostContent={this.props.setTableCostContent} id={this.props.id}/>
             </div>
             

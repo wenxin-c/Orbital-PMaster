@@ -1,4 +1,4 @@
-import React, {useState, useEffect}from 'react'
+import React, {useState}from 'react'
 import ReactDOM from 'react-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import MainPage from './pages/main.js'
@@ -128,6 +128,12 @@ function App() {
               setBudget={setBudget}
               totalDuration={totalDuration}
               setTotalDuration={setTotalDuration}
+              setID={setID}
+              setUsername={setUsername}
+              setPassword={setPassword}
+              setDisplayStatus={setDisplayStatus}
+              setLoginStatus={setLoginStatus}
+              
               />}/>
               <Route path='/main/expense' element={<NewExpense  
               username={username} 
@@ -136,6 +142,11 @@ function App() {
               setTableCostContent={setTableCostContent}
               totalCost={totalCost}
               setTotalCost={setTotalCost}
+              setID={setID}
+              setUsername={setUsername}
+              setPassword={setPassword}
+              setDisplayStatus={setDisplayStatus}
+              setLoginStatus={setLoginStatus}
               
               />}/>
               <Route path='/main/task' element={<NewTask 
@@ -143,12 +154,22 @@ function App() {
               id={id}
               tableTimeContent={tableTimeContent}
               setTableTimeContent={setTableTimeContent}
+              setID={setID}
+              setUsername={setUsername}
+              setPassword={setPassword}
+              setDisplayStatus={setDisplayStatus}
+              setLoginStatus={setLoginStatus}
               />}/>
               <Route path='/main/person' element={<NewPerson 
               username={username} 
               id={id}
               tableHRContent={tableHRContent}
               setTableHRContent={setTableHRContent}
+              setID={setID}
+              setUsername={setUsername}
+              setPassword={setPassword}
+              setDisplayStatus={setDisplayStatus}
+              setLoginStatus={setLoginStatus}
               />}/>
             </Routes>
           </header>

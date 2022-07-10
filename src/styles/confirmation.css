@@ -1,0 +1,39 @@
+.confirmationBox{
+    position:fixed;
+    left:0;
+    top:0;
+    background-color:rgba(0,0,0,0.5);
+    width:100%;
+    height:100vh;
+}
+
+.confirmation{
+    position:relative;
+    width:40%;
+    height:170px;
+    background-color:#fffcf1;
+    border:1px solid #999;
+    border-radius:4px;
+    margin-top:95px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:25px;
+    overflow:auto;
+}
+.confirmation .options{
+    margin-top:15px;
+}
+.confirmation button{
+    margin-left: 10px;
+}
+.confirmation span{
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size:25px;
+    margin-top:15px;
+}
+
+.confirmation .options .btn{
+    height:35px;
+    width:70px;
+}
+

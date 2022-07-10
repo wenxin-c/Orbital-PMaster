@@ -8,7 +8,13 @@ class NewTask extends React.Component{
     render(){
         return(
             <div>
-                <TopNavBar username={this.props.username}/>
+                <TopNavBar username={this.props.username}
+                setID={this.props.setID}
+                setUsername={this.props.setUsername}
+                setPassword={this.props.setPassword}
+                setDisplayStatus={this.props.setDisplayStatus}
+                setLoginStatus={this.props.setLoginStatus}
+                />
                 <TaskContent tableTimeContent={this.props.tableTimeContent} setTableTimeContent={this.props.setTableTimeContent} id={this.props.id}/>
             </div>
         );

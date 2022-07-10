@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDOM from 'react-dom'
 import "bootstrap/dist/css/bootstrap.min.css";
 import {FaUser, FaBars} from "react-icons/fa";
+import Confirmation from './../componentsCommon/confirmation.js'
 
-function TopNavBar  (username)  {
-  console.log(username);
+
+function TopNavBar  (props)  {
+  console.log(props);
+  const [confirmDisplayStatus, setConfirmDisplayStatus]=useState("none");
+ 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{position:'fixed', top:'0',left:'0', width:'100%', borderBottom:'0.5px solid #d0c9c9'}}>
       
@@ -17,8 +21,19 @@ function TopNavBar  (username)  {
       </a>
       <div style={{position:'absolute', right:'80px',top:'15px'}}>
         <FaUser/>
-        <span style={{marginLeft:'10px', display:'inline'}}>{username.username}</span>
+        <span style={{marginLeft:'10px', display:'inline'}}>{props.username}</span>
       </div>
+      <span style={{position:'absolute', right:'14px', top:'15px', fontSize:'16px', borderLeft:'1px solid black', paddingLeft:'5px', color:'black', cursor:'pointer'}} onClick={()=>{setConfirmDisplayStatus("block")}}>
+        Logout
+      </span>
+      <Confirmation 
+      confirmDisplayStatus={confirmDisplayStatus}
+      setConfirmDisplayStatus={setConfirmDisplayStatus}
+      setID={props.setID} 
+      setUsername={props.setUsername} 
+      setPassword={props.setPassword} 
+      setLoginStatus={props.setLoginStatus}
+      setDisplayStatus={props.setDisplayStatus}/>
     </nav>
   );
 };
