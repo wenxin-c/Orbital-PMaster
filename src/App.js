@@ -19,7 +19,7 @@ function App() {
   const [tableCostTitle,setTableCostTitle]=useState(['Item Type','Item','Date','Unit Cost/unit','Units','Total Cost']);
   const [tableCostContent, setTableCostContent] = useState([]);
 
-  const [tableTimeTitle, setTableTimeTitle]=useState([ 'Task Name','Task Description','People involved','Prerequisite Task','Duration(with Date)', 'Remark']);
+  const [tableTimeTitle, setTableTimeTitle]=useState([ 'Task Name','Task Description','People involved','Prerequisite Task','Date', 'Remark']);
   const [tableTimeContent, setTableTimeContent] = useState([]);
 
   const [tableHRTitle, setTableHRTitle]=useState([ 'Name','IC Number','Phone Number','E-mail','Department','Role']);

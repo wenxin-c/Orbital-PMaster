@@ -8,6 +8,7 @@ class ExpenseContent extends React.Component{
         buttonPopup:'none',
     }
 
+
     render(){
     
         return(
@@ -36,7 +37,7 @@ class ExpenseContent extends React.Component{
                         </div> 
                         <div className='totalCost'>
                             <label>{this.props.expenseState.info6}</label>
-                            <textarea placeholder='Please input your response.' onChange={this.props.onValue6} defaultValue=""></textarea>
+                            <textarea placeholder='Please input your response.' onClick={()=>{this.props.calculateTotalCost()}} value={this.props.content6} defaultValue=""></textarea>
                         </div>
                     
                 </div>

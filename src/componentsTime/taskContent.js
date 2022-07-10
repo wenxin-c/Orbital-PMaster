@@ -50,8 +50,8 @@ class TaskContent extends React.Component{
                                 <input className='info' placeholder='Please enter people involved in the task.' onChange={(event)=>{this.setState({content3:event.target.value})}}></input>
                                 <label>Prerequisite Task</label>
                                 <input className='info' placeholder='Please enter the prerequisite task (if any).' onChange={(event)=>{this.setState({content4:event.target.value})}}></input>
-                                <label>Duration(with Date)</label>
-                                <input className='info' placeholder='Please enter the duration of the task.' onChange={(event)=>{this.setState({content5:event.target.value})}}></input>
+                                <label>Date</label>
+                                <input className='info' type='date' placeholder='Please enter the date of the task.' onChange={(event)=>{this.setState({content5:event.target.value})}}></input>
                                 <label>Remarks</label>
                                 <textarea className='info' placeholder='Please enter remarks (if any).' onChange={(event)=>{this.setState({content6:event.target.value})}}></textarea>
                             </fieldset>
