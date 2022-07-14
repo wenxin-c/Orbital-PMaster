@@ -1,5 +1,0 @@
-export function EmailValidity(email) 
-{
-
-}
-
