@@ -15,7 +15,7 @@ class NewTask extends React.Component{
                 setDisplayStatus={this.props.setDisplayStatus}
                 setLoginStatus={this.props.setLoginStatus}
                 />
-                <TaskContent tableTimeContent={this.props.tableTimeContent} setTableTimeContent={this.props.setTableTimeContent} id={this.props.id}/>
+                <TaskContent tableTimeContent={this.props.tableTimeContent} setTableTimeContent={this.props.setTableTimeContent} tableHRContent={this.props.tableHRContent} id={this.props.id}/>
             </div>
         );
     }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import './../styles/taskContent.css'
 import Heading from '../componentsCommon/headingContent.js'
 import { TableTaskIncrement} from './../functions/tableIncrement.js'
+import SelectPeople from './../componentsCommon/select.js';
 
 class TaskContent extends React.Component{
     state={
@@ -47,7 +48,11 @@ class TaskContent extends React.Component{
                                 <label>Task Description</label>
                                 <textarea className='info' placeholder='Please enter task description.' onChange={(event)=>{this.setState({content2:event.target.value})}}></textarea>
                                 <label>People Involved</label>
-                                <input className='info' placeholder='Please enter people involved in the task.' onChange={(event)=>{this.setState({content3:event.target.value})}}></input>
+                                <input className='info' placeholder='Please enter/choose people involved.' onChange={(event)=>{this.setState({content3:event.target.value})}}></input>
+                                {/* <select className='info' multiple={true} value={['B', 'C']} placeholder='Please enter/choose people involved.' onChange={(event)=>{this.setState({content3:event.target.value})}}>
+                                    {this.props.tableHRContent.map(hr=><option key={hr.name}>{hr.name}</option>)}
+                                </select> */}
+                                {/* <SelectPeople tableHRContent={this.props.tableHRContent} handleChange={(event)=>{this.setState({content3:event.target.value})}}/> */}
                                 <label>Prerequisite Task</label>
                                 <input className='info' placeholder='Please enter the prerequisite task (if any).' onChange={(event)=>{this.setState({content4:event.target.value})}}></input>
                                 <label>Date</label>

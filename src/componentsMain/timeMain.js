@@ -4,6 +4,10 @@ import './../styles/input.css'
 import TableTime from './tableTime.js'
 import InputBoxDuration from '../componentsCommon/inputBoxDuration.js'
 import {HandleClickControlDisplay} from './../functions/handleStyle.js'
+import TimeLine from './../componentsCommon/timeline.js'
+import {SortDate} from './../functions/sortDate.js'
+import { Timeline } from 'antd';
+import './../styles/timeline.css'
 
 import {
     Link,
@@ -23,9 +27,20 @@ class TimeManagement extends React.Component{
         Axios.post('/getTask',{
             id:this.props.id,
         }).then((response)=>{
-            // console.log(response);
+            console.log(response);
             if(response.data.length>0){
-           this.props.setTableTimeContent(response.data);
+            for (let i = 0; i < response.data.length; i++) {
+                response.data[i].duration=new Date(response.data[i].duration);
+                // response.data[i].duration=response.data[i].duration.duration;
+                // console.log(response.data[i].duration)
+                response.data = SortDate(response.data);
+            }
+            for (let j=0; j<response.data.length; j++){
+                let dateString = response.data[j].duration.toString();
+                response.data[j].duration=dateString;
+            }
+            console.log(response.data);
+            this.props.setTableTimeContent(response.data);
             }
         })
     }
@@ -69,6 +84,13 @@ class TimeManagement extends React.Component{
                     <Link to='task' className='btn btn1'>Add New</Link>  
                     <button onClick={()=>{this.setState({buttonStatus:HandleClickControlDisplay(this.state.buttonStatus)});}} className='btn '>Delete</button>
                 </div>  
+                <div className='timeline'>
+                    <Timeline>
+                        <span className='title'>Time Line</span>
+                        {this.props.tableTimeContent.map(timelineData=><TimeLine timelineData={timelineData}/>)}
+                    </Timeline>
+                </div>
+                
             </div>
         );
     }
