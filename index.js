@@ -285,8 +285,8 @@ app.post("/deleteTask", (req,res)=>{
 	const remark = req.body.remark;
 	const id = req.body.id;
 
-	db.query("DELETE FROM task WHERE taskName=? AND taskDescription=? AND peopleInvolved=? AND prerequisiteTask=? AND duration=? AND remark=? AND id=?",
-	[taskName, taskDescription, peopleInvolved, prerequisiteTask, duration, remark, id],
+	db.query("DELETE FROM task WHERE taskName=? AND taskDescription=? AND peopleInvolved=? AND prerequisiteTask=? AND  remark=? AND id=?",
+	[taskName, taskDescription, peopleInvolved, prerequisiteTask, remark, id],
 	(err,result)=>{
 		if(err){
 			res.send({err:err});
