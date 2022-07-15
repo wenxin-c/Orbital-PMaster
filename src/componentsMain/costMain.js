@@ -83,9 +83,9 @@ class CostManagement extends React.Component{
                 buttonStatus={this.state.buttonStatus}/>
                 <div style={{width:'100%'}} className='buttonMargin'>
                     <div style={{width:'auto', display:'inline-block', marginLeft:'5px'}}>
-                        <span className="figures" >Total cost: {this.props.totalCost}</span>
+                        <span className="figures" >Total cost $: {this.props.totalCost}</span>
                     
-                        <span className="figures">Amount of money remaining: {this.props.budget - this.props.totalCost}</span>
+                        <span className="figures">Amount of money remaining $: {this.props.budget - this.props.totalCost}</span>
                         
                     </div>
                     
