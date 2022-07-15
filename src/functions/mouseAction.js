@@ -49,7 +49,3 @@ export function ClickSaveDuration(event, duration, id){
 
     return true;
 }
-
-export function ClickToAddTable(){
-    
-}

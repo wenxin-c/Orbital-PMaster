@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './../styles/inputBox.css'
-import SaveEditButton from './save_edit'
+import SaveEditButton from './saveEdit.js'
 import {ClickEdit, ClickSaveDuration} from '../functions/mouseAction.js'
 import {HandleInput} from './../functions/handleInput.js'
 
