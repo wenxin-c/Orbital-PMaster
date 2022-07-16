@@ -9,12 +9,21 @@ const app = express(); // create express app
 app.use(cors());
 app.use(express.json());
 
+// Setting up backend server
+// Setup API that communicate and send data between frontend and backend
+// Connect to database
+// Backend server use query to add/delete/retrieve/manipulate data in database
+
+// Production database
+
 // const db = mysql.createPool({
 // 	host:'us-cdbr-east-06.cleardb.net',
 //     user:'b94bbcf7e05710',
 //     password:'5dd2521b',
 //     database:'heroku_00e579b1950659a'
 // });
+
+// Local database
 
 const db = mysql.createConnection({
 	host     : 'localhost',
@@ -23,6 +32,9 @@ const db = mysql.createConnection({
 	database : 'nodelogin'
 });
 
+// Backend API
+
+// register, insert user input into database
 app.post("/register",(req,res)=>{
 
 	const username = req.body.username;
@@ -35,6 +47,7 @@ app.post("/register",(req,res)=>{
 	);
 })
 
+// insert new cost items into database table cost
 app.post("/addCost",(req,res)=>{
 	const itemType = req.body.itemType;
 	const item = req.body.item;
@@ -56,6 +69,7 @@ app.post("/addCost",(req,res)=>{
 	});
 })
 
+//insert new tasks into database table task
 app.post("/addTask",(req,res)=>{
 	const taskName = req.body.taskName;
 	const taskDescription = req.body.taskDescription;
@@ -77,6 +91,7 @@ app.post("/addTask",(req,res)=>{
 	});
 })
 
+// insert new personnel information into table hr
 app.post("/addHR",(req,res)=>{
 	const name = req.body.name;
 	const ic = req.body.ic;
@@ -98,6 +113,7 @@ app.post("/addHR",(req,res)=>{
 	});
 })
 
+//save summary content into database table summary
 app.post("/addSummary",(req,res)=>{
 	const issue = req.body.issue;
 	const solution = req.body.solution;
@@ -118,6 +134,7 @@ app.post("/addSummary",(req,res)=>{
 	});
 })
 
+//save budget input into database table budgetplan
 app.post("/addBudget", (req,res)=>{
 	const budget = req.body.budget;
 	const id = req.body.id;
@@ -135,6 +152,7 @@ app.post("/addBudget", (req,res)=>{
 	});
 })
 
+//save duration input into database table durationPlan
 app.post("/addDuration", (req,res)=>{
 	const duration = req.body.duration;
 	const id = req.body.id;
@@ -152,6 +170,7 @@ app.post("/addDuration", (req,res)=>{
 	});
 })
 
+//retrieve all cost items that belong to a particular id and send to frontend to generate cost table
 app.post("/getCost", (req,res)=>{
 	const id = req.body.id;
 
@@ -167,6 +186,7 @@ app.post("/getCost", (req,res)=>{
 	})
 })
 
+// retrieve all tasks that belong to a particular id and send to frontend to generate task table
 app.post("/getTask", (req,res)=>{
 	const id = req.body.id;
 	db.query("SELECT taskname, taskdescription, peopleinvolved, prerequisitetask, duration, remark FROM task WHERE id=?",
@@ -181,6 +201,7 @@ app.post("/getTask", (req,res)=>{
 	})
 })
 
+// retrieve all personnel information that belong to a particular id and send to frontend to generate human resource table
 app.post("/getHR", (req,res)=>{
 	const id = req.body.id;
 	db.query("SELECT name, ic, phonenumber, email, department, role FROM hr WHERE id=?",
@@ -195,6 +216,7 @@ app.post("/getHR", (req,res)=>{
 	})
 })
 
+// retrieve summary content from database and send to frontend for display
 app.post("/getSummary", (req,res)=>{
 	const id = req.body.id;
 	db.query("SELECT issue, solution, stakeholders, outcome FROM summary WHERE id=?",
@@ -209,6 +231,7 @@ app.post("/getSummary", (req,res)=>{
 	})
 })
 
+// retrieve budget from database and send to frontend for display
 app.post("/getBudget", (req,res)=>{
 	const id = req.body.id;
 	db.query("SELECT budget FROM budgetplan WHERE id=?",
@@ -223,6 +246,7 @@ app.post("/getBudget", (req,res)=>{
 	})
 })
 
+//calculate the total cost of all the cost items and send to frontend for display
 app.post("/getTotalCost", (req,res)=>{
 	const id = req.body.id;
 	db.query(" SELECT SUM(totalcost) AS totalCost FROM cost WHERE id=?",
@@ -237,6 +261,7 @@ app.post("/getTotalCost", (req,res)=>{
 	})
 })
 
+// retrieve total duration of the project from database and send to frontend for display
 app.post("/getDuration", (req,res)=>{
 	const id = req.body.id;
 	db.query("SELECT duration FROM durationplan WHERE id=?",
@@ -253,6 +278,7 @@ app.post("/getDuration", (req,res)=>{
 	})
 })
 
+// delete a row of cost item from database table cost
 app.post("/deleteCost", (req,res)=>{
 	const itemType = req.body.itemType;
 	const item = req.body.item;
@@ -276,6 +302,7 @@ app.post("/deleteCost", (req,res)=>{
 	});
 })
 
+// delete a row of activity from database table task
 app.post("/deleteTask", (req,res)=>{
 	const taskName = req.body.taskName;
 	const taskDescription = req.body.taskDescription;
@@ -297,6 +324,7 @@ app.post("/deleteTask", (req,res)=>{
 	});
 })
 
+// delete a row of personnel information from database table hr
 app.post("/deleteHR", (req,res)=>{
 	const name = req.body.name;
 	const ic = req.body.ic;
@@ -318,6 +346,7 @@ app.post("/deleteHR", (req,res)=>{
 	});
 })
 
+// get unit cost of selected types of items
 app.post("/getDetail", (req,res)=>{
 	const userInput = req.body.userInput;
 	
@@ -333,34 +362,9 @@ app.post("/getDetail", (req,res)=>{
 		}
 	})
 })
-// app.get("/api/login/:username/:password", async(req,res)=>{
-//     try {
-//         const username = req.params.username;
-// 		const password = req.params.password;
-//         await db.query("SELECT * FROM accounts WHERE username=? and password=?", 
-//         [username, password],
-// 		(err,result)=>{
-// 			if(err){
-// 				console.log(err)
-// 				res.send({err:err});
-// 			}
-// 			if(result.length>0){
-// 				res.send(result)
-// 			}else{
-// 				res.send({message:"Wrong username or password, please try again!"})
-// 			}
-// 			// if(result){
-// 			// 	console.log(result);
-// 			// }
-// 		}
-//         );
-// 		// console.log(username);
-// 		// console.log(password);
-//     } catch (error) {
-//         console.error(error.message);
-//     }
-// });
 
+// login, check whether user input can match information in the database
+// if matches, this account exists, otherwise, this account doesn't exist
 app.post("/login", (req,res)=>{
 	const username = req.body.username;
 	const password = req.body.password;
@@ -381,13 +385,7 @@ app.post("/login", (req,res)=>{
 	);
 })
 
-// app.post('/main',(req, respond, next) => {
-// 	respond.sendFile(path.join(__dirname, "/public", "index.html"));
-// 	// respond.sendFile(path.join(__dirname, "..", "build", "index.html"));
-//  });
-// if(process.env.NODE_ENV === "production"){
-// 	app.use(express.static(path.join(__dirname, "/public")));
-// };
+// server static react files to frontend
 
 app.use(express.static(path.join(__dirname, "../react-app/build")))
 // app.use(express.static(path.join(__dirname, "/public")));
