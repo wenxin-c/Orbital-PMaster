@@ -69,8 +69,6 @@ class Login extends React.Component{
                             <input onChange={(event)=>{this.props.changePassword(event)}} type="password" name="password" placeholder="Password" id="passwordLog" required/>
                         </div>  
                         <div id="button" class="row">
-                            {/* <button>Log in</button> */}
-                            {/* <Link to='main' className='btn'>Log in</Link> */}
                             <input onClick={(event)=>this.props.login(event)} className='btn' type="submit" value="Login"></input>
                         </div>
                         <div className='login row' >
@@ -79,10 +77,6 @@ class Login extends React.Component{
                         </div>
                     </form>
                 </div>
-                {/* <div className='login' >
-                    <h1>{this.props.loginStatus}</h1>     
-                        <Link to='/main' className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>   
-                </div> */}
             </div>
         );
     }
