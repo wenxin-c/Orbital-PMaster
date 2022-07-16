@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# README
+## Project Name: 
+PMaster
+## Member: 
+Chen Wenxin, See Zhuo Rui Jorelle
+## Product link: 
+https://orbital-pmaster-backend.herokuapp.com/
+## Project motivation: 
+Project management is a practice as old as human culture. No matter the discipline, students cannot avoid project management. We found that lots of people have great project ideas, but are completely clueless about how to start a project, allowing their ideas to go to waste. We thus decided to create an app to help students/budding entrepreneurs get started and provide guidance for the process, using a proven project management framework developed by professors from Singapore’s leading university. As such, users can manage their project process more effectively and systematically
+## Target group:
+Students/budding entrepreneurs who have ideas and plan to start on real-world projects. 
+## Product description and usage guide:
+To create a web application which can help users construct their ideas, carry out and keep track of their project progress. 
+This application consists of various features and four parts of content, namely a summary of the identified issue, cost management, task management and human resource management. These are main pillars of project management. 
+### Login and Logout
+For first time users, you can register an account using their email. 
+After creating an account, you can proceed to login. 
+At any point of the web app, you can click on Logout at top right corner to logout. 
+### Side Navigation Bar
+You can use the side navigation bar on the left to navigate the different sections of the app. 
+### Summary 
+For the summary, users are expected to indicate the issue identified, their solutions, stakeholders involved and expected outcome. This is to mark the scope of users' projects, help users to keep in mind of the aim of their projects and help and serve as a reminder for users to make decisions that align with the main aim of their projects.
+### Cost Management 
+This section is to help users manage their project cost and budget. Users can input their initial budget for the project and are able to update it along the way. It also consists of a cost table in which users can add in newly purchased items and delete outdated/wrong items. We are aware that many users might not be very clear of the unit cost of the items they want to purchase. Our app provides users with a database in which they can search for the unit cost of many items they are interested in. This is to help them plan and allocate project budgets better. The total cost of all items in the table will be calculated automatically. Based on the total budget and total cost, the amount of remaining budget will be calculated. This is to help users monitor their spendings and keep their spendings within their budget. 
+### Time Management
+This section is to help users monitor the entire progress of their projects and help them complete their projects on time. This section also consists of a time table in which users can add in or delete activities/tasks. These activities will be automatically arranged in chronological order to and a timeline will also be automatically generated to make activities more organised and help users visualise the sequence of their activities better.  
+### Human Resource Management
+This section contains a human resource table to record down relevant personnel involved in the project and making human resource management more organised. 
+## Technical set:
+Front-end: HTML, CSS, Javascript, ReactJS
+Back-end: NodeJS, ExpressJS
+Database: MySQL
+Deployment flatform: Heroku
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
