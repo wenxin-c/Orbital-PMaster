@@ -3,12 +3,26 @@ import ReactDOM from 'react-dom'
 import './../styles/popup.css'
 import Axios from 'axios'
 
+/**
+ * @file: popup.js
+ * @author: wenxin
+ * 
+ * Popup window that allow users to search for unit cost of interested items. 
+ * 
+ * @return react-dom
+ */
 class Popup extends React.Component{
     state={
         userInput:'',
         tableTitle:['item type', 'item name', 'unit cost'],
         tableContent:[]
     }
+    
+    /**
+     * This function is called upon clicking on submit button. 
+     * A backend post request api with route /getDetail is called.
+     * User input(item type/name) is passed to backend and relevant data is selected and sent to frontend. 
+     */
     
     getUnitCost=(event)=>{
         event.preventDefault()

@@ -5,8 +5,18 @@ import SummaryContent from './summaryContent.js'
 import SaveEditButton from '../componentsCommon/saveEdit.js'
 import {ClickEdit, ClickSave} from './../functions/mouseAction.js'
 import {HandleSummaryInput} from './../functions/summary.js'
-// import Axios from 'axios'
 const Axios = require('axios').default;
+
+/**
+ * @file: summaryMain.js
+ * @author: wenxin
+ * 
+ * This is the summary section of the main page. 
+ * It contains four input sections with a few props for users to answer. 
+ * There are two buttons for users to edit and save their answers. 
+ * 
+ * @return: react-dom
+ */
 
 class Summary extends React.Component{
     state={
@@ -25,6 +35,12 @@ class Summary extends React.Component{
         content7:"",
         content8:""
     }
+
+    /**
+     * This function is called once when the web page first mount. 
+     * A backend post request api with route /getSummary is called. 
+     * ID is passed to backend and summary content belong to this ID is passed to frontend and newest updated one is displayed. 
+     */
 
     getData=(event)=>{
         // event.preventDefault();

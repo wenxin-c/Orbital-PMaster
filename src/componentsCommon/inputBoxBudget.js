@@ -5,6 +5,15 @@ import SaveEditButton from './saveEdit.js'
 import {ClickEdit, ClickSaveBudget} from '../functions/mouseAction.js'
 import {HandleInput} from './../functions/handleInput.js'
 
+/**
+ * @file: inputBoxBudget.js
+ * @author: wenxin
+ * 
+ * Input section for total budget of the project. 
+ * 
+ * @return react-dom
+ */
+
 class InputBoxBudget extends React.Component{
     state={
         disabled:false,     
@@ -13,8 +22,6 @@ class InputBoxBudget extends React.Component{
         userInput:'',
         inputType:'number',
     }
-    
-    
 
     render(){
 

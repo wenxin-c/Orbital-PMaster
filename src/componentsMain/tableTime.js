@@ -6,6 +6,15 @@ import {TableTaskDelete} from './../functions/tableDelete.js'
 
 class TableTime extends React.Component{
 
+  /**
+ * @file: tableTime.js
+ * @author: wenxin
+ * 
+ * This is the task/activity table. 
+ * Users can add new tasks into the table/delete existing tasks from the table. 
+ * 
+ * @return react-dom
+ */
     render(){
         return(
           <div className="table">

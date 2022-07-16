@@ -5,7 +5,23 @@ import DeleteButton from '../componentsCommon/deleteButton.js'
 import {TableCostDelete} from './../functions/tableDelete.js'
 import Axios from 'axios'
 
+/**
+ * @file: tableCost.js
+ * @author: wenxin
+ * 
+ * This is the cost table. 
+ * Users can add new items into the table/delete existing items from the table. 
+ * 
+ * @return react-dom
+ */
+
 class TableCost extends React.Component{
+
+  /**
+   * This function is called when an item is deleted from the table. 
+   * A backend post request api with route /getTotalCost is called. 
+   * ID is passed to backend and total cost of all items that belong to this ID is calculated and passed to frontend. 
+   */
 
   getTotalCost=(event)=>{
     event.preventDefault();

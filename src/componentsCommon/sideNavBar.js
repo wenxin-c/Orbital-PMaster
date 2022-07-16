@@ -5,6 +5,15 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import {MouseUp, MouseDown} from './../functions/mouseAction.js'
 import {HandleFontWeight} from './../functions/handleStyle.js'
 
+/**
+ * @file: sideNavBar.js
+ * @author: wenxin
+ * 
+ * Side navigation bar for users to navigate to different sections of the main page. 
+ * 
+ * @return react-dom
+ */
+
 class SideNavBar extends React.Component{
    state={
         selected:null,

@@ -6,6 +6,17 @@ import CostManagement from './costMain.js'
 import TimeManagement from './timeMain.js'
 import HRManagement from './hrMain.js'
 
+/**
+ * @file: bodyMain.js
+ * @author: wenxin
+ * 
+ * The main body of the main page. 
+ * It contains a side navigation bar to allow users to navigate to different parts of the page. 
+ * The main content has four sections: summary, cost management, task management and human resource management. 
+ * Each of the section is a component. 
+ * 
+ * @return: react-dom
+ */
 
 class MainContent extends React.Component{
     state={

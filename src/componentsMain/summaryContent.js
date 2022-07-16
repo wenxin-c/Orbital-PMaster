@@ -2,6 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './../styles/summaryMain.css'
 
+/**
+ * @file: summaryContent.js
+ * @author: wenxin
+ * 
+ * This is the input part of the summary section. 
+ * It is called and used several times in the summary section. 
+ * It contains an input box and a box used to display the newest updated answer. 
+ * 
+ * @return: react-dom
+ */
 
 class SummaryContent extends React.Component{
     render(){

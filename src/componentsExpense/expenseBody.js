@@ -6,6 +6,16 @@ import ExpenseContent from './expenseContent.js'
 import {TableCostIncrement} from './../functions/tableIncrement.js'
 import Axios from 'axios'
 
+/**
+ * @file: expenseBody.js
+ * @author: wenxin
+ * 
+ * This is the main body of the new expense page. 
+ * It contains two parts: Heading and ExpenseBody. 
+ * 
+ * @return react-dom
+ */
+
 class ExpenseBody extends React.Component{
     state={
         title:'New Expense Item',
@@ -25,10 +35,19 @@ class ExpenseBody extends React.Component{
 
     }
 
+    /**
+     * Total cost = unit cost * units
+     */
     calculateTotalCost = () =>{
         this.setState({content6:this.state.content4*this.state.content5});
         console.log('hello'+this.state.content6);
     }
+
+    /**
+     * This function is called when a new item is added into the table. 
+     * A backend post request api with route /getTotalCost is called. 
+     * ID is passed to backend and total cost of all items that belong to this ID is calculated and passed to frontend. 
+     */
 
     getTotalCost=(event)=>{
         // event.preventDefault();
@@ -56,8 +75,6 @@ class ExpenseBody extends React.Component{
             zIndex:'-1'
            }
 
-           
-        
         return(
             <div style={styles}>
                 <div style={{marginBottom:'80px', marginTop:'20px', marginLeft:'75px', marginRight:'75px', width:'calc(100vw - 150px)'}} className='contentWrapper'>

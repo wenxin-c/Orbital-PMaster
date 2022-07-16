@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom'
 import { Timeline } from 'antd';
 import './../styles/timeline.css'
 
+/**
+ * @file: timeline.js
+ * @author: wenxin
+ * 
+ * Timeline generated from task table in chrnological order. 
+ * 
+ * @return react-dom
+ */
+
 class TimeLine extends React.Component{
     render(){
         return(

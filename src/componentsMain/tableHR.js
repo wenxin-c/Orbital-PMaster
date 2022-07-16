@@ -4,6 +4,16 @@ import './../styles/tableMain.css'
 import DeleteButton from '../componentsCommon/deleteButton.js'
 import {TableHRDelete} from './../functions/tableDelete.js'
 
+/**
+ * @file: tableHR.js
+ * @author: wenxin
+ * 
+ * This is the human reousrce table. 
+ * Users can add new personnel information into the table/delete existing information from the table. 
+ * 
+ * @return react-dom
+ */
+
 class TableHR extends React.Component{
 
     render(){

@@ -2,6 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './../styles/infoContent.css'
 
+/**
+ * @file: infoContent.js
+ * @author: wenxin
+ * 
+ * This is the main content of the adding new cost items. 
+ * There are a few prompts and input boxes to allow users to input their answers. 
+ * These user inputs will be collected and saved into database. 
+ * 
+ * @return: react-dom
+ */
+
 class ExpenseContent extends React.Component{
     state={
         buttonPopup:'none',

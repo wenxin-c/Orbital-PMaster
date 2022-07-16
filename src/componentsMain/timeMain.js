@@ -15,12 +15,28 @@ import {
 // import Axios from 'axios' ;
 import Axios from 'axios'
 
+/**
+ * @file: timeMain.js
+ * @author: wenxin
+ * 
+ * This is the time management section. 
+ * It contains three main parts: input section, task table and timeline. 
+ * 
+ * @return react-dom
+ */
+
 class TimeManagement extends React.Component{
     state={
         
         buttonStatus:'none',
         // table:[],
     }
+
+    /**
+     * This function is called when the web page mounts. 
+     * A backend post request api with route /getTask is called. 
+     * ID is passed to backend and all tasks that belong to this ID is sent to frontend to generate task table. 
+     */
 
     getData=(event)=>{
         // event.preventDefault();
@@ -44,6 +60,12 @@ class TimeManagement extends React.Component{
             }
         })
     }
+
+    /**
+     * This function is called when the web page mounts. 
+     * A backend post request api with route /getDuration is called. 
+     * ID is passed to backend and the total duration that belong to this ID is sent to frontend. 
+     */
 
     getTotalDuration=(event)=>{
         // event.preventDefault();

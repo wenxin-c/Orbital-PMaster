@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom'
 import './../styles/expenseContent.css'
 import Popup from './../componentsCommon/popup.js'
 
+/**
+ * @file: expenseContent.js
+ * @author: wenxin
+ * 
+ * This is the main body of the add new cost page.
+ * It containes a few input boxes and prompts for users to input their answers. 
+ * It contains a popup window for users to search for unit cost of items they are interested in. 
+ * 
+ * @return react-dom
+ */
+
 class ExpenseContent extends React.Component{
     state={
         buttonPopup:'none',
     }
-
 
     render(){
     

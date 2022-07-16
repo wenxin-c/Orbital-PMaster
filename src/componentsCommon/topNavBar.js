@@ -4,7 +4,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {FaUser, FaBars} from "react-icons/fa";
 import Confirmation from './../componentsCommon/confirmation.js'
 
-
+/**
+ * @file: topNavBar.js
+ * @author: wenxin
+ * 
+ * This is the top navigation bar of all pages. 
+ * It contains a few icons and the logout button(a confirmation window will popup on click)
+ * 
+ * @param {in} props 
+ * @returns react-dom
+ */
 function TopNavBar  (props)  {
   console.log(props);
   const [confirmDisplayStatus, setConfirmDisplayStatus]=useState("none");

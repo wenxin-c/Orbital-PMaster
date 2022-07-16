@@ -2,6 +2,17 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './../styles/input.css'
 
+/**
+ * @file: saveEdit.js
+ * @author: wenxin
+ * 
+ * Two buttons
+ * Save: save user input into database and disable input for input boxes after saving. 
+ * Edit: enable input for input boxes
+ * 
+ * @return react-dom
+ */
+
 class SaveEditButton extends React.Component{
     render(){
         return(

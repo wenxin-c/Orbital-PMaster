@@ -10,6 +10,17 @@ import Login from "./pages/login.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Axios from "axios";
 
+/**
+ * @file: App.js
+ * @author: wenxin
+ * 
+ * This is the main app function of the react project. 
+ * This is the component that will be rendered, all other components are within this component. 
+ * It contains several react routes: login, mainpage, newexpense, newtask, newperson
+ * 
+ * @returns react-dom
+ */
+
 function App() {
   const [tableCostTitle, setTableCostTitle] = useState([
     "Item Type",
@@ -74,6 +85,16 @@ function App() {
     setPassword(event.target.value);
   };
 
+  /**
+   * @file: App.js
+   * @author: wenxin
+   * 
+   * Upon clicking on register button, a backend post request api with route /register is called. 
+   * Data will be passed to backend and inserted into database. 
+   * 
+   * @param {in} event 
+   */
+  
   const register = (event) => {
     event.preventDefault();
     Axios.post("/register", {
@@ -83,6 +104,18 @@ function App() {
     });
   };
 
+  /**
+   * @file: App.js
+   * @author: wenxin
+   * 
+   * Upon clicking on login button, a backend post request api with rooute /login is called. 
+   * Data will be passed to backend. 
+   * If matching data is found in the database, the accounts exists and users can login. 
+   * Otherwise, the account does not exist and users cannot login. 
+   * 
+   * @param {in} event 
+   */
+  
   const login = (event) => {
     event.preventDefault();
     Axios.post("/login", {

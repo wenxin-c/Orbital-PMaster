@@ -5,6 +5,16 @@ import InfoContent from '../componentsPerson/infoContent.js'
 import {TablePersonIncrement} from './../functions/tableIncrement.js'
 import './../styles/personContent.css'
 
+/**
+ * @file: personContent.js
+ * @author: wenxin
+ * 
+ * This is the main body of the add new cost page. 
+ * It contains two components, namely Heading and InfoContent. 
+ * 
+ * @return: react-dom
+ */
+
 class PersonContent extends React.Component{
     state={
         title:'New Person',

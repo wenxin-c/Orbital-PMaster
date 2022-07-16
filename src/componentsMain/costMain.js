@@ -7,8 +7,17 @@ import {HandleClickControlDisplay} from './../functions/handleStyle.js'
 import {
     Link,
   } from "react-router-dom";
-// import Axios from 'axios'
 const Axios = require('axios').default;
+
+/**
+ * @file: costMain.js
+ * @author: wenxin
+ * 
+ * This is the cost management section. 
+ * It contains two main parts: an input section and a cost table.
+ * 
+ * @return react-dom
+ */
 
 class CostManagement extends React.Component{
     state={
@@ -18,6 +27,13 @@ class CostManagement extends React.Component{
         // arr:"",
     }
     
+    /**
+     * This function is called once when the web page mounts. 
+     * A backend post request api with route /getCost is called. 
+     * ID is passed to backend and all cost items belong to this ID is sent back to frontend and is used to generate the cost table. 
+     * 
+     */
+
     getData=(event)=>{
         // event.preventDefault();
         Axios.post('/getCost',{
@@ -31,6 +47,13 @@ class CostManagement extends React.Component{
         })
     }
     
+    /**
+     * This function is called once when the web page mounts. 
+     * A backend post request api with route /getBudget is called. 
+     * ID is passed to backend and budgets belong to this ID is sent back to frontend and the newest budget is displayed. 
+     *  
+     */
+
     getBudget=(event)=>{
         // event.preventDefault();
         Axios.post('/getBudget',{
@@ -44,6 +67,13 @@ class CostManagement extends React.Component{
             }
         })
     }
+
+      /**
+     * This function is called once when the web page mounts. 
+     * A backend post request api with route /getTotalCost is called. 
+     * ID is passed to backend and the total cost of all items that belong to this ID is calculated and sent back to frontend for display. 
+     * 
+     */
 
     getTotalCost=(event)=>{
         // event.preventDefault();

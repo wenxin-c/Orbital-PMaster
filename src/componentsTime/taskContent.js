@@ -5,6 +5,18 @@ import Heading from '../componentsCommon/headingContent.js'
 import { TableTaskIncrement} from './../functions/tableIncrement.js'
 import SelectPeople from './../componentsCommon/select.js';
 
+/**
+ * @file: taskContent.js
+ * @author: wenxin
+ * 
+ * This is the main content on the new task page. 
+ * It contains a heading and the main content. 
+ * There are a few prompts and input boxes in the main content to allow users to input their answers. 
+ * These user inputs will be collected and saved into database. 
+ * 
+ * @return: react-dom
+ */
+
 class TaskContent extends React.Component{
     state={
         title:'New Task',

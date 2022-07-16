@@ -6,9 +6,17 @@ import {HandleClickControlDisplay} from './../functions/handleStyle.js'
 import {
     Link,
   } from "react-router-dom";
-// import Axios from 'axios' ;
 const Axios = require('axios').default;
 
+/**
+ * @file: hrMain.js
+ * @author: wenxin
+ * 
+ * This is the human resource management section. 
+ * It mainly contains a human resource table with information of all personnels involved in the project. 
+ * 
+ * @return react-dom
+ */
 
 class HRManagement extends React.Component{
     state={
@@ -16,6 +24,12 @@ class HRManagement extends React.Component{
         table:[],
     }
 
+    /**
+     * This function is called once when the project mounts. 
+     * A backend post request api with route /getHR is called. 
+     * ID is passed to backend and all personnel information that belongs to this ID is sent back to frontend and is used to generate the human resource table. 
+     */
+    
     getData=(event)=>{
         // event.preventDefault();
         Axios.post('/getHR',{

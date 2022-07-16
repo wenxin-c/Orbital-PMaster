@@ -6,6 +6,18 @@ import {
     Link, Router
   } from "react-router-dom";
 
+  /**
+   * @file: confirmation.js
+   * @author: wenxin
+   * 
+   * Confirmation popup box upon clicking on logout button. 
+   * This is to allow users double check before logout and prevent them from logout accidentally. 
+   * NO: not logout
+   * Yes: logout
+   * 
+   * @return react-dom
+   */
+
 class Confirmation extends React.Component{
 
     render(){

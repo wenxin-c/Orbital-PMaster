@@ -5,6 +5,14 @@ import SaveEditButton from './saveEdit.js'
 import {ClickEdit, ClickSaveDuration} from '../functions/mouseAction.js'
 import {HandleInput} from './../functions/handleInput.js'
 
+/**
+ * @file: inputBoxDuration.js
+ * @author: wenxin
+ * 
+ * Input section for total duration of the project. 
+ * 
+ * @return react-dom
+ */
 class InputBoxDuration extends React.Component{
     state={
         disabled:false,
@@ -13,7 +21,6 @@ class InputBoxDuration extends React.Component{
         userInput:'',
         inputType:'text',
     }
-
 
     render(){
        
