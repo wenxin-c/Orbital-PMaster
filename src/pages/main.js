@@ -4,6 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import TopNavBar from '../componentsCommon/topNavBar.js'
 import MainContent from '../componentsMain/bodyMain.js'
 
+/**
+ * @file: main.js
+ * @author: wenxin
+ * 
+ * This is the frame of the main content page. 
+ * It contains two individual components, namely TopNavBar and MainContent. 
+ * 
+ * @return: react-dom
+ */
 
 class MainPage extends React.Component{
     

@@ -4,6 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import TopNavBar from '../componentsCommon/topNavBar.js'
 import ExpenseBody from './../componentsExpense/expenseBody.js'
 
+/**
+ * @file:newExpense.js
+ * @author: wenxin
+ * 
+ * This is a new page in which users can add new cost items. 
+ * It contains two individual components, namely TopNavBar and ExpenseBody. 
+ * 
+ * @return: react-dom
+ */
 class NewExpense extends React.Component{
     render(){
         return(

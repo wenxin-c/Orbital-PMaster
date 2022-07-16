@@ -4,6 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import TopNavBar from '../componentsCommon/topNavBar.js'
 import TaskContent from './../componentsTime/taskContent.js'
 
+/**
+ * @file:newTask.js
+ * @author: wenxin
+ * 
+ * This is a new page in which users can add new tasks/activities. 
+ * It contains two individual components, namely TopNavBar and TaskContent. 
+ * 
+ * @return: react-dom
+ */
 class NewTask extends React.Component{
     render(){
         return(

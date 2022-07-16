@@ -31,6 +31,7 @@ export function EmailValidity(email) {
  * 3. The password has as least 1 lowercase letter.
  * 4. The password has at least 1 digit.
  * 5. The password has at least 1 special character. 
+ * 
  * @param {in} password 
  * @returns true/false;
  */

@@ -8,10 +8,21 @@ import {
   } from "react-router-dom";
 import {EmailValidity,PasswordValidity} from '../functions/validityCheck.js'
 
+/**
+ * @file: login.js
+ * @author: wenxin
+ * 
+ * This is login and signin component. 
+ * This is the first page users will see. 
+ * 
+ * @return react-dom
+ */
+
 class Login extends React.Component{
     state={
         passwordCheck:''
       }
+
       renderPasswordCheck = () =>{
         return (
         <div className="passwordReq" >
@@ -26,9 +37,11 @@ class Login extends React.Component{
             5. The password has at least 1 special character. 
         </div>)
       }
+
       handleLeave=()=>{
         return this.setState({passwordCheck:''})
       }
+
       handleHover=()=>{
         return this.setState({passwordCheck:this.renderPasswordCheck()})
       }
