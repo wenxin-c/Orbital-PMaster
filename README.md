@@ -31,3 +31,6 @@ Front-end: HTML, CSS, Javascript, ReactJS
 Back-end: NodeJS, ExpressJS
 Database: MySQL
 Deployment flatform: Heroku
+## Github 
+The main branch contains react build content for production inside public folder and backend scripts in index.js. 
+The detailed frontend react script is in frontend branch. 
