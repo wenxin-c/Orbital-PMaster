@@ -6,6 +6,7 @@ import InputBoxDuration from '../componentsCommon/inputBoxDuration.js'
 import {HandleClickControlDisplay} from './../functions/handleStyle.js'
 import TimeLine from './../componentsCommon/timeline.js'
 import {SortDate} from './../functions/sortDate.js'
+import { DateToString } from '../functions/dateToString'
 import { Timeline } from 'antd';
 import './../styles/timeline.css'
 
@@ -45,18 +46,19 @@ class TimeManagement extends React.Component{
         }).then((response)=>{
             console.log(response);
             if(response.data.length>0){
-            for (let i = 0; i < response.data.length; i++) {
-                response.data[i].duration=new Date(response.data[i].duration);
-                // response.data[i].duration=response.data[i].duration.duration;
-                // console.log(response.data[i].duration)
-                response.data = SortDate(response.data);
-            }
-            for (let j=0; j<response.data.length; j++){
-                let dateString = response.data[j].duration.toString();
-                response.data[j].duration=dateString;
-            }
-            console.log(response.data);
-            this.props.setTableTimeContent(response.data);
+            // for (let i = 0; i < response.data.length; i++) {
+            //     response.data[i].duration=new Date(response.data[i].duration);
+            //     // response.data[i].duration=response.data[i].duration.duration;
+            //     // console.log(response.data[i].duration)
+            //     response.data = SortDate(response.data);
+            // }
+            response.data = SortDate(response.data);
+            // for (let j=0; j<response.data.length; j++){
+            //     let dateString = response.data[j].duration.toString();
+            //     response.data[j].duration=dateString;
+            // }
+            // console.log(response.data);
+            this.props.setTableTimeContent(DateToString(response.data));
             }
         })
     }

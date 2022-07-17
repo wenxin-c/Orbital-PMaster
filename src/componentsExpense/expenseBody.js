@@ -5,6 +5,7 @@ import Heading from '../componentsCommon/headingContent.js'
 import ExpenseContent from './expenseContent.js'
 import {TableCostIncrement} from './../functions/tableIncrement.js'
 import Axios from 'axios'
+import { TotalCost } from '../functions/totalCost'
 
 /**
  * @file: expenseBody.js
@@ -39,7 +40,7 @@ class ExpenseBody extends React.Component{
      * Total cost = unit cost * units
      */
     calculateTotalCost = () =>{
-        this.setState({content6:this.state.content4*this.state.content5});
+        this.setState({content6:TotalCost(this.state.content4, this.state.content5)});
         console.log('hello'+this.state.content6);
     }
 
