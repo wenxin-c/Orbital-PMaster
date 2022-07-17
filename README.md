@@ -32,7 +32,10 @@ Back-end: NodeJS, ExpressJS
 Database: MySQL
 Deployment flatform: Heroku
 ## Github
-The main branch contains react build content for production inside public folder and backend scripts in index.js. 
-The detailed frontend react script is in frontend branch. 
+The public folder on main branch contains react build content for production.
+The index.js file on main branch is the backend script, with the configuration of backend server and APIs.
+
+The detailed frontend react script with relevant code-level documentation can be found on frontend branch. 
+Unit test files can be found on frontend branch, src/test folder. 
 
 
