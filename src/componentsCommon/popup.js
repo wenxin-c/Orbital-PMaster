@@ -50,7 +50,7 @@ class Popup extends React.Component{
                     <h1 className='popup-title'>Search for the information you need:</h1>
                     <div className='popup-content'>
                         <div className='search'>
-                            <input type='test' placeholder='please enter the item type or item name' onChange={(event)=>{this.setState({userInput:event.target.value})}}></input>
+                            <input type='test' placeholder='Please enter the category of the item.' onChange={(event)=>{this.setState({userInput:event.target.value})}}></input>
                             <button className='btn' onClick={(event)=>{this.getUnitCost(event)}}>Submit</button>
                         </div>
                         <div className="table">
