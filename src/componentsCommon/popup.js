@@ -35,6 +35,7 @@ class Popup extends React.Component{
             console.log(response);
             console.log(response.data)
             if(response.data.length>0){
+                this.setState({tableContent:''});
                 this.setState({tableContent:response.data});
             }
             
