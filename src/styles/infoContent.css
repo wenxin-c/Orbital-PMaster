@@ -29,6 +29,7 @@ textarea{
     flex-direction:column;
     border-radius:4px;
     padding:24px;
+    padding-top:12px
 }
 .addNew input{
     width:100%;

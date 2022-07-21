@@ -7,6 +7,7 @@ import NewTask from "./pages/newTask.js";
 import NewPerson from "./pages/newPerson.js";
 import ScrollToTop from "./pages/wrapper.js";
 import Login from "./pages/login.js";
+import SummaryInput from './pages/summary.js'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Axios from "axios";
 
@@ -64,6 +65,11 @@ function App() {
   const [totalCost, setTotalCost] = useState("");
   const [budget, setBudget] = useState("");
   const [totalDuration, setTotalDuration] = useState("");
+
+  const [issue, setIssue] = useState("");
+  const [solution, setSolution] = useState("");
+  const [stakeholder, setStakeholder] = useState("");
+  const [outcome, setOutcome] = useState("");
 
   const changeUsernameReg = (event) => {
     setUsernameReg(event.target.value);
@@ -190,6 +196,14 @@ function App() {
                     setPassword={setPassword}
                     setDisplayStatus={setDisplayStatus}
                     setLoginStatus={setLoginStatus}
+                    issue={issue}
+                    setIssue={setIssue}
+                    solution={solution}
+                    setSolution={setSolution}
+                    stakeholder={stakeholder}
+                    setStakeholder={setStakeholder}
+                    outcome={outcome}
+                    setOutcome={setOutcome}
                   />
                 }
               />
@@ -241,6 +255,30 @@ function App() {
                     setPassword={setPassword}
                     setDisplayStatus={setDisplayStatus}
                     setLoginStatus={setLoginStatus}
+                  />
+                }
+              />
+               <Route
+                path="/main/summary"
+                element={
+                  <SummaryInput
+                    username={username}
+                    id={id}
+                    tableHRContent={tableHRContent}
+                    setTableHRContent={setTableHRContent}
+                    setID={setID}
+                    setUsername={setUsername}
+                    setPassword={setPassword}
+                    setDisplayStatus={setDisplayStatus}
+                    setLoginStatus={setLoginStatus}
+                    issue={issue}
+                    setIssue={setIssue}
+                    solution={solution}
+                    setSolution={setSolution}
+                    stakeholder={stakeholder}
+                    setStakeholder={setStakeholder}
+                    outcome={outcome}
+                    setOutcome={setOutcome}
                   />
                 }
               />

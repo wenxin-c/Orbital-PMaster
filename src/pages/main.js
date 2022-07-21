@@ -45,6 +45,14 @@ class MainPage extends React.Component{
                 setBudget={this.props.setBudget}
                 totalDuration={this.props.totalDuration}
                 setTotalDuration={this.props.setTotalDuration}
+                issue={this.props.issue}
+                setIssue={this.props.setIssue}
+                solution={this.props.solution}
+                setSolution={this.props.setSolution}
+                stakeholder={this.props.stakeholder}
+                setStakeholder={this.props.setStakeholder}
+                outcome={this.props.outcome}
+                setOutcome={this.props.setOutcome}
                 />
             </div>
             

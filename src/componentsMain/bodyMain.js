@@ -40,7 +40,16 @@ class MainContent extends React.Component{
             <div className='contentwrapper'>
                 <SideNavBar sections={this.state.sections}/>
                 <div style={{width:'calc(100% - 260px)', marginTop:'35px', marginLeft:'260px'}}>
-                    <Summary id={this.props.id} section={this.state.sections[0]}/>
+                    <Summary id={this.props.id} section={this.state.sections[0]}
+                    issue={this.props.issue}
+                    setIssue={this.props.setIssue}
+                    solution={this.props.solution}
+                    setSolution={this.props.setSolution}
+                    stakeholder={this.props.stakeholder}
+                    setStakeholder={this.props.setStakeholder}
+                    outcome={this.props.outcome}
+                    setOutcome={this.props.setOutcome}
+                    />
                     <CostManagement 
                     id={this.props.id} 
                     section={this.state.sections[1]} 
