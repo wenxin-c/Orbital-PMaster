@@ -79,8 +79,9 @@ export function ClickSaveBudget(event, budget, id){
  * @param {in} id 
  * @returns true;
  */
-export function ClickSaveDuration(event, duration, id){
+export function ClickSaveDuration(event, duration, id, setTotalDuration){
   event.preventDefault()
+  setTotalDuration(duration)
   sessionStorage.setItem('totalDurationData', JSON.stringify(duration));
     Axios.post("/addDuration",{
       duration:duration,

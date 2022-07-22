@@ -86,14 +86,16 @@ class Login extends React.Component{
                         </div>
                         <div className='login row' >
                             <h1>{this.props.loginStatus}</h1>     
-                            <Link to='/main'  onClick={()=>{
-                            this.props.getData();
-                            this.props.getBudgetData();
-                            this.props.getTotalCostData();
-                            this.props.getTaskData();
-                            this.props.getTotalDurationData();
-                            this.props.getHRData();
-                            this.props.getSummaryData();}}className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>   
+                            <Link to='/main'  
+                            onClick={()=>{
+                            // this.props.getData();
+                            // this.props.getBudgetData();
+                            // this.props.getTotalCostData();
+                            // this.props.getTaskData();
+                            // this.props.getTotalDurationData();
+                            // this.props.getHRData();
+                            this.props.getSummaryData();}}
+                            className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>   
                         </div>
                     </form>
                 </div>

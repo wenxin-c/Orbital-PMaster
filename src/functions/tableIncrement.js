@@ -36,6 +36,7 @@ export function TableCostIncrement( tableCostContent, eventParam, typeParam, nam
     }];
 
     sessionStorage.setItem('costTable', JSON.stringify(newCost));
+    
     eventParam.preventDefault()
     Axios.post("/addCost",{
       itemType:typeParam,

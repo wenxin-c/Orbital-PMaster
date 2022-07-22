@@ -51,6 +51,7 @@ class MainContent extends React.Component{
                     setOutcome={this.props.setOutcome}
                     />
                     <CostManagement 
+                    getCost={this.props.getCost}
                     id={this.props.id} 
                     section={this.state.sections[1]} 
                     tableCostContent={this.props.tableCostContent} 

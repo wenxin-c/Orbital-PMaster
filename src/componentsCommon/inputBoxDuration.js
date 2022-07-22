@@ -32,7 +32,9 @@ class InputBoxDuration extends React.Component{
                         <span className='initialTotal figures'>{this.state.total}</span>
                         <span className='initialTotal figures'>{this.props.totalDuration}</span>
                     </div>
-                    <SaveEditButton onSave={(event)=>{this.setState({disabled:true}); ClickSaveDuration(event, this.state.userInput, this.props.id); this.props.setTotalDuration(this.state.userInput)}} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
+                    <SaveEditButton onSave={(event)=>{this.setState({disabled:true}); ClickSaveDuration(event, this.state.userInput, this.props.id, this.props.setTotalDuration); 
+                    // this.props.setTotalDuration(this.state.userInput)
+                    }} onEdit={()=>{this.setState({disabled:ClickEdit()})}}/>
                 </div>
                 
             </div>

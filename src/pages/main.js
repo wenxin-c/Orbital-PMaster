@@ -21,7 +21,13 @@ class MainPage extends React.Component{
         
          const token = this.props.getToken();
          this.props.setID(token.id);
-         this.props.setUsername(token.username)
+         this.props.setUsername(token.username);
+         console.log("token")
+         console.log(token)
+         console.log("id")
+         console.log(token.id);
+         console.log("username")
+         console.log(this.props.username)
 
          this.props.getData()
          const cost = this.props.getCost();
@@ -29,7 +35,7 @@ class MainPage extends React.Component{
 
          this.props.getBudgetData()
          const budget = this.props.getBudget();
-         this.props.setBudget(budget);
+         this.props.setBudget(budget||"");
 
          this.props.getTotalCostData();
          const totalCost = this.props.getTotalCost();
@@ -109,7 +115,7 @@ class MainPage extends React.Component{
                 setStakeholder={this.props.setStakeholder}
                 outcome={this.props.outcome}
                 setOutcome={this.props.setOutcome}
-               
+                getCost={this.props.getCost}
                 />
             </div>
             

@@ -28,11 +28,14 @@ class TableCost extends React.Component{
     Axios.post('/getTotalCost',{
         id:this.props.id,
     }).then((response)=>{
-        // console.log(response);
+         console.log(response);
         if(response.data.length>0){
-           
-            this.props.setTotalCost(response.data[response.data.length-1].totalCost);
+          console.log("how are u")
+          // this.props.setTotalCost(response.data[response.data.length-1].totalCost);
             sessionStorage.setItem('totalCost', JSON.stringify(response.data[response.data.length-1].totalCost));
+            const tokenString = sessionStorage.getItem('totalCost');
+            const userToken = JSON.parse(tokenString);
+            this.props.setTotalCost(userToken);
         }else{
             this.props.setTotalCost("");
         }
@@ -61,7 +64,9 @@ class TableCost extends React.Component{
                             <td>{content.totalcost}</td>
                             <td><DeleteButton buttonStatus={this.props.buttonStatus} onClickDelete={(event)=>{
                              this.props.setTableCostContent(TableCostDelete(this.props.tableCostContent, event, content.itemtype, content.item, content.date, content.unitcost, content.units, content.totalcost, this.props.id));
-                             this.getTotalCost(event)}}/></td>
+                             this.getTotalCost(event)
+                           
+                             }}/></td>
                           </tr>
                         )
                       })

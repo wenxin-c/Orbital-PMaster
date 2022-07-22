@@ -115,6 +115,7 @@ class CostManagement extends React.Component{
                 <h1>{this.props.section.props.children}</h1>
                 <InputBoxBudget id={this.props.id} budget={this.props.budget} setBudget={this.props.setBudget} />
                 <TableCost 
+                
                 id={this.props.id} 
                 tableTitle={this.props.tableCostTitle} 
                 tableCostContent={this.props.tableCostContent}  
