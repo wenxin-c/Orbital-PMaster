@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import "bootstrap/dist/css/bootstrap.min.css"
 import TopNavBar from '../componentsCommon/topNavBar.js'
 import MainContent from '../componentsMain/bodyMain.js'
-
+import Axios from 'axios'
 /**
  * @file: main.js
  * @author: wenxin
@@ -15,8 +15,64 @@ import MainContent from '../componentsMain/bodyMain.js'
  */
 
 class MainPage extends React.Component{
+
     
-    
+    componentDidMount(){
+        
+         const token = this.props.getToken();
+         this.props.setID(token.id);
+         this.props.setUsername(token.username)
+
+         this.props.getData()
+         const cost = this.props.getCost();
+         this.props.setTableCostContent(cost||[]);
+
+         this.props.getBudgetData()
+         const budget = this.props.getBudget();
+         this.props.setBudget(budget);
+
+         this.props.getTotalCostData();
+         const totalCost = this.props.getTotalCost();
+         this.props.setTotalCost(totalCost||"");
+
+         this.props.getTotalDurationData();
+         const totalDuration = this.props.getTotalDuration();
+         this.props.setTotalDuration(totalDuration||"");
+
+         this.props.getTaskData();
+        const task = this.props.getTask();
+        this.props.setTableTimeContent(task||[]);
+       
+        this.props.getSummaryData();
+        const summary = this.props.getSummary();
+        if (summary){
+            this.props.setIssue(summary.issue);
+            this.props.setSolution(summary.solution);
+            this.props.setStakeholder(summary.stakeholders)
+            this.props.setOutcome(summary.outcome);
+        }else{
+            this.props.setIssue("");
+            this.props.setSolution("");
+            this.props.setStakeholder("")
+            this.props.setOutcome("");
+        }
+
+        console.log(summary);
+
+        this.props.getHRData();
+        const hr = this.props.getHR();
+        this.props.setTableHRContent(hr||[])
+
+
+      
+       
+        
+        
+        
+        
+        
+    }
+
     render(){
 
         return(
@@ -53,6 +109,7 @@ class MainPage extends React.Component{
                 setStakeholder={this.props.setStakeholder}
                 outcome={this.props.outcome}
                 setOutcome={this.props.setOutcome}
+               
                 />
             </div>
             

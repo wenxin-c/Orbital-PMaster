@@ -27,24 +27,24 @@ class Summary extends React.Component{
      * ID is passed to backend and summary content belong to this ID is passed to frontend and newest updated one is displayed. 
      */
 
-    getData=(event)=>{
-        // event.preventDefault();
-        Axios.post('/getSummary',{
-            id:this.props.id,
-        }).then((response)=>{
-            console.log(response);
-            const arr = response.data;
-            if(arr.length>0){
-            this.props.setIssue(arr[arr.length-1].issue);
-            this.props.setSolution(arr[arr.length-1].solution);
-            this.props.setStakeholder(arr[arr.length-1].stakeholders)
-            this.props.setOutcome(arr[arr.length-1].outcome);
-            }
-        })
-    }
+    // getData=(event)=>{
+    //     // event.preventDefault();
+    //     Axios.post('/getSummary',{
+    //         id:this.props.id,
+    //     }).then((response)=>{
+    //         console.log(response);
+    //         const arr = response.data;
+    //         if(arr.length>0){
+    //         this.props.setIssue(arr[arr.length-1].issue);
+    //         this.props.setSolution(arr[arr.length-1].solution);
+    //         this.props.setStakeholder(arr[arr.length-1].stakeholders)
+    //         this.props.setOutcome(arr[arr.length-1].outcome);
+    //         }
+    //     })
+    // }
 
     componentDidMount(){
-        this.getData();
+        // this.getData();
     }
 
     render(){

@@ -16,7 +16,7 @@ import {HandleInput} from './../functions/handleInput.js'
 
 class InputBoxBudget extends React.Component{
     state={
-        disabled:false,     
+        disabled:true,     
         description:'How much budget do you have? (Please enter numbers)',
         total:'Total amount of budget: $',
         userInput:'',
@@ -27,7 +27,7 @@ class InputBoxBudget extends React.Component{
 
         return(
             <div style={{display:'flex',flexDirection:'column'}}>
-                <input onChange={(event)=>{this.setState({userInput:HandleInput(event)});}} className='inputbox' type={this.state.inputType} placeholder={this.state.description} disabled={this.state.disabled}></input>
+                <input onChange={(event)=>{if(HandleInput(event)){this.setState({userInput:HandleInput(event)});}}} className='inputbox' type={this.state.inputType} placeholder={this.state.description} disabled={this.state.disabled}></input>
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'center', marginLeft:'5px'}}>
                     <div>
                         <span className='initialTotal figures' >{this.state.total}</span>

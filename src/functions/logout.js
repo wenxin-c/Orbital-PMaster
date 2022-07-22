@@ -11,6 +11,7 @@
  * @param {in} setDisplayStatus 
  */
 export function Logout(setID, setUsername, setPassword, setLoginStatus, setDisplayStatus){
+    sessionStorage.clear();
     setID("");
     setUsername("");
     setPassword("");

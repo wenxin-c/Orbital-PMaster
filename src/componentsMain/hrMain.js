@@ -30,20 +30,20 @@ class HRManagement extends React.Component{
      * ID is passed to backend and all personnel information that belongs to this ID is sent back to frontend and is used to generate the human resource table. 
      */
     
-    getData=(event)=>{
-        // event.preventDefault();
-        Axios.post('/getHR',{
-            id:this.props.id,
-        }).then((response)=>{
-            // console.log(response);
-            if(response.data.length>0){
-            this.props.setTableHRContent(response.data);
-            }
-        })
-    }
+    // getData=(event)=>{
+    //     // event.preventDefault();
+    //     Axios.post('/getHR',{
+    //         id:this.props.id,
+    //     }).then((response)=>{
+    //         // console.log(response);
+    //         if(response.data.length>0){
+    //         this.props.setTableHRContent(response.data);
+    //         }
+    //     })
+    // }
 
     componentDidMount(){
-        this.getData();
+        // this.getData();
     }
 
     render(){

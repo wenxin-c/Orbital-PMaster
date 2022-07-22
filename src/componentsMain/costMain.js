@@ -34,18 +34,27 @@ class CostManagement extends React.Component{
      * 
      */
 
-    getData=(event)=>{
-        // event.preventDefault();
-        Axios.post('/getCost',{
-            id:this.props.id,
-        }).then((response)=>{
-            console.log(response);
-            if(response.data.length>0){
-            // this.setState({table:response.data});
-            this.props.setTableCostContent(response.data)
-            }
-        })
-    }
+//     getData=(event)=>{
+//         // event.preventDefault();
+//         Axios.post('/getCost',{
+//             id:this.props.id,
+//         }).then((response)=>{
+//             console.log(response);
+//             if(response.data.length>0){
+//             // this.setState({table:response.data});
+//             sessionStorage.setItem('costTable', JSON.stringify(response.data));
+//             // this.props.setTableCostContent(response.data)
+//             this.props.setTableCostContent(this.getCost())
+//             }
+//         })
+//     }
+
+//    getCost = () =>{
+//         const tokenString = sessionStorage.getItem('costTable');
+//         const userToken = JSON.parse(tokenString);
+//         return userToken;
+//         // return userToken?.token
+//     }
     
     /**
      * This function is called once when the web page mounts. 
@@ -54,19 +63,19 @@ class CostManagement extends React.Component{
      *  
      */
 
-    getBudget=(event)=>{
-        // event.preventDefault();
-        Axios.post('/getBudget',{
-            id:this.props.id,
-        }).then((response)=>{
-            //  console.log(response);
-             if(response.data.length>0){
-                this.props.setBudget(response.data[response.data.length-1].budget);
-            }else{
-                this.props.setBudget("");
-            }
-        })
-    }
+    // getBudget=(event)=>{
+    //     // event.preventDefault();
+    //     Axios.post('/getBudget',{
+    //         id:this.props.id,
+    //     }).then((response)=>{
+    //         //  console.log(response);
+    //          if(response.data.length>0){
+    //             this.props.setBudget(response.data[response.data.length-1].budget);
+    //         }else{
+    //             this.props.setBudget("");
+    //         }
+    //     })
+    // }
 
       /**
      * This function is called once when the web page mounts. 
@@ -75,26 +84,28 @@ class CostManagement extends React.Component{
      * 
      */
 
-    getTotalCost=(event)=>{
-        // event.preventDefault();
-        Axios.post('/getTotalCost',{
-            id:this.props.id,
-        }).then((response)=>{
-            // console.log(response);
-            if(response.data.length>0){
-                this.props.setTotalCost(response.data[response.data.length-1].totalCost);
-            }else{
-                this.props.setTotalCost("");
-            }
+    // getTotalCost=(event)=>{
+    //     // event.preventDefault();
+    //     Axios.post('/getTotalCost',{
+    //         id:this.props.id,
+    //     }).then((response)=>{
+    //         // console.log(response);
+    //         if(response.data.length>0){
+    //             this.props.setTotalCost(response.data[response.data.length-1].totalCost);
+    //         }else{
+    //             this.props.setTotalCost("");
+    //         }
             
-        })
-    }
+    //     })
+    // }
     
     componentDidMount(){
-        this.getData();
-        this.getBudget();
-        this.getTotalCost();
+        // this.getData();
+        // this.getBudget();
+        // this.getTotalCost();
+
     }
+
     
     render(){ 
         

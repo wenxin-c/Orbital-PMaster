@@ -35,6 +35,7 @@ export function TableCostIncrement( tableCostContent, eventParam, typeParam, nam
       
     }];
 
+    sessionStorage.setItem('costTable', JSON.stringify(newCost));
     eventParam.preventDefault()
     Axios.post("/addCost",{
       itemType:typeParam,
@@ -84,6 +85,7 @@ export function TableCostIncrement( tableCostContent, eventParam, typeParam, nam
         remark:remarkParam,
       }];
 
+      sessionStorage.setItem('taskData', JSON.stringify(newTask));
       eventParam.preventDefault()
       Axios.post("/addTask",{
       taskName:nameParam,
@@ -132,6 +134,8 @@ export function TableCostIncrement( tableCostContent, eventParam, typeParam, nam
         department:departmentParam,
         role:roleParam
       }]
+
+      sessionStorage.setItem('hrData', JSON.stringify(newPerson));
 
       eventParam.preventDefault()
       Axios.post("/addHR",{

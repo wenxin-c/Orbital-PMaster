@@ -14,6 +14,12 @@ import ExpenseBody from './../componentsExpense/expenseBody.js'
  * @return: react-dom
  */
 class NewExpense extends React.Component{
+    componentDidMount(){
+        const token = this.props.getToken();
+         this.props.setID(token.id);
+         this.props.setUsername(token.username)
+   }
+
     render(){
         return(
             <div>

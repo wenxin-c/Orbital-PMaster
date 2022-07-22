@@ -14,6 +14,13 @@ import TaskContent from './../componentsTime/taskContent.js'
  * @return: react-dom
  */
 class NewTask extends React.Component{
+
+    componentDidMount(){
+        const token = this.props.getToken();
+        this.props.setID(token.id);
+        this.props.setUsername(token.username)
+   }
+
     render(){
         return(
             <div>

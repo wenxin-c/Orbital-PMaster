@@ -39,29 +39,29 @@ class TimeManagement extends React.Component{
      * ID is passed to backend and all tasks that belong to this ID is sent to frontend to generate task table. 
      */
 
-    getData=(event)=>{
-        // event.preventDefault();
-        Axios.post('/getTask',{
-            id:this.props.id,
-        }).then((response)=>{
-            console.log(response);
-            if(response.data.length>0){
-            // for (let i = 0; i < response.data.length; i++) {
-            //     response.data[i].duration=new Date(response.data[i].duration);
-            //     // response.data[i].duration=response.data[i].duration.duration;
-            //     // console.log(response.data[i].duration)
-            //     response.data = SortDate(response.data);
-            // }
-            response.data = SortDate(response.data);
-            // for (let j=0; j<response.data.length; j++){
-            //     let dateString = response.data[j].duration.toString();
-            //     response.data[j].duration=dateString;
-            // }
-            // console.log(response.data);
-            this.props.setTableTimeContent(DateToString(response.data));
-            }
-        })
-    }
+    // getData=(event)=>{
+    //     // event.preventDefault();
+    //     Axios.post('/getTask',{
+    //         id:this.props.id,
+    //     }).then((response)=>{
+    //         console.log(response);
+    //         if(response.data.length>0){
+    //         // for (let i = 0; i < response.data.length; i++) {
+    //         //     response.data[i].duration=new Date(response.data[i].duration);
+    //         //     // response.data[i].duration=response.data[i].duration.duration;
+    //         //     // console.log(response.data[i].duration)
+    //         //     response.data = SortDate(response.data);
+    //         // }
+    //         response.data = SortDate(response.data);
+    //         // for (let j=0; j<response.data.length; j++){
+    //         //     let dateString = response.data[j].duration.toString();
+    //         //     response.data[j].duration=dateString;
+    //         // }
+    //         // console.log(response.data);
+    //         this.props.setTableTimeContent(DateToString(response.data));
+    //         }
+    //     })
+    // }
 
     /**
      * This function is called when the web page mounts. 
@@ -69,26 +69,26 @@ class TimeManagement extends React.Component{
      * ID is passed to backend and the total duration that belong to this ID is sent to frontend. 
      */
 
-    getTotalDuration=(event)=>{
-        // event.preventDefault();
-        Axios.post('/getDuration',{
-            id:this.props.id,
-        }).then((response)=>{
-            // console.log(response);
-            if(response.data.length>0){
+    // getTotalDuration=(event)=>{
+    //     // event.preventDefault();
+    //     Axios.post('/getDuration',{
+    //         id:this.props.id,
+    //     }).then((response)=>{
+    //         // console.log(response);
+    //         if(response.data.length>0){
                
-                this.props.setTotalDuration(response.data[response.data.length-1].duration);
+    //             this.props.setTotalDuration(response.data[response.data.length-1].duration);
                
-            }else{
-                this.props.setTotalDuration("");
-            }
+    //         }else{
+    //             this.props.setTotalDuration("");
+    //         }
             
-        })
-    }
+    //     })
+    // }
 
     componentDidMount(){
-        this.getData();
-        this.getTotalDuration();
+        // this.getData();
+        // this.getTotalDuration();
     }
 
     render(){

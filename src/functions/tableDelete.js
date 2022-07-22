@@ -27,6 +27,8 @@ const Axios = require('axios').default;
 export function TableCostDelete(originalArray, eventParam, itemType, item, date, unitCost, units, totalCost, id){
     const newArray = originalArray.filter((item)=>(item.itemtype!==itemType && item.item!== item && item.totalcost !== totalCost && item.id!==id));
     
+    sessionStorage.setItem('costTable', JSON.stringify(newArray));
+
     eventParam.preventDefault()
     Axios.post("/deleteCost",{
         itemType:itemType,
@@ -71,6 +73,8 @@ export function TableTaskDelete(originalArray, eventParam, taskName, taskDescrip
     
   const newArray = originalArray.filter((item)=>(item.tasknamew!==taskName && item.taskdescription!== taskDescription && item.id!==id));
   
+  sessionStorage.setItem('taskData', JSON.stringify(newArray));
+
   eventParam.preventDefault()
     Axios.post("/deleteTask",{
         taskName : taskName,
@@ -113,6 +117,8 @@ export function TableTaskDelete(originalArray, eventParam, taskName, taskDescrip
 export function TableHRDelete(originalArray, eventParam, name, ic, phoneNumber, email, department, role, id){
 
   const newArray = originalArray.filter((item)=>(item.name!==name && item.ic!==ic && item.id!==id));
+
+  sessionStorage.setItem('hrData', JSON.stringify(newArray));
 
     eventParam.preventDefault()
     Axios.post("/deleteHR",{

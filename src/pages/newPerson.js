@@ -14,6 +14,13 @@ import PersonContent from './../componentsPerson/personContent.js'
  * @return: react-dom
  */
 class NewPerson extends React.Component{
+
+    componentDidMount(){
+        const token = this.props.getToken();
+         this.props.setID(token.id);
+         this.props.setUsername(token.username)
+   }
+
     render(){
         return(
             <div>

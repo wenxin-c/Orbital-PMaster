@@ -15,7 +15,7 @@ import {HandleInput} from './../functions/handleInput.js'
  */
 class InputBoxDuration extends React.Component{
     state={
-        disabled:false,
+        disabled:true,
         description:"What's the duration of your project? (Please enter the number of days)",
         total:'Total duration: ',
         userInput:'',

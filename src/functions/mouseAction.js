@@ -28,6 +28,7 @@ export function ClickEdit(){
  */
 export function ClickSave(event, content1, content2, content3, content4, id){
     event.preventDefault();
+    sessionStorage.setItem('summary', JSON.stringify({issue:content1,solution:content2,stakeholder:content3,outcome:content4}));
     Axios.post("/addSummary",{
       issue:content1,
       solution:content2,
@@ -55,6 +56,7 @@ export function ClickSave(event, content1, content2, content3, content4, id){
  */
 export function ClickSaveBudget(event, budget, id){
   event.preventDefault()
+  sessionStorage.setItem('budget', JSON.stringify(budget));
     Axios.post("/addBudget",{
       budget:budget,
       id:id,
@@ -79,6 +81,7 @@ export function ClickSaveBudget(event, budget, id){
  */
 export function ClickSaveDuration(event, duration, id){
   event.preventDefault()
+  sessionStorage.setItem('totalDurationData', JSON.stringify(duration));
     Axios.post("/addDuration",{
       duration:duration,
       id:id,

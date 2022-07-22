@@ -30,7 +30,9 @@ class TableCost extends React.Component{
     }).then((response)=>{
         // console.log(response);
         if(response.data.length>0){
+           
             this.props.setTotalCost(response.data[response.data.length-1].totalCost);
+            sessionStorage.setItem('totalCost', JSON.stringify(response.data[response.data.length-1].totalCost));
         }else{
             this.props.setTotalCost("");
         }
