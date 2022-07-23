@@ -23,19 +23,21 @@ class TableCost extends React.Component{
    * ID is passed to backend and total cost of all items that belong to this ID is calculated and passed to frontend. 
    */
 
-  getTotalCost=(event)=>{
+  getTotalCost= async (event)=>{
     event.preventDefault();
-    Axios.post('/getTotalCost',{
+     Axios.post('/getTotalCost',{
         id:this.props.id,
     }).then((response)=>{
          console.log(response);
         if(response.data.length>0){
           console.log("how are u")
-          // this.props.setTotalCost(response.data[response.data.length-1].totalCost);
-            sessionStorage.setItem('totalCost', JSON.stringify(response.data[response.data.length-1].totalCost));
-            const tokenString = sessionStorage.getItem('totalCost');
-            const userToken = JSON.parse(tokenString);
-            this.props.setTotalCost(userToken);
+          const data = response.data[response.data.length-1].totalCost
+          this.props.setTotalCost(data);
+            sessionStorage.setItem('totalCost', JSON.stringify(data));
+            // const tokenString = sessionStorage.getItem('totalCost');
+            // const userToken = JSON.parse(tokenString);
+            // this.props.setTotalCost(userToken);
+            console.log(data);
         }else{
             this.props.setTotalCost("");
         }

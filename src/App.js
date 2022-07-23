@@ -129,7 +129,7 @@ function App() {
 }
 
 const getCost = () =>{
-    const tokenString = sessionStorage.getItem('costTable');
+    const tokenString =  sessionStorage.getItem('costTable');
     const userToken = JSON.parse(tokenString);
     return userToken;
     // return userToken?.token

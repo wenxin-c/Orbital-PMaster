@@ -82,19 +82,20 @@ class Login extends React.Component{
                             <input onChange={(event)=>{this.props.changePassword(event)}} type="password" name="password" placeholder="Password" id="passwordLog" required/>
                         </div>  
                         <div id="button" class="row">
-                            <input onClick={(event)=>this.props.login(event)} className='btn' type="submit" value="Login"></input>
+                            <input onClick={(event)=>{this.props.login(event)
+                            }} className='btn' type="submit" value="Login"></input>
                         </div>
                         <div className='login row' >
                             <h1>{this.props.loginStatus}</h1>     
                             <Link to='/main'  
-                            onClick={()=>{
+                            // onClick={()=>{
                             // this.props.getData();
                             // this.props.getBudgetData();
                             // this.props.getTotalCostData();
                             // this.props.getTaskData();
                             // this.props.getTotalDurationData();
                             // this.props.getHRData();
-                            this.props.getSummaryData();}}
+                            // this.props.getSummaryData();}}
                             className='navLink' style={{display:this.props.displayStatus}}>Click to proceed</Link>   
                         </div>
                     </form>

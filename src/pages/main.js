@@ -19,19 +19,27 @@ class MainPage extends React.Component{
     
     componentDidMount(){
         
+        //need to call the function twice? if not content is not get rendered at the beginning
+        //this.props.id and this.props.username undefined but token.id and token.username have correct values
+        //but username get rendered on the top right hand corner 
+        //if becuse id is null, but then why the rest works fine?
+        //delete any of these lines, it will not be rendered properly
+
+        //totalcost not responsive
+
          const token = this.props.getToken();
+
          this.props.setID(token.id);
          this.props.setUsername(token.username);
-         console.log("token")
-         console.log(token)
-         console.log("id")
-         console.log(token.id);
-         console.log("username")
-         console.log(this.props.username)
+         
+         console.log(this.props.id);
+         console.log(this.props.username);
 
          this.props.getData()
-         const cost = this.props.getCost();
-         this.props.setTableCostContent(cost||[]);
+        //  const cost = this.props.getCost();
+        //  this.props.setTableCostContent(cost||[]);
+        this.props.setTableCostContent(this.props.getCost()||[]);
+         
 
          this.props.getBudgetData()
          const budget = this.props.getBudget();
@@ -62,8 +70,6 @@ class MainPage extends React.Component{
             this.props.setStakeholder("")
             this.props.setOutcome("");
         }
-
-        console.log(summary);
 
         this.props.getHRData();
         const hr = this.props.getHR();
